@@ -5,20 +5,26 @@
 
 .drift-wall-showcase-wrapper {
   position: relative;
-  width: 100%;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
   margin-bottom: 2rem;
   background: transparent;
-  border: none;
-  box-shadow: none;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
-  overflow: visible;
+  overflow: hidden;
 }
 
 [data-theme="light"] .drift-wall-showcase-wrapper {
   background: transparent;
-  border: none;
-  box-shadow: none;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 /* Hide / remove HUD bar */
@@ -169,8 +175,17 @@
   --dw-gray: 0;
   --dw-overlay: #060010;
   --dw-edge: 42%;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-mask-image: 
+    linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%),
+    linear-gradient(to right, transparent 0%, black 5%, black 88%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: 
+    linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%),
+    linear-gradient(to right, transparent 0%, black 5%, black 88%, transparent 100%);
+  mask-composite: intersect;
   user-select: none;
   touch-action: pan-y;
 }

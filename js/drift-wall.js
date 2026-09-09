@@ -417,11 +417,11 @@
 
       // Responsive window resize
       window.addEventListener('resize', () => {
-        const targetCols = window.innerWidth < 640 ? 3 : window.innerWidth < 1024 ? 4 : 5;
+        const targetCols = window.innerWidth < 640 ? 3 : window.innerWidth < 1024 ? 4 : window.innerWidth < 1400 ? 5 : 6;
         if (targetCols !== this.columns) {
           this.columns = targetCols;
-          this.tileWidth = window.innerWidth < 640 ? 155 : window.innerWidth < 1024 ? 180 : 210;
-          this.tileHeight = window.innerWidth < 640 ? 102 : window.innerWidth < 1024 ? 118 : 138;
+          this.tileWidth = window.innerWidth < 640 ? 155 : window.innerWidth < 1024 ? 180 : window.innerWidth < 1400 ? 210 : 224;
+          this.tileHeight = window.innerWidth < 640 ? 102 : window.innerWidth < 1024 ? 118 : window.innerWidth < 1400 ? 138 : 148;
           this.init();
         }
       });
@@ -547,9 +547,9 @@
 
     const driftWallInstance = new DriftWallEngine(mount, {
       items: certs,
-      columns: window.innerWidth < 640 ? 3 : window.innerWidth < 1024 ? 4 : 5,
-      tileWidth: window.innerWidth < 640 ? 155 : window.innerWidth < 1024 ? 180 : 210,
-      tileHeight: window.innerWidth < 640 ? 102 : window.innerWidth < 1024 ? 118 : 138,
+      columns: window.innerWidth < 640 ? 3 : window.innerWidth < 1024 ? 4 : window.innerWidth < 1400 ? 5 : 6,
+      tileWidth: window.innerWidth < 640 ? 155 : window.innerWidth < 1024 ? 180 : window.innerWidth < 1400 ? 210 : 224,
+      tileHeight: window.innerWidth < 640 ? 102 : window.innerWidth < 1024 ? 118 : window.innerWidth < 1400 ? 138 : 148,
       gap: 18,
       radius: 14,
       tilt: 16,

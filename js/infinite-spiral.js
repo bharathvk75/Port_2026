@@ -5,6 +5,9 @@
  * Creates a high-performance 3D helix gallery of skill icons and titles.
  * Supports auto-rotation, pointer dragging, page scroll velocity coupling,
  * responsive cylindrical projection, depth scaling, edge blur, and pause on hover.
+ * 
+ * Section-Wise Filtering: Supports category filtering (agentic, ml, backend, cloud)
+ * synced with interactive category tabs and side-by-side competency cards.
  */
 
 (function () {
@@ -37,46 +40,56 @@
     scikit: `<svg viewBox="0 0 24 24" fill="none" stroke="#f89939" stroke-width="2"><circle cx="12" cy="12" r="8"></circle><line x1="12" y1="2" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line></svg>`
   };
 
-  // 16 Core Technical Skills in Spiral
+  // 16 Core Technical Skills in Spiral with Section Categories
   const SKILL_ITEMS = [
-    { id: 'langgraph', label: 'LangGraph', sub: 'Multi-Agent Core', icon: SKILL_ICONS.langgraph, color: '#38bdf8' },
-    { id: 'pytorch', label: 'PyTorch', sub: 'Deep Learning', icon: SKILL_ICONS.pytorch, color: '#ee4c2c' },
-    { id: 'mcp', label: 'Claude MCP', sub: 'Tool Protocol', icon: SKILL_ICONS.mcp, color: '#a855f7' },
-    { id: 'python', label: 'Python 3.12', sub: 'AI Core Lang', icon: SKILL_ICONS.python, color: '#3b82f6' },
-    { id: 'fastapi', label: 'FastAPI', sub: 'Async Microservices', icon: SKILL_ICONS.fastapi, color: '#009688' },
-    { id: 'docker', label: 'Docker', sub: 'Containerization', icon: SKILL_ICONS.docker, color: '#2496ed' },
-    { id: 'langchain', label: 'LangChain', sub: 'RAG & Memory', icon: SKILL_ICONS.langchain, color: '#10b981' },
-    { id: 'opencv', label: 'OpenCV', sub: 'Computer Vision', icon: SKILL_ICONS.opencv, color: '#6366f1' },
-    { id: 'claude', label: 'Claude 3.7', sub: 'Frontier Reasoning', icon: SKILL_ICONS.claude, color: '#d97706' },
-    { id: 'tensorflow', label: 'TensorFlow', sub: 'Inference Models', icon: SKILL_ICONS.tensorflow, color: '#ff6f00' },
-    { id: 'postgresql', label: 'PostgreSQL', sub: 'pgvector RAG', icon: SKILL_ICONS.postgresql, color: '#336791' },
-    { id: 'kubernetes', label: 'Kubernetes', sub: 'Cluster Scaling', icon: SKILL_ICONS.kubernetes, color: '#326ce5' },
-    { id: 'redis', label: 'Redis', sub: 'Cache & State', icon: SKILL_ICONS.redis, color: '#dc382d' },
-    { id: 'aws', label: 'AWS Cloud', sub: 'Infrastructure', icon: SKILL_ICONS.aws, color: '#ff9900' },
-    { id: 'typescript', label: 'TypeScript', sub: 'Typed Web APIs', icon: SKILL_ICONS.typescript, color: '#3178c6' },
-    { id: 'scikit', label: 'Scikit-Learn', sub: 'ML Analytics', icon: SKILL_ICONS.scikit, color: '#f89939' }
+    // Agentic & AI Architecture
+    { id: 'langgraph', label: 'LangGraph', sub: 'Multi-Agent Core', icon: SKILL_ICONS.langgraph, color: '#38bdf8', category: 'agentic' },
+    { id: 'mcp', label: 'Claude MCP', sub: 'Tool Protocol', icon: SKILL_ICONS.mcp, color: '#a855f7', category: 'agentic' },
+    { id: 'claude', label: 'Claude 3.7', sub: 'Frontier Reasoning', icon: SKILL_ICONS.claude, color: '#d97706', category: 'agentic' },
+    { id: 'langchain', label: 'LangChain', sub: 'RAG & Memory', icon: SKILL_ICONS.langchain, color: '#10b981', category: 'agentic' },
+    
+    // Machine Learning & Computer Vision
+    { id: 'pytorch', label: 'PyTorch', sub: 'Deep Learning', icon: SKILL_ICONS.pytorch, color: '#ee4c2c', category: 'ml' },
+    { id: 'opencv', label: 'OpenCV', sub: 'Computer Vision', icon: SKILL_ICONS.opencv, color: '#6366f1', category: 'ml' },
+    { id: 'tensorflow', label: 'TensorFlow', sub: 'Inference Models', icon: SKILL_ICONS.tensorflow, color: '#ff6f00', category: 'ml' },
+    { id: 'scikit', label: 'Scikit-Learn', sub: 'ML Analytics', icon: SKILL_ICONS.scikit, color: '#f89939', category: 'ml' },
+
+    // High-Throughput Backend & APIs
+    { id: 'python', label: 'Python 3.12', sub: 'AI Core Lang', icon: SKILL_ICONS.python, color: '#3b82f6', category: 'backend' },
+    { id: 'fastapi', label: 'FastAPI', sub: 'Async Microservices', icon: SKILL_ICONS.fastapi, color: '#009688', category: 'backend' },
+    { id: 'postgresql', label: 'PostgreSQL', sub: 'pgvector RAG', icon: SKILL_ICONS.postgresql, color: '#336791', category: 'backend' },
+    { id: 'redis', label: 'Redis', sub: 'Cache & State', icon: SKILL_ICONS.redis, color: '#dc382d', category: 'backend' },
+    { id: 'typescript', label: 'TypeScript', sub: 'Typed Web APIs', icon: SKILL_ICONS.typescript, color: '#3178c6', category: 'backend' },
+
+    // Cloud Infrastructure & DevOps
+    { id: 'docker', label: 'Docker', sub: 'Containerization', icon: SKILL_ICONS.docker, color: '#2496ed', category: 'cloud' },
+    { id: 'kubernetes', label: 'Kubernetes', sub: 'Cluster Scaling', icon: SKILL_ICONS.kubernetes, color: '#326ce5', category: 'cloud' },
+    { id: 'aws', label: 'AWS Cloud', sub: 'Infrastructure', icon: SKILL_ICONS.aws, color: '#ff9900', category: 'cloud' }
   ];
 
   class InfiniteSpiralEngine {
     constructor(containerEl, options = {}) {
       if (!containerEl) return;
       this.container = containerEl;
-      this.items = options.items || SKILL_ITEMS;
+      this.allItems = options.items || SKILL_ITEMS;
+      this.items = [...this.allItems];
+      this.activeCategory = 'all';
+
       this.speed = options.speed !== undefined ? options.speed : 0.55;
       this.direction = options.direction || 'up';
       this.animationMode = options.animationMode || 'all';
-      this.radius = options.radius !== undefined ? options.radius : 180;
-      this.cardWidth = options.cardWidth || 115;
-      this.cardHeight = options.cardHeight || 115;
-      this.verticalSpacing = options.verticalSpacing || 64;
-      this.perspective = options.perspective || 1000;
-      this.cardsPerTurn = options.cardsPerTurn || 7;
+      this.radius = options.radius !== undefined ? options.radius : 160;
+      this.cardWidth = options.cardWidth || 108;
+      this.cardHeight = options.cardHeight || 108;
+      this.verticalSpacing = options.verticalSpacing || 58;
+      this.perspective = options.perspective || 900;
+      this.cardsPerTurn = options.cardsPerTurn || 6;
       this.rotation = options.rotation || 0;
       this.cardTilt = options.cardTilt || 0;
-      this.cardRadius = options.cardRadius || 16;
-      this.centerScale = options.centerScale !== undefined ? options.centerScale : 1.2;
-      this.edgeFade = options.edgeFade !== undefined ? options.edgeFade : 0.3;
-      this.edgeBlur = options.edgeBlur !== undefined ? options.edgeBlur : 5;
+      this.cardRadius = options.cardRadius || 15;
+      this.centerScale = options.centerScale !== undefined ? options.centerScale : 1.22;
+      this.edgeFade = options.edgeFade !== undefined ? options.edgeFade : 0.35;
+      this.edgeBlur = options.edgeBlur !== undefined ? options.edgeBlur : 4;
       this.pauseOnHover = options.pauseOnHover !== undefined ? options.pauseOnHover : true;
 
       this.progress = 0;
@@ -114,7 +127,24 @@
       this.stage.setAttribute('role', 'list');
       this.stage.setAttribute('aria-label', 'Interactive 3D skills spiral helix');
 
-      this.items.forEach((item, index) => {
+      this.rebuildCards();
+
+      this.root.appendChild(this.stage);
+      this.container.innerHTML = '';
+      this.container.appendChild(this.root);
+
+      this.bounds = this.root.getBoundingClientRect();
+      this.setupObservers();
+      this.attachEvents();
+      this.startLoop();
+    }
+
+    rebuildCards() {
+      if (!this.stage) return;
+      this.stage.innerHTML = '';
+      this.cardRefs = [];
+
+      this.items.forEach((item) => {
         const card = document.createElement('div');
         card.className = 'infinite-spiral__item';
         card.style.width = `${this.cardWidth}px`;
@@ -122,6 +152,8 @@
         card.style.borderRadius = `${this.cardRadius}px`;
         card.setAttribute('role', 'listitem');
         card.setAttribute('aria-label', `${item.label} - ${item.sub}`);
+        card.setAttribute('data-category', item.category || 'all');
+        card.setAttribute('data-skill-id', item.id);
 
         // Radial glow matching skill color
         const glow = document.createElement('div');
@@ -148,14 +180,20 @@
         this.cardRefs.push(card);
       });
 
-      this.root.appendChild(this.stage);
-      this.container.innerHTML = '';
-      this.container.appendChild(this.root);
+      this.progress = 0;
+      this.targetProgress = 0;
+    }
 
-      this.bounds = this.root.getBoundingClientRect();
-      this.setupObservers();
-      this.attachEvents();
-      this.startLoop();
+    filterCategory(categoryKey) {
+      this.activeCategory = categoryKey;
+      if (!categoryKey || categoryKey === 'all') {
+        this.items = [...this.allItems];
+      } else {
+        const filtered = this.allItems.filter((item) => item.category === categoryKey);
+        // Duplicate when items count is small to keep the 3D helix rich and continuous
+        this.items = filtered.length < 8 ? [...filtered, ...filtered] : filtered;
+      }
+      this.rebuildCards();
     }
 
     setupObservers() {
@@ -266,10 +304,10 @@
 
         const count = this.items.length;
         const half = count / 2;
-        const width = Math.max(this.bounds.width || 800, 1);
+        const width = Math.max(this.bounds.width || 500, 1);
         const height = Math.max(this.bounds.height || 540, 1);
-        const fit = Math.min(1, width / (this.cardWidth * 2.8), height / (this.cardHeight * 2.35));
-        const responsiveRadius = Math.min(this.radius, Math.max(72, width * 0.36)) * fit;
+        const fit = Math.min(1, width / (this.cardWidth * 2.7), height / (this.cardHeight * 2.35));
+        const responsiveRadius = Math.min(this.radius, Math.max(68, width * 0.35)) * fit;
         const fadeStart = clamp(1 - this.edgeFade, 0, 0.98);
         const turnSize = Math.max(this.cardsPerTurn, 1);
 
@@ -321,25 +359,74 @@
   document.addEventListener('DOMContentLoaded', () => {
     const mountEl = document.getElementById('infinite-spiral-mount');
     if (mountEl) {
+      const isMobile = window.innerWidth < 640;
+      const isTablet = window.innerWidth < 1024;
+
       const spiral = new InfiniteSpiralEngine(mountEl, {
         items: SKILL_ITEMS,
         speed: 0.55,
         direction: 'up',
         animationMode: 'all',
-        radius: 200,
-        cardWidth: 120,
-        cardHeight: 120,
-        verticalSpacing: 66,
-        perspective: 1000,
-        cardsPerTurn: 7,
-        cardRadius: 16,
-        centerScale: 1.25,
-        edgeFade: 0.32,
-        edgeBlur: 5,
+        radius: isMobile ? 120 : isTablet ? 140 : 160,
+        cardWidth: isMobile ? 96 : 108,
+        cardHeight: isMobile ? 96 : 108,
+        verticalSpacing: isMobile ? 50 : 58,
+        perspective: 900,
+        cardsPerTurn: 6,
+        cardRadius: 15,
+        centerScale: 1.22,
+        edgeFade: 0.35,
+        edgeBlur: 4,
         pauseOnHover: true
       });
 
-      // Interactive Direction Toggle Button in HUD
+      window.infiniteSpiralInstance = spiral;
+
+      // Category filter tabs & right-side section cards bi-directional sync
+      const catBtns = document.querySelectorAll('.spiral-cat-btn');
+      const catCards = document.querySelectorAll('.skill-category-card');
+
+      catBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const category = btn.getAttribute('data-category');
+          
+          catBtns.forEach(b => {
+            const isTarget = b === btn;
+            b.classList.toggle('active', isTarget);
+            b.setAttribute('aria-selected', isTarget ? 'true' : 'false');
+          });
+
+          spiral.filterCategory(category);
+
+          // Highlight right-side section cards
+          catCards.forEach(card => {
+            const cardCat = card.getAttribute('data-category');
+            const match = category === 'all' || cardCat === category;
+            card.classList.toggle('is-selected', match && category !== 'all');
+          });
+        });
+      });
+
+      // Clicking any skill category card on the right filters the 3D swirl on the left
+      catCards.forEach(card => {
+        card.addEventListener('click', () => {
+          const category = card.getAttribute('data-category');
+          const targetBtn = document.querySelector(`.spiral-cat-btn[data-category="${category}"]`);
+          if (targetBtn) {
+            targetBtn.click();
+          }
+        });
+
+        // Keyboard accessibility (Enter or Space)
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            card.click();
+          }
+        });
+      });
+
+      // Interactive Direction Toggle Button if present
       const toggleDirBtn = document.getElementById('spiral-toggle-direction');
       const dirLabel = document.getElementById('spiral-dir-label');
       if (toggleDirBtn && dirLabel) {
@@ -350,8 +437,6 @@
           dirLabel.textContent = currentDir === 'up' ? 'Direction: ↑ Up' : 'Direction: ↓ Down';
         });
       }
-
-      window.infiniteSpiralInstance = spiral;
     }
   });
 
