@@ -340,6 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
     projectModal.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
+  window.openProjectModal = openProjectModal;
 
   function closeProjectModal() {
     if (!projectModal) return;

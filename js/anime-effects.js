@@ -344,7 +344,7 @@
 
     function runAnimeCounters() {
       if (animeCountersDone) return;
-      const heroMetrics = document.querySelector('.hero-metrics');
+      const heroMetrics = document.querySelector('.hero-metrics-rail, .hero-metrics');
       if (!heroMetrics) return;
 
       const rect = heroMetrics.getBoundingClientRect();

@@ -233,10 +233,33 @@
       // 3D Plane
       const plane = document.createElement('div');
       plane.className = 'drift-wall__plane';
+      this.planeEl = plane;
 
       // Build Columns & Tracks
+      this.rebuildTracks();
+      container.appendChild(plane);
+
+      // Active Tile Inspection Pill (floating indicator on hover)
+      const activePill = document.createElement('div');
+      activePill.className = 'drift-wall-active-pill';
+      activePill.style.opacity = '0';
+      activePill.innerHTML = `
+        <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#10b981;"></span>
+        <span class="drift-wall-active-text" style="font-weight:600;">Hover over any tile</span>
+        <span style="font-size:0.75rem;opacity:0.7;margin-left:4px;">↗ Click to open PDF</span>
+      `;
+      container.appendChild(activePill);
+
+      this.mountEl.appendChild(container);
+      this.containerEl = container;
+      this.planeEl = plane;
+      this.activePillEl = activePill;
+    }
+
+    rebuildTracks() {
+      if (!this.planeEl) return;
+      this.planeEl.innerHTML = '';
       this.trackEls = [];
-      const unit = this.tileHeight + this.gap;
 
       this.columnItems.forEach((col, c) => {
         const colEl = document.createElement('div');
@@ -245,7 +268,6 @@
         const trackEl = document.createElement('div');
         trackEl.className = 'drift-wall__track';
 
-        // Approximate 3 copies for smooth wrap
         const copiesCount = 3;
         for (let copyIdx = 0; copyIdx < copiesCount; copyIdx++) {
           col.forEach((item, itemIdx) => {
@@ -279,7 +301,6 @@
             inner.appendChild(overlay);
             tileLink.appendChild(inner);
 
-            // Tile accessibility focus & click feedback
             tileLink.addEventListener('focus', () => this.activate(tileLink, item));
             tileLink.addEventListener('blur', () => this.release());
             tileLink.addEventListener('click', () => {
@@ -293,27 +314,63 @@
         }
 
         colEl.appendChild(trackEl);
-        plane.appendChild(colEl);
+        this.planeEl.appendChild(colEl);
         this.trackEls.push(trackEl);
       });
+    }
 
-      container.appendChild(plane);
+    filterCategory(categoryKey) {
+      if (this.currentCategory === categoryKey) return;
+      this.currentCategory = categoryKey;
 
-      // Active Tile Inspection Pill (floating indicator on hover)
-      const activePill = document.createElement('div');
-      activePill.className = 'drift-wall-active-pill';
-      activePill.style.opacity = '0';
-      activePill.innerHTML = `
-        <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#10b981;"></span>
-        <span class="drift-wall-active-text" style="font-weight:600;">Hover over any tile</span>
-        <span style="font-size:0.75rem;opacity:0.7;margin-left:4px;">↗ Click to open PDF</span>
-      `;
-      container.appendChild(activePill);
+      if (this.containerEl) {
+        this.containerEl.style.transition = 'opacity 0.22s cubic-bezier(0.4, 0, 0.2, 1), transform 0.22s cubic-bezier(0.4, 0, 0.2, 1)';
+        this.containerEl.style.opacity = '0.35';
+        this.containerEl.style.transform = 'scale(0.985)';
+      }
 
-      this.mountEl.appendChild(container);
-      this.containerEl = container;
-      this.planeEl = plane;
-      this.activePillEl = activePill;
+      setTimeout(() => {
+        let filtered = this.rawItems;
+        if (categoryKey && categoryKey !== 'all') {
+          filtered = this.rawItems.filter((it) => {
+            if (categoryKey === 'genai') return it.category === 'genai';
+            if (categoryKey === 'ml') return it.category === 'ml';
+            if (categoryKey === 'python') return it.category === 'python';
+            if (categoryKey === 'cloud') return it.category === 'cloud' || it.category === 'software' || it.category === 'systems';
+            if (categoryKey === 'data') return it.category === 'data' || it.category === 'business';
+            return it.category === categoryKey;
+          });
+          while (filtered.length < 15 && filtered.length > 0) {
+            filtered = [...filtered, ...filtered];
+          }
+        }
+
+        this.items = filtered.map((cert, index) => ({
+          id: cert.id || index + 1,
+          title: cert.title,
+          issuer: cert.issuer,
+          year: cert.year,
+          badge: cert.badge,
+          color: cert.color,
+          file: cert.file,
+          image: generateCertThumbnail(cert),
+          href: `Certifications/${encodeURIComponent(cert.file)}`
+        }));
+
+        this.columnItems = Array.from({ length: this.columns }, () => []);
+        this.items.forEach((item, i) => {
+          this.columnItems[i % this.columns].push(item);
+        });
+        this.columnItems = this.columnItems.map((col) => (col.length ? col : this.items.slice(0, 1)));
+
+        this.rebuildTracks();
+        this.calculateDimensions();
+
+        if (this.containerEl) {
+          this.containerEl.style.opacity = '1';
+          this.containerEl.style.transform = 'scale(1)';
+        }
+      }, 200);
     }
 
     applyPlaneTransform(px, py) {
@@ -539,7 +596,7 @@
   }
 
   // Initialize DriftWall once DOM and CERTIFICATIONS_DATA are available
-  document.addEventListener('DOMContentLoaded', () => {
+  function initDriftWall() {
     const mount = document.getElementById('drift-wall-mount');
     if (!mount) return;
 
@@ -570,6 +627,41 @@
 
     window.driftWall = driftWallInstance;
 
+    // Top Mini Navbar for Section-Wise Credentials
+    const certNavBtns = document.querySelectorAll('.certs-nav-btn');
+    const navIndicator = document.getElementById('certs-nav-indicator');
+
+    function updateIndicator(targetBtn) {
+      if (!targetBtn || !navIndicator) return;
+      navIndicator.style.left = `${targetBtn.offsetLeft}px`;
+      navIndicator.style.width = `${targetBtn.offsetWidth}px`;
+    }
+
+    if (certNavBtns.length > 0 && navIndicator) {
+      const initialActive = document.querySelector('.certs-nav-btn.active') || certNavBtns[0];
+      setTimeout(() => updateIndicator(initialActive), 120);
+
+      window.addEventListener('resize', () => {
+        const active = document.querySelector('.certs-nav-btn.active');
+        if (active) updateIndicator(active);
+      });
+
+      certNavBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          certNavBtns.forEach((b) => {
+            const isMatch = b === btn;
+            b.classList.toggle('active', isMatch);
+            b.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+          });
+
+          updateIndicator(btn);
+
+          const category = btn.getAttribute('data-category');
+          driftWallInstance.filterCategory(category);
+        });
+      });
+    }
+
     // Hook up Direction Toggle Button
     const toggleBtn = document.getElementById('drift-wall-toggle-direction');
     const labelSpan = document.getElementById('drift-dir-label');
@@ -579,5 +671,11 @@
         labelSpan.textContent = newDir === 'up' ? 'Direction: ↑ Up' : 'Direction: ↓ Down';
       });
     }
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initDriftWall);
+  } else {
+    initDriftWall();
+  }
 })();

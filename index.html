@@ -251,17 +251,17 @@
           <!-- Refined Hero Metrics Telemetry Rail -->
           <div class="hero-metrics-rail">
             <div class="metric-segment">
-              <span class="metric-num"><span class="counter-val" data-target="25">0</span><span class="metric-suffix">+</span></span>
+              <span class="metric-num"><span class="counter-val" data-target="25">25</span><span class="metric-suffix">+</span></span>
               <span class="metric-caption">Verified Certs</span>
             </div>
             <div class="metric-divider"></div>
             <div class="metric-segment">
-              <span class="metric-num"><span class="counter-val" data-target="4">0</span></span>
+              <span class="metric-num"><span class="counter-val" data-target="8">8</span></span>
               <span class="metric-caption">Flagship Systems</span>
             </div>
             <div class="metric-divider"></div>
             <div class="metric-segment">
-              <span class="metric-num"><span class="counter-val" data-target="10">0</span><span class="metric-suffix">+</span></span>
+              <span class="metric-num"><span class="counter-val" data-target="15">15</span><span class="metric-suffix">+</span></span>
               <span class="metric-caption">Agent Workflows</span>
             </div>
             <div class="metric-divider"></div>
@@ -503,390 +503,64 @@
           </p>
         </div>
 
-        <!-- All 8 GitHub Projects Featured in Architecture Grid -->
-        <div class="projects-grid">
-          <!-- Project 1: SYNAPSE -->
-          <div class="project-card tilt-card spotlight-card border-beam-card">
-            <div>
-              <div class="project-header">
-                <span class="project-category-pill">Multi-Agent System</span>
-                <span style="font-size:0.75rem;font-family:var(--font-mono);color:var(--color-primary);font-weight:700;">Production Grade</span>
-              </div>
-              <h3>SYNAPSE</h3>
-              <div class="project-subtitle">Autonomous Multi-Agent Code Reviewer</div>
-              <p class="project-desc">
-                An intelligent multi-agent AI platform capable of autonomously reviewing source code for security vulnerabilities (CWE/OWASP), maintainability, performance bottlenecks, and coding best practices.
-              </p>
-
-              <ul class="project-features">
-                <li class="project-feature-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Parallel agent execution with LangGraph consensus graph</span>
-                </li>
-                <li class="project-feature-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Native GitHub Actions workflow & automated PR Markdown triage</span>
-                </li>
-                <li class="project-feature-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>AST parsing & intelligent prompt orchestration</span>
-                </li>
-              </ul>
+        <!-- Interactive Systems Architecture Studio Component -->
+        <div class="systems-studio-wrapper" id="systems-studio">
+          
+          <!-- Studio Control Bar: Domain Filter Tabs & View Mode Switcher -->
+          <div class="studio-control-bar">
+            <div class="studio-filter-tabs" role="tablist" aria-label="Filter AI systems by engineering domain">
+              <button class="studio-tab-btn active" data-domain="all" role="tab" aria-selected="true">
+                <span>All Systems</span>
+                <span class="studio-tab-badge">8</span>
+              </button>
+              <button class="studio-tab-btn" data-domain="agentic" role="tab" aria-selected="false">
+                <span class="studio-tab-dot" style="background:#38bdf8;"></span>
+                <span>Multi-Agent & Reasoning</span>
+                <span class="studio-tab-badge">2</span>
+              </button>
+              <button class="studio-tab-btn" data-domain="vision" role="tab" aria-selected="false">
+                <span class="studio-tab-dot" style="background:#06b6d4;"></span>
+                <span>Vision & Healthcare</span>
+                <span class="studio-tab-badge">2</span>
+              </button>
+              <button class="studio-tab-btn" data-domain="automation" role="tab" aria-selected="false">
+                <span class="studio-tab-dot" style="background:#3b82f6;"></span>
+                <span>Autonomous Automation</span>
+                <span class="studio-tab-badge">2</span>
+              </button>
+              <button class="studio-tab-btn" data-domain="backend" role="tab" aria-selected="false">
+                <span class="studio-tab-dot" style="background:#10b981;"></span>
+                <span>Backend & Security</span>
+                <span class="studio-tab-badge">2</span>
+              </button>
             </div>
 
-            <div class="project-footer">
-              <div class="badge-tags">
-                <span class="tech-tag">LangGraph</span>
-                <span class="tech-tag">Python</span>
-                <span class="tech-tag">FastAPI</span>
-              </div>
-
-              <div class="project-links">
-                <button class="btn-pill-link open-project-deepdive" data-project="synapse">
-                  <span>Architecture</span>
-                </button>
-                <a href="https://github.com/bharathvk75/SYNAPSE" target="_blank" class="btn-pill-link" aria-label="SYNAPSE on GitHub">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                  <span>GitHub</span>
-                </a>
-              </div>
+            <!-- View Mode Switcher (Studio Stage vs Matrix Grid) -->
+            <div class="studio-view-toggle">
+              <button class="view-toggle-btn active" id="view-mode-studio" title="Interactive Studio View">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                <span>Studio</span>
+              </button>
+              <button class="view-toggle-btn" id="view-mode-matrix" title="Full Matrix Grid View">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                <span>Matrix</span>
+              </button>
             </div>
           </div>
 
-          <!-- Project 2: DeepXMed -->
-          <div class="project-card tilt-card spotlight-card border-beam-card">
-            <div>
-              <div class="project-header">
-                <span class="project-category-pill">Healthcare AI</span>
-                <span style="font-size:0.75rem;font-family:var(--font-mono);color:var(--color-accent-cyan);font-weight:700;">Vision & RAG</span>
-              </div>
-              <h3>DeepXMed</h3>
-              <div class="project-subtitle">AI Medicine Discovery Platform</div>
-              <p class="project-desc">
-                An end-to-end intelligent healthcare platform engineered for doctor prescription digitisation via OCR, active drug interaction checks, nearby pharmacy geo-discovery, and cross-platform pricing intelligence.
-              </p>
-
-              <ul class="project-features">
-                <li class="project-feature-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Generative AI prescription OCR & structured molecule parsing</span>
-                </li>
-                <li class="project-feature-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Real-time pharmacy inventory search & price comparison</span>
-                </li>
-                <li class="project-feature-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Secure cloud data management with PostgreSQL & authentication</span>
-                </li>
-              </ul>
-            </div>
-
-            <div class="project-footer">
-              <div class="badge-tags">
-                <span class="tech-tag">OpenCV</span>
-                <span class="tech-tag">GenAI</span>
-                <span class="tech-tag">PostgreSQL</span>
-              </div>
-
-              <div class="project-links">
-                <button class="btn-pill-link open-project-deepdive" data-project="deepxmed">
-                  <span>Architecture</span>
-                </button>
-                <a href="https://github.com/bharathvk75/DeepXmeD" target="_blank" class="btn-pill-link" aria-label="DeepXMed on GitHub">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                  <span>GitHub</span>
-                </a>
-              </div>
-            </div>
+          <!-- MAIN STAGE: Interactive Flagship Blueprint Stage -->
+          <div class="studio-stage-container" id="studio-stage-container">
+            <!-- Dynamically rendered by js/projects-showcase.js -->
           </div>
 
-          <!-- Project 3: AEGIS -->
-          <div class="project-card tilt-card spotlight-card border-beam-card">
-            <div>
-              <div class="project-header">
-                <span class="project-category-pill">Edge Computer Vision</span>
-                <span style="font-size:0.75rem;font-family:var(--font-mono);color:var(--color-accent-purple);font-weight:700;">Sub-20ms</span>
-              </div>
-              <h3>AEGIS</h3>
-              <div class="project-subtitle">Real-Time Edge Video Analytics</div>
-              <p class="project-desc">
-                High-performance edge-AI video analytics system applying state-of-the-art computer-vision models for real-time object detection, safety perimeter enforcement, and automated anomaly event streaming.
-              </p>
-
-              <ul class="project-features">
-                <li class="project-feature-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Optimized inference pipeline for ultra-low latency processing</span>
-                </li>
-                <li class="project-feature-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>High-accuracy multi-class object detection & tracking</span>
-                </li>
-                <li class="project-feature-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Intelligent edge event dispatch & bounding overlay render</span>
-                </li>
-              </ul>
-            </div>
-
-            <div class="project-footer">
-              <div class="badge-tags">
-                <span class="tech-tag">PyTorch</span>
-                <span class="tech-tag">TensorFlow</span>
-                <span class="tech-tag">OpenCV</span>
-              </div>
-
-              <div class="project-links">
-                <button class="btn-pill-link open-project-deepdive" data-project="aegis">
-                  <span>Architecture</span>
-                </button>
-                <a href="https://github.com/bharathvk75/AEGIS" target="_blank" class="btn-pill-link" aria-label="AEGIS on GitHub">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                  <span>GitHub</span>
-                </a>
-              </div>
-            </div>
+          <!-- SYSTEM SELECTOR DOCK: Clickable Interactive Project Rail -->
+          <div class="studio-dock-rail" id="studio-dock-rail" role="region" aria-label="System selector rail">
+            <!-- Dynamically rendered by js/projects-showcase.js -->
           </div>
 
-          <!-- Project 4: CabLog AI -->
-          <div class="project-card tilt-card spotlight-card border-beam-card">
-            <div>
-              <div class="project-header">
-                <span class="project-category-pill">Agentic Automation</span>
-                <span style="font-size:0.75rem;font-family:var(--font-mono);color:var(--color-accent-blue);font-weight:700;">Vision LLMs & CDP</span>
-              </div>
-              <h3>CabLog AI</h3>
-              <div class="project-subtitle">Agentic Document Processing & Fleet Operations</div>
-              <p class="project-desc">
-                Autonomous operations pipeline for logistics fleet management. Continuously monitors incoming vehicle duty slips & receipts, extracts structured trip metrics with Vision LLMs, and drives headless browser automation via Chrome DevTools Protocol.
-              </p>
-
-              <ul class="project-features">
-                <li class="project-feature-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Vision LLM multi-document parsing with Gemini 2.5 Flash</span>
-                </li>
-                <li class="project-feature-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Autonomous CDP browser filling for enterprise IndeCabs portal</span>
-                </li>
-                <li class="project-feature-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Automated Excel trip reconciliation with validation auditing</span>
-                </li>
-              </ul>
-            </div>
-
-            <div class="project-footer">
-              <div class="badge-tags">
-                <span class="tech-tag">Vision AI</span>
-                <span class="tech-tag">CDP:9222</span>
-                <span class="tech-tag">FastAPI</span>
-              </div>
-
-              <div class="project-links">
-                <button class="btn-pill-link open-project-deepdive" data-project="cablog">
-                  <span>Architecture</span>
-                </button>
-                <a href="https://github.com/bharathvk75/CABLOGs" target="_blank" class="btn-pill-link" aria-label="CabLog AI on GitHub">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                  <span>GitHub</span>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 5: ARBOR -->
-          <div class="project-card tilt-card spotlight-card border-beam-card">
-            <div>
-              <div class="project-header">
-                <span class="project-category-pill">Algorithmic Reasoning</span>
-                <span style="font-size:0.75rem;font-family:var(--font-mono);color:#10b981;font-weight:700;">Tree Search</span>
-              </div>
-              <h3>ARBOR</h3>
-              <div class="project-subtitle">Tree-Search Reasoning & Heuristic Agent</div>
-              <p class="project-desc">
-                Algorithmic agent architecture leveraging Monte Carlo Tree Search (MCTS) principles and heuristic branch pruning for complex multi-step reasoning, mathematical problem decomposition, and backtracking state trees.
-              </p>
-
-              <ul class="project-features">
-                <li class="project-feature-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>MCTS heuristic state expansion and trajectory evaluation</span>
-                </li>
-                <li class="project-feature-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Graph execution visualizer for step-by-step decision validation</span>
-                </li>
-                <li class="project-feature-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Apache 2.0 open-source modular Python implementation</span>
-                </li>
-              </ul>
-            </div>
-
-            <div class="project-footer">
-              <div class="badge-tags">
-                <span class="tech-tag">Python</span>
-                <span class="tech-tag">MCTS</span>
-                <span class="tech-tag">AI Planning</span>
-              </div>
-
-              <div class="project-links">
-                <button class="btn-pill-link open-project-deepdive" data-project="arbor">
-                  <span>Architecture</span>
-                </button>
-                <a href="https://github.com/bharathvk75/ARBOR" target="_blank" class="btn-pill-link" aria-label="ARBOR on GitHub">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                  <span>GitHub</span>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 6: Smart Expense Tracker API -->
-          <div class="project-card tilt-card spotlight-card border-beam-card">
-            <div>
-              <div class="project-header">
-                <span class="project-category-pill">Financial Engineering</span>
-                <span style="font-size:0.75rem;font-family:var(--font-mono);color:#f59e0b;font-weight:700;">FastAPI REST</span>
-              </div>
-              <h3>Expense Tracker API</h3>
-              <div class="project-subtitle">High-Throughput Financial Analytics Backend</div>
-              <p class="project-desc">
-                High-performance personal and business finance backend API engineered with FastAPI. Automatically processes transactional streams, computes burn rates, detects recurring anomalies, and aggregates monthly cashflow.
-              </p>
-
-              <ul class="project-features">
-                <li class="project-feature-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Asynchronous RESTful endpoints with strict Pydantic v2 schemas</span>
-                </li>
-                <li class="project-feature-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Secure JWT authentication & role-based transaction auditing</span>
-                </li>
-                <li class="project-feature-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Automated category classification & monthly reporting metrics</span>
-                </li>
-              </ul>
-            </div>
-
-            <div class="project-footer">
-              <div class="badge-tags">
-                <span class="tech-tag">FastAPI</span>
-                <span class="tech-tag">Pydantic</span>
-                <span class="tech-tag">SQLite/Postgres</span>
-              </div>
-
-              <div class="project-links">
-                <button class="btn-pill-link open-project-deepdive" data-project="expense_tracker">
-                  <span>Architecture</span>
-                </button>
-                <a href="https://github.com/bharathvk75/bharathvk75-smart-expense-tracker-api" target="_blank" class="btn-pill-link" aria-label="Smart Expense Tracker API on GitHub">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                  <span>GitHub</span>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 7: ISOLATE -->
-          <div class="project-card tilt-card spotlight-card border-beam-card">
-            <div>
-              <div class="project-header">
-                <span class="project-category-pill">Edge Security</span>
-                <span style="font-size:0.75rem;font-family:var(--font-mono);color:#ec4899;font-weight:700;">GPL-3.0</span>
-              </div>
-              <h3>ISOLATE</h3>
-              <div class="project-subtitle">Mobile Process Sandbox & Enclave Container</div>
-              <p class="project-desc">
-                High-security Android runtime architecture built in Kotlin. Implements strict sandbox isolation, memory boundary enforcement, and hardware-backed cryptographic credential containment for untrusted mobile computing tasks.
-              </p>
-
-              <ul class="project-features">
-                <li class="project-feature-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Process boundary isolation & encrypted IPC communication</span>
-                </li>
-                <li class="project-feature-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Hardware KeyStore security & zero-trust token storage</span>
-                </li>
-                <li class="project-feature-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Real-time tamper detection & sandbox violation telemetry</span>
-                </li>
-              </ul>
-            </div>
-
-            <div class="project-footer">
-              <div class="badge-tags">
-                <span class="tech-tag">Kotlin</span>
-                <span class="tech-tag">Android Security</span>
-                <span class="tech-tag">IPC Enclave</span>
-              </div>
-
-              <div class="project-links">
-                <button class="btn-pill-link open-project-deepdive" data-project="isolate">
-                  <span>Architecture</span>
-                </button>
-                <a href="https://github.com/bharathvk75/ISOLATE" target="_blank" class="btn-pill-link" aria-label="ISOLATE on GitHub">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                  <span>GitHub</span>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 8: Induspic Enterprise Suite -->
-          <div class="project-card tilt-card spotlight-card border-beam-card">
-            <div>
-              <div class="project-header">
-                <span class="project-category-pill">Industrial Tech</span>
-                <span style="font-size:0.75rem;font-family:var(--font-mono);color:#06b6d4;font-weight:700;">Live Commercial</span>
-              </div>
-              <h3>Induspic Enterprise</h3>
-              <div class="project-subtitle">Chemical Products Operations & Quotation Engine</div>
-              <p class="project-desc">
-                Commercial enterprise web application powering Induspic Engineers Chemicals Division. Modernized digital industrial product catalogs, technical MSDS compliance sheets, and automated B2B quote inquiries.
-              </p>
-
-              <ul class="project-features">
-                <li class="project-feature-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Interactive product directory with dynamic MSDS technical datasheets</span>
-                </li>
-                <li class="project-feature-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Real-time B2B quotation dispatch and inquiry telemetry</span>
-                </li>
-                <li class="project-feature-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Responsive corporate architecture with interactive vCard integration</span>
-                </li>
-              </ul>
-            </div>
-
-            <div class="project-footer">
-              <div class="badge-tags">
-                <span class="tech-tag">HTML5/JS</span>
-                <span class="tech-tag">Enterprise UI</span>
-                <span class="tech-tag">Chemicals B2B</span>
-              </div>
-
-              <div class="project-links">
-                <button class="btn-pill-link open-project-deepdive" data-project="induspic">
-                  <span>Architecture</span>
-                </button>
-                <a href="https://github.com/bharathvk75/Induspic" target="_blank" class="btn-pill-link" aria-label="Induspic on GitHub">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                  <span>GitHub</span>
-                </a>
-              </div>
-            </div>
+          <!-- MATRIX GRID VIEW (Toggleable alternate view) -->
+          <div class="studio-matrix-grid" id="studio-matrix-grid" style="display:none;">
+            <!-- Dynamically rendered by js/projects-showcase.js -->
           </div>
 
         </div>
@@ -904,6 +578,44 @@
           <p class="section-desc">
             Interactive 3D credentials matrix displaying 25 verified certifications spanning Anthropic, LangChain, Cisco, AWS, and Imperial College London. Hover over any tile to elevate, and click to view official verified certificates.
           </p>
+        </div>
+
+        <!-- Section-Wise Credentials Top Mini Nav Bar with Animated Pill -->
+        <div class="certs-nav-wrapper">
+          <nav class="certs-category-nav" id="certs-category-nav" role="tablist" aria-label="Credentials category navigation">
+            <button class="certs-nav-btn active" data-category="all" role="tab" aria-selected="true">
+              <span class="certs-nav-icon">✦</span>
+              <span class="certs-nav-label">All Credentials</span>
+              <span class="certs-nav-count">25</span>
+            </button>
+            <button class="certs-nav-btn" data-category="genai" role="tab" aria-selected="false">
+              <span class="certs-nav-dot" style="background:#8b5cf6;"></span>
+              <span class="certs-nav-label">GenAI & Agents</span>
+              <span class="certs-nav-count">10</span>
+            </button>
+            <button class="certs-nav-btn" data-category="ml" role="tab" aria-selected="false">
+              <span class="certs-nav-dot" style="background:#f59e0b;"></span>
+              <span class="certs-nav-label">Machine Learning</span>
+              <span class="certs-nav-count">3</span>
+            </button>
+            <button class="certs-nav-btn" data-category="python" role="tab" aria-selected="false">
+              <span class="certs-nav-dot" style="background:#10b981;"></span>
+              <span class="certs-nav-label">Python & Core</span>
+              <span class="certs-nav-count">5</span>
+            </button>
+            <button class="certs-nav-btn" data-category="cloud" role="tab" aria-selected="false">
+              <span class="certs-nav-dot" style="background:#ff9900;"></span>
+              <span class="certs-nav-label">Cloud & Infrastructure</span>
+              <span class="certs-nav-count">4</span>
+            </button>
+            <button class="certs-nav-btn" data-category="data" role="tab" aria-selected="false">
+              <span class="certs-nav-dot" style="background:#06b6d4;"></span>
+              <span class="certs-nav-label">Data & Analytics</span>
+              <span class="certs-nav-count">3</span>
+            </button>
+            <!-- Animated Gliding Underline / Pill Indicator -->
+            <div class="certs-nav-indicator" id="certs-nav-indicator"></div>
+          </nav>
         </div>
 
         <!-- React Bits: 3D DriftWall Showcase Experience (Unboxed Edge-to-Edge) -->
@@ -1259,6 +971,7 @@
   <script src="js/cursor-effects.js"></script>
   <script src="js/anime-effects.js"></script>
   <script src="js/animations.js"></script>
+  <script src="js/projects-showcase.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
