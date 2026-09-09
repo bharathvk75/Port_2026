@@ -280,7 +280,7 @@
             tileLink.appendChild(inner);
 
             // Tile accessibility focus & click feedback
-            tileLink.addEventListener('focus', () => this.activate(tileId, c, item));
+            tileLink.addEventListener('focus', () => this.activate(tileLink, item));
             tileLink.addEventListener('blur', () => this.release());
             tileLink.addEventListener('click', () => {
               if (window.showToast) {
@@ -324,19 +324,13 @@
         `translateZ(${-this.depth}px)`;
     }
 
-    activate(id, colIndex, item) {
-      this.activeId = id;
-      this.hoveredCol = colIndex;
-
-      // Update active tile DOM classes
-      const allTiles = this.containerEl.querySelectorAll('.drift-wall__tile');
-      allTiles.forEach((tile) => {
-        if (tile.getAttribute('data-tile-id') === id) {
-          tile.classList.add('is-active');
-        } else {
-          tile.classList.remove('is-active');
-        }
-      });
+    activate(tile, item) {
+      if (!tile || tile === this.activeTileEl) return;
+      if (this.activeTileEl) {
+        this.activeTileEl.classList.remove('is-active');
+      }
+      this.activeTileEl = tile;
+      tile.classList.add('is-active');
 
       // Update inspection pill
       if (this.activePillEl && item) {
@@ -350,11 +344,11 @@
     }
 
     release() {
-      this.activeId = null;
+      if (this.activeTileEl) {
+        this.activeTileEl.classList.remove('is-active');
+        this.activeTileEl = null;
+      }
       this.hoveredCol = -1;
-
-      const allTiles = this.containerEl.querySelectorAll('.drift-wall__tile.is-active');
-      allTiles.forEach((tile) => tile.classList.remove('is-active'));
 
       if (this.activePillEl) {
         this.activePillEl.style.opacity = '0';
@@ -365,45 +359,49 @@
     attachEvents() {
       if (!this.containerEl) return;
 
-      // Pointer Move for Parallax & Tile Detection
+      // Smooth pointer parallax tracking without synchronous layout reflows
+      let pointerTicking = false;
       this.containerEl.addEventListener('pointermove', (e) => {
-        const rect = this.containerEl.getBoundingClientRect();
-        if (!rect) return;
-
-        if (this.parallax > 0 && !this.reduced) {
-          this.pointer = {
-            x: (e.clientX - rect.left) / rect.width - 0.5,
-            y: (e.clientY - rect.top) / rect.height - 0.5
-          };
+        if (this.parallax <= 0 || this.reduced) return;
+        if (!pointerTicking) {
+          requestAnimationFrame(() => {
+            const rect = this.containerEl.getBoundingClientRect();
+            if (rect && rect.width > 0 && rect.height > 0) {
+              this.pointer.x = (e.clientX - rect.left) / rect.width - 0.5;
+              this.pointer.y = (e.clientY - rect.top) / rect.height - 0.5;
+            }
+            pointerTicking = false;
+          });
+          pointerTicking = true;
         }
+      }, { passive: true });
 
-        const hit = document.elementFromPoint(e.clientX, e.clientY);
-        const tile = hit && hit.closest ? hit.closest('[data-tile-id]') : null;
+      // Fast, lag-free tile hover using event delegation (NO elementFromPoint!)
+      this.containerEl.addEventListener('pointerover', (e) => {
+        const tile = e.target.closest('.drift-wall__tile');
+        if (tile) {
+          const certId = parseInt(tile.getAttribute('data-cert-id'), 10);
+          const matchedItem = this.items.find((it) => it.id === certId);
+          this.activate(tile, matchedItem);
+        }
+      }, { passive: true });
 
-        if (!tile) {
+      this.containerEl.addEventListener('pointerout', (e) => {
+        const related = e.relatedTarget;
+        if (!related || !this.containerEl.contains(related)) {
           this.release();
-          return;
         }
-
-        const id = tile.getAttribute('data-tile-id');
-        if (id === this.activeId) return;
-
-        const certId = parseInt(tile.getAttribute('data-cert-id'), 10);
-        const matchedItem = this.items.find((it) => it.id === certId);
-        const colIdx = Number(tile.getAttribute('data-col'));
-
-        this.activate(id, colIdx, matchedItem);
-      });
+      }, { passive: true });
 
       this.containerEl.addEventListener('pointerenter', () => {
         this.wallHovered = true;
-      });
+      }, { passive: true });
 
       this.containerEl.addEventListener('pointerleave', () => {
         this.wallHovered = false;
         this.pointer = { x: 0, y: 0 };
         this.release();
-      });
+      }, { passive: true });
 
       // ResizeObserver
       if (typeof ResizeObserver !== 'undefined') {

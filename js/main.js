@@ -29,49 +29,20 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // ------------------------------------------------------------------------
-  // 2. Liquid Glass Navbar with Smooth Sliding Active Glass Indicator
+  // 2. Individual Connected Capsule Navbar Active Link Tracking
   // ------------------------------------------------------------------------
-  const glassNav = document.getElementById('navbar');
-  const activeGlass = document.getElementById('active-glass');
   const navLinks = document.querySelectorAll('.nav-links .nav-link');
-
   let activeLink = navLinks[0];
 
-  function moveGlassTo(element) {
-    if (!element || !activeGlass || !glassNav) return;
-    const navRect = glassNav.getBoundingClientRect();
-    const linkRect = element.getBoundingClientRect();
-
-    const left = Math.round(linkRect.left - navRect.left);
-    const width = Math.round(linkRect.width);
-
-    activeGlass.style.left = `${left}px`;
-    activeGlass.style.width = `${width}px`;
-    activeGlass.style.opacity = '1';
-  }
-
-  if (glassNav && activeGlass && navLinks.length > 0) {
-    setTimeout(() => moveGlassTo(activeLink), 150);
-
-    window.addEventListener('resize', () => {
-      moveGlassTo(activeLink);
-    });
-
+  if (navLinks.length > 0) {
     navLinks.forEach((link) => {
-      link.addEventListener('mouseenter', () => moveGlassTo(link));
       link.addEventListener('click', () => {
         navLinks.forEach((l) => l.classList.remove('active'));
         link.classList.add('active');
         activeLink = link;
-        moveGlassTo(link);
       });
     });
 
-    glassNav.addEventListener('mouseleave', () => {
-      moveGlassTo(activeLink);
-    });
-
-    // Update active link on scroll with rAF throttling and passive listener
     let navTicking = false;
     const sections = document.querySelectorAll('section[id]');
     
@@ -89,7 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinks.forEach((l) => l.classList.remove('active'));
             correspondingLink.classList.add('active');
             activeLink = correspondingLink;
-            moveGlassTo(correspondingLink);
           }
           break;
         }

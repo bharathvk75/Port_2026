@@ -21,31 +21,9 @@
   box-shadow: none;
 }
 
-/* Floating Sleek HUD Capsule */
+/* Hide / remove HUD bar */
 .drift-wall-hud-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 860px;
-  margin: 0 auto 1.5rem;
-  padding: 0.65rem 1.4rem;
-  border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(15, 23, 42, 0.55);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-  font-size: 0.82rem;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  z-index: 10;
-  position: relative;
-}
-
-[data-theme="light"] .drift-wall-hud-bar {
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  box-shadow: 0 10px 30px rgba(100, 120, 160, 0.12);
+  display: none !important;
 }
 
 .drift-wall-hud-left {
@@ -178,27 +156,21 @@
 .drift-wall {
   position: relative;
   width: 100%;
-  height: 600px;
+  height: 680px;
   overflow: hidden;
   perspective: var(--dw-perspective, 1200px);
   perspective-origin: 50% 50%;
-  --dw-tile-w: 210px;
-  --dw-tile-h: 138px;
-  --dw-gap: 18px;
+  --dw-tile-w: 220px;
+  --dw-tile-h: 144px;
+  --dw-gap: 20px;
   --dw-radius: 14px;
   --dw-lift: 64px;
   --dw-dim: 0.65;
   --dw-gray: 0;
   --dw-overlay: #060010;
   --dw-edge: 42%;
-  -webkit-mask-image:
-    radial-gradient(ellipse 82% 86% at 50% 48%, #000 var(--dw-edge), transparent 100%),
-    linear-gradient(to top, #000 var(--dw-edge), transparent 100%);
-  -webkit-mask-composite: source-in;
-  mask-image:
-    radial-gradient(ellipse 82% 86% at 50% 48%, #000 var(--dw-edge), transparent 100%),
-    linear-gradient(to top, #000 var(--dw-edge), transparent 100%);
-  mask-composite: intersect;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
   user-select: none;
   touch-action: pan-y;
 }
