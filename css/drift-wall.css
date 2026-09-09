@@ -1,0 +1,358 @@
+/* ==========================================================================
+   REACT BITS: DRIFTWALL COMPONENT CSS
+   3D Infinite Drifting Wall of Credentials with Perspective & Parallax
+   ========================================================================== */
+
+.drift-wall-showcase-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 2.5rem;
+  border-radius: 20px;
+  background: rgba(15, 23, 42, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow:
+    0 25px 50px -12px rgba(0, 0, 0, 0.35),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  overflow: hidden;
+}
+
+[data-theme="light"] .drift-wall-showcase-wrapper {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow:
+    0 20px 45px -10px rgba(100, 120, 160, 0.15),
+    inset 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+/* Interactive HUD Header */
+.drift-wall-hud-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.9rem 1.4rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.2);
+  font-size: 0.82rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  z-index: 10;
+  position: relative;
+}
+
+[data-theme="light"] .drift-wall-hud-bar {
+  background: rgba(255, 255, 255, 0.45);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.drift-wall-hud-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.drift-wall-live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 12px #10b981;
+  animation: pulseLiveDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseLiveDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(0.85); }
+}
+
+.drift-wall-hud-title {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+}
+
+.drift-wall-hud-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  background: rgba(99, 102, 241, 0.15);
+  color: #818cf8;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+[data-theme="light"] .drift-wall-hud-tag {
+  background: rgba(79, 70, 229, 0.1);
+  color: #4f46e5;
+  border-color: rgba(79, 70, 229, 0.2);
+}
+
+.drift-wall-hud-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.drift-wall-hud-hint {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+}
+
+.drift-wall-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-primary);
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.drift-wall-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+[data-theme="light"] .drift-wall-toggle-btn {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .drift-wall-toggle-btn:hover {
+  background: rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.18);
+}
+
+/* Active Tile Inspection Toast / Badge */
+.drift-wall-active-pill {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #fff;
+  font-size: 0.8rem;
+  pointer-events: none;
+  z-index: 20;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  white-space: nowrap;
+}
+
+[data-theme="light"] .drift-wall-active-pill {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 10px 30px rgba(70, 90, 130, 0.2);
+  color: #0f172a;
+}
+
+/* ==========================================================================
+   REACT BITS DRIFTWALL CORE ENGINE STYLES
+   ========================================================================== */
+
+.drift-wall {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+  perspective: var(--dw-perspective, 1200px);
+  perspective-origin: 50% 50%;
+  --dw-tile-w: 210px;
+  --dw-tile-h: 138px;
+  --dw-gap: 18px;
+  --dw-radius: 14px;
+  --dw-lift: 64px;
+  --dw-dim: 0.65;
+  --dw-gray: 0;
+  --dw-overlay: #060010;
+  --dw-edge: 42%;
+  -webkit-mask-image:
+    radial-gradient(ellipse 82% 86% at 50% 48%, #000 var(--dw-edge), transparent 100%),
+    linear-gradient(to top, #000 var(--dw-edge), transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    radial-gradient(ellipse 82% 86% at 50% 48%, #000 var(--dw-edge), transparent 100%),
+    linear-gradient(to top, #000 var(--dw-edge), transparent 100%);
+  mask-composite: intersect;
+  user-select: none;
+  touch-action: pan-y;
+}
+
+[data-theme="light"] .drift-wall {
+  --dw-overlay: #c8d8ec;
+  --dw-dim: 0.88;
+}
+
+.drift-wall__plane {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  flex-direction: row;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+.drift-wall__col {
+  position: relative;
+  width: calc(var(--dw-tile-w) + var(--dw-gap));
+  transform-style: preserve-3d;
+}
+
+.drift-wall__track {
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
+.drift-wall__tile {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: calc(var(--dw-tile-h) + var(--dw-gap));
+  flex: 0 0 auto;
+  outline: none;
+  transform-style: preserve-3d;
+  text-decoration: none;
+}
+
+.drift-wall__inner {
+  position: absolute;
+  inset: calc(var(--dw-gap) / 2);
+  display: block;
+  border-radius: var(--dw-radius);
+  overflow: hidden;
+  background: #0b0b12;
+  opacity: var(--dw-dim);
+  transform: translateZ(0);
+  pointer-events: none;
+  transition:
+    transform 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.45);
+}
+
+[data-theme="light"] .drift-wall__inner {
+  background: #f1f5f9;
+  box-shadow: 0 8px 24px -6px rgba(90, 110, 150, 0.22);
+}
+
+.drift-wall__tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(var(--dw-gray)) saturate(0.92);
+  transition: filter 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.drift-wall__overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--dw-overlay);
+  opacity: 0.35;
+  pointer-events: none;
+  transition: opacity 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-theme="light"] .drift-wall__overlay {
+  opacity: 0.18;
+}
+
+.drift-wall__tile.is-active .drift-wall__inner,
+.drift-wall__tile:focus-visible .drift-wall__inner {
+  opacity: 1;
+  transform: translateZ(var(--dw-lift));
+  box-shadow:
+    0 30px 70px -15px rgba(0, 0, 0, 0.8),
+    0 0 0 1.5px rgba(255, 255, 255, 0.5),
+    0 0 25px rgba(99, 102, 241, 0.35);
+}
+
+[data-theme="light"] .drift-wall__tile.is-active .drift-wall__inner,
+[data-theme="light"] .drift-wall__tile:focus-visible .drift-wall__inner {
+  box-shadow:
+    0 30px 65px -15px rgba(40, 60, 100, 0.35),
+    0 0 0 1.5px rgba(59, 130, 246, 0.6),
+    0 0 25px rgba(59, 130, 246, 0.25);
+}
+
+.drift-wall__tile.is-active img,
+.drift-wall__tile:focus-visible img {
+  filter: grayscale(0) saturate(1.08);
+}
+
+.drift-wall__tile.is-active .drift-wall__overlay,
+.drift-wall__tile:focus-visible .drift-wall__overlay {
+  opacity: 0;
+}
+
+.drift-wall__tile:focus-visible .drift-wall__inner {
+  box-shadow:
+    0 24px 60px -18px rgba(0, 0, 0, 0.7),
+    0 0 0 2px rgba(255, 255, 255, 0.9);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .drift-wall__plane,
+  .drift-wall__track {
+    will-change: auto;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .drift-wall {
+    height: 520px;
+    --dw-tile-w: 180px;
+    --dw-tile-h: 118px;
+    --dw-gap: 14px;
+    --dw-lift: 45px;
+  }
+}
+
+@media (max-width: 600px) {
+  .drift-wall {
+    height: 460px;
+    --dw-tile-w: 155px;
+    --dw-tile-h: 102px;
+    --dw-gap: 12px;
+    --dw-lift: 36px;
+  }
+  .drift-wall-hud-bar {
+    padding: 0.75rem 1rem;
+  }
+  .drift-wall-hud-hint {
+    display: none;
+  }
+}

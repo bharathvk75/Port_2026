@@ -1,0 +1,21 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio of Bharath Abhinesh A - AI & ML Engineer",
+  "main": "index.html",
+  "scripts": {
+    "dev": "live-server --port=5173",
+    "start": "live-server --port=5173",
+    "serve": "live-server --port=5173"
+  },
+  "keywords": [
+    "portfolio",
+    "ai",
+    "machine-learning"
+  ],
+  "author": "Bharath Abhinesh A",
+  "license": "ISC",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}

@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bharath Abhinesh A | AI & ML Engineer • Multi-Agent Architect</title>
+  
+  <!-- SEO & Meta Tags -->
+  <meta name="description" content="Portfolio of Bharath Abhinesh A - AI & ML Engineer specializing in Multi-Agent Systems, LangGraph, RAG Workflows, Model Context Protocol (MCP), Computer Vision, and Full-Stack AI Services.">
+  <meta name="keywords" content="Bharath Abhinesh A, AI Engineer, Machine Learning, Multi-Agent Systems, LangChain, LangGraph, MCP, RAG, FastAPI, Python, Bengaluru">
+  <meta name="author" content="Bharath Abhinesh A">
+
+  <!-- OpenGraph / Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Bharath Abhinesh A | AI & ML Engineer">
+  <meta property="og:description" content="Explore cutting-edge multi-agent systems, enterprise RAG pipelines, computer vision models, and 25 verified industry certifications.">
+  <meta property="og:url" content="https://bharathabhinesh.me">
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- CSS Design System -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/glass-surface.css">
+  <link rel="stylesheet" href="css/drift-wall.css">
+  <link rel="stylesheet" href="css/logo-loop.css">
+  <link rel="stylesheet" href="css/stepper.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <!-- GSAP & ScrollTrigger CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+  <!-- Ambient Atmospheric Living Background (Dual Theme Engine) -->
+  <div class="site-bg-video-wrap" id="site-bg-video-wrap">
+    <!-- Light Mode Video: Luminous Cyan Cosmic Bokeh (5200) -->
+    <video id="hero-bg-video-light" class="site-bg-video site-bg-video--light" src="Videos/5200-183786525_medium.mp4" autoplay loop muted playsinline poster="Videos/thumb_5200.jpg"></video>
+    <!-- Dark Mode Video: Cyber Matrix Wireframe Cityscape (9574) -->
+    <video id="hero-bg-video-dark" class="site-bg-video site-bg-video--dark" src="Videos/9574-220321570_medium.mp4" autoplay loop muted playsinline poster="Videos/thumb_9574.jpg"></video>
+    <!-- Multi-Layer Atmospheric Shade Overlays -->
+    <div class="site-bg-video-overlay"></div>
+    <div class="site-bg-shade-tint"></div>
+  </div>
+
+  <!-- Glowing Ambient Background Orbs (Depth Layer) -->
+  <div class="background-orb orb1"></div>
+  <div class="background-orb orb2"></div>
+  <div class="background-orb orb3"></div>
+
+  <!-- Ambient Interactive Canvas & Grid -->
+  <canvas id="neural-canvas"></canvas>
+  <div class="bg-grid-overlay"></div>
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress-bar"></div>
+
+  <!-- Toast Notification System -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to Top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <!-- ========================================================================
+       TRUE LIQUID GLASS NAVBAR (APPLE DYNAMIC SPECIFICATION)
+       ======================================================================== -->
+  <header>
+    <nav class="glass-nav" id="navbar">
+      <!-- Active See-Through Glass Indicator with Continuous Moving Reflection -->
+      <div class="active-glass" id="active-glass"></div>
+
+      <ul class="nav-links">
+        <li>
+          <a href="#hero" class="nav-link active">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            <span class="nav-text">Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="#about" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="4 17 10 11 4 5"></polyline>
+              <line x1="12" y1="19" x2="20" y2="19"></line>
+            </svg>
+            <span class="nav-text">Terminal</span>
+          </a>
+        </li>
+        <li>
+          <a href="#experience" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+            </svg>
+            <span class="nav-text">Experience</span>
+          </a>
+        </li>
+        <li>
+          <a href="#projects" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+            <span class="nav-text">Projects</span>
+          </a>
+        </li>
+        <li>
+          <a href="#certifications" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="8" r="6"></circle>
+              <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+            </svg>
+            <span class="nav-text">Certs</span>
+          </a>
+        </li>
+        <li>
+          <a href="#skills" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+            <span class="nav-text">Skills</span>
+          </a>
+        </li>
+        <li>
+          <a href="#contact" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <span class="nav-text">Contact</span>
+          </a>
+        </li>
+      </ul>
+
+      <!-- Right Quick Actions: Theme & Resume (Contrast button removed) -->
+      <div class="nav-actions">
+        <!-- Dark/Light Theme Switcher -->
+        <button class="icon-btn" id="theme-toggle-btn" title="Toggle Theme (Shortcut: T)" aria-label="Toggle Theme">
+          <span id="theme-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </span>
+        </button>
+
+        <!-- Direct Resume Download -->
+        <a href="Bharath_Abhinesh_A_Resume_Induspic_Engineers.pdf" download="Bharath_Abhinesh_A_Resume.pdf" class="nav-resume-btn" title="Download Verified Resume">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span>Resume</span>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="menu-toggle" id="menu-toggle" aria-label="Open Navigation Menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-overlay" id="mobile-nav">
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <span style="font-weight:800;font-size:1.2rem;">Navigation</span>
+      <button class="icon-btn" id="close-mobile-nav" aria-label="Close Menu">✕</button>
+    </div>
+    <ul class="mobile-nav-links">
+      <li><a href="#hero" class="mobile-nav-link">Home</a></li>
+      <li><a href="#about" class="mobile-nav-link">Terminal</a></li>
+      <li><a href="#experience" class="mobile-nav-link">Experience</a></li>
+      <li><a href="#projects" class="mobile-nav-link">Projects</a></li>
+      <li><a href="#certifications" class="mobile-nav-link">Certifications</a></li>
+      <li><a href="#skills" class="mobile-nav-link">Skills</a></li>
+      <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+    </ul>
+    <div style="display:flex;gap:1rem;">
+      <a href="Bharath_Abhinesh_A_Resume_Induspic_Engineers.pdf" download class="shiny-btn" style="width:100%">
+        <span>Download Resume (PDF)</span>
+      </a>
+    </div>
+  </div>
+
+  <main>
+    <!-- ======================================================================
+         HERO SECTION WITH ON-TOP NAME & DEGREE OVER PHOTO
+         ====================================================================== -->
+    <section class="hero" id="hero">
+      <div class="container hero-container">
+        <!-- Hero Text & CTAs -->
+        <div class="hero-content">
+          <div class="hero-status-row">
+            <div class="telemetry-badge">
+              <span class="telemetry-dot"></span>
+              <span class="telemetry-code">SYS://AI_ORCHESTRATOR</span>
+            </div>
+            <div class="telemetry-loc">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>Bengaluru, Karnataka • 12.97°N 77.59°E</span>
+            </div>
+          </div>
+
+          <h1 class="hero-title">
+            Architecting <span class="name-highlight">Multi-Agent</span> Intelligence & Systems.
+          </h1>
+
+          <div class="hero-role-wrapper">
+            <span>Specializing in:</span>
+            <span class="hero-role-text" id="hero-role-cycler">AI & ML Engineer</span>
+          </div>
+
+          <p class="hero-bio">
+            B.Tech CSE (AI & ML) graduate building enterprise AI automation, high-performance RAG architectures, multi-agent workflows, and computer-vision systems. Experienced with Python, FastAPI, LangChain, LangGraph, Model Context Protocol (MCP), and modern developer tooling.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="shiny-btn">
+              <span>Explore Projects</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+
+            <a href="Bharath_Abhinesh_A_Resume_Induspic_Engineers.pdf" target="_blank" class="btn-secondary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+              <span>View Resume PDF</span>
+            </a>
+
+            <a href="#about" class="btn-secondary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="4 17 10 11 4 5"></polyline>
+                <line x1="12" y1="19" x2="20" y2="19"></line>
+              </svg>
+              <span>Launch Terminal</span>
+            </a>
+          </div>
+
+          <!-- Refined Hero Metrics Telemetry Rail -->
+          <div class="hero-metrics-rail">
+            <div class="metric-segment">
+              <span class="metric-num"><span class="counter-val" data-target="25">0</span><span class="metric-suffix">+</span></span>
+              <span class="metric-caption">Verified Certs</span>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-segment">
+              <span class="metric-num"><span class="counter-val" data-target="4">0</span></span>
+              <span class="metric-caption">Flagship Systems</span>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-segment">
+              <span class="metric-num"><span class="counter-val" data-target="10">0</span><span class="metric-suffix">+</span></span>
+              <span class="metric-caption">Agent Workflows</span>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-segment">
+              <span class="metric-num">8.4<span class="metric-suffix">/10</span></span>
+              <span class="metric-caption">B.Tech CGPA</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Right Side: Photo Card with Architectural Header -->
+        <div class="hero-visual">
+          <div class="photo-aura-backdrop"></div>
+          
+          <div class="hero-photo-card tilt-card spotlight-card border-beam-card">
+            <!-- Architectural Header -->
+            <div class="photo-top-header">
+              <div class="photo-top-name-row">
+                <span class="photo-top-name">Bharath Abhinesh A</span>
+                <span class="photo-top-badge">AI / ML Engineer</span>
+              </div>
+              <div class="photo-top-degree">B.Tech CSE (AI & ML) • Bengaluru</div>
+              <div class="photo-top-inst">Garden City University • CGPA: 8.4/10</div>
+            </div>
+
+            <!-- Photo Frame with Architectural Bezel -->
+            <div class="hero-photo-frame">
+              <img src="assets/bharath-photo.jpg" alt="Bharath Abhinesh A - AI & ML Engineer" class="hero-photo-img">
+              <div class="photo-frame-overlay">
+                <span class="photo-overlay-tag">⚡ Multi-Agent & MCP Architect</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sub-Hero Tech Stack Infinite LogoLoop Ribbon -->
+    <div class="tech-loop-ribbon">
+      <div class="container">
+        <div class="logo-loop-banner-wrapper">
+          <span class="logo-loop-header-tag">
+            <span style="width:6px;height:6px;border-radius:50%;background:#3b82f6;"></span>
+            Engineered With Modern AI & Cloud Technologies
+          </span>
+          <div id="hero-tech-loop" style="width:100%;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================================
+         ABOUT & INTERACTIVE AI AGENT TERMINAL (BENTO GRID)
+         ====================================================================== -->
+    <section class="section-wrapper" id="about">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Interactive Playground</span>
+          <h2 class="section-title">Autonomous Agent Console & Bento Core</h2>
+          <p class="section-desc">
+            Test simulated multi-agent orchestrations, query architectural capabilities, and explore the core pillars behind my AI engineering practice.
+          </p>
+        </div>
+
+        <div class="bento-grid">
+          <!-- Bento Column 8: Terminal Simulator -->
+          <div class="bento-col-8">
+            <div class="terminal-window border-beam-card">
+              <div class="terminal-header">
+                <div class="terminal-dots">
+                  <span class="terminal-dot dot-red"></span>
+                  <span class="terminal-dot dot-yellow"></span>
+                  <span class="terminal-dot dot-green"></span>
+                </div>
+                <div class="terminal-title">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+                  <span>bharath@agent-console:~ (bash)</span>
+                </div>
+                <span style="font-size:0.7rem;color:#64748b;">LangGraph v2.6</span>
+              </div>
+
+              <!-- Quick Action Chips -->
+              <div class="terminal-chips">
+                <span class="terminal-chip-label">Quick Commands:</span>
+                <button class="chip-btn" data-cmd="whoami">whoami</button>
+                <button class="chip-btn" data-cmd="skills">skills</button>
+                <button class="chip-btn" data-cmd="agent-run synapse">agent-run synapse</button>
+                <button class="chip-btn" data-cmd="certs">certs</button>
+                <button class="chip-btn" data-cmd="contact">contact</button>
+                <button class="chip-btn" data-cmd="clear">clear</button>
+              </div>
+
+              <!-- Terminal Interactive Log -->
+              <div class="terminal-body" id="terminal-body"></div>
+
+              <!-- Terminal Input Field -->
+              <div class="terminal-input-row" style="padding: 0.75rem 1.25rem; background: var(--bg-terminal-header); border-top: 1px solid rgba(255,255,255,0.06);">
+                <span style="color:#38bdf8;font-family:var(--font-mono);font-size:0.85rem;">bharath@portfolio:~$</span>
+                <input type="text" id="terminal-input" class="terminal-input" placeholder="Type a command (or click chips above)..." autocomplete="off" spellcheck="false">
+              </div>
+            </div>
+          </div>
+
+          <!-- Bento Column 4: Multi-Agent & RAG Specialization -->
+          <div class="bento-col-4">
+            <div class="bento-card spotlight-card border-beam-card" style="height:100%">
+              <div class="bento-header">
+                <div class="bento-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                </div>
+                <span class="cert-grid-issuer-badge" style="color:var(--color-primary);border-color:rgba(37,99,235,0.3);">AI Core</span>
+              </div>
+              <div>
+                <h3>Multi-Agent Orchestration</h3>
+                <p>Designing decentralized multi-agent architectures where specialized models evaluate code, extract documents, and reach synthesis using LangGraph and Model Context Protocol (MCP).</p>
+              </div>
+              <div class="badge-tags">
+                <span class="tech-tag">LangGraph</span>
+                <span class="tech-tag">MCP</span>
+                <span class="tech-tag">RAG</span>
+                <span class="tech-tag">pgvector</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bento Column 4: Academic Foundation -->
+          <div class="bento-col-4">
+            <div class="bento-card spotlight-card border-beam-card">
+              <div class="bento-header">
+                <div class="bento-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+                </div>
+                <span class="cert-grid-issuer-badge" style="color:var(--color-accent-cyan);border-color:rgba(8,145,178,0.3);">Graduation</span>
+              </div>
+              <div>
+                <h3>Garden City University</h3>
+                <p><strong>B.Tech CSE (AI & ML)</strong><br>Bengaluru, India • CGPA: <strong>8.4 / 10.0</strong><br>Focused on algorithmic foundation, machine learning theory, distributed computing, and computer vision.</p>
+              </div>
+              <span class="photo-top-badge" style="width:max-content;">Graduated 2026</span>
+            </div>
+          </div>
+
+          <!-- Bento Column 8: Enterprise Engineering Mindset -->
+          <div class="bento-col-8">
+            <div class="bento-card spotlight-card border-beam-card">
+              <div class="bento-header">
+                <div class="bento-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                </div>
+                <span class="cert-grid-issuer-badge" style="color:var(--color-accent-emerald);border-color:rgba(5,150,105,0.3);">Engineering</span>
+              </div>
+              <div>
+                <h3>Production Backend & Edge Vision</h3>
+                <p>Bridging generative intelligence with scalable engineering. Creating high-throughput asynchronous REST microservices in FastAPI, low-latency video inference pipelines with OpenCV/TensorRT, and secure enterprise integrations.</p>
+              </div>
+              <div class="badge-tags">
+                <span class="tech-tag">FastAPI</span>
+                <span class="tech-tag">Docker</span>
+                <span class="tech-tag">TensorFlow</span>
+                <span class="tech-tag">OpenCV</span>
+                <span class="tech-tag">PostgreSQL</span>
+                <span class="tech-tag">CI/CD</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         WORK EXPERIENCE SECTION
+         ====================================================================== -->
+    <section class="section-wrapper" id="experience">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Career Trajectory</span>
+          <h2 class="section-title">Industry Experience</h2>
+          <p class="section-desc">
+            Practical application of artificial intelligence, intelligent document extraction, and enterprise automation in production environments.
+          </p>
+        </div>
+
+        <div class="timeline-container">
+          <!-- GSAP Tracing Progress Line -->
+          <div class="timeline-line"></div>
+          <div class="timeline-progress"></div>
+
+          <!-- Experience Node: Induspic Engineers -->
+          <div class="timeline-item">
+            <div class="timeline-marker">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+            </div>
+
+            <div class="timeline-content spotlight-card border-beam-card">
+              <div class="timeline-role-row">
+                <div>
+                  <h3 class="timeline-role">AI Engineering Intern</h3>
+                  <div class="timeline-company">Induspic Engineers • Bengaluru, Karnataka, India</div>
+                </div>
+                <span class="timeline-date">Dec 2025 – Present</span>
+              </div>
+
+              <p style="font-size:0.96rem;color:var(--text-secondary);margin-bottom:1rem;">
+                Spearheading enterprise AI initiatives to modernize business quotation pipelines, knowledge retrieval, and customer interactions.
+              </p>
+
+              <ul class="timeline-points">
+                <li class="timeline-point">
+                  <span class="timeline-point-bullet">▹</span>
+                  <span><strong>AI Business Automation & RAG:</strong> Designed and deployed AI-powered business automation solutions using LangChain, Retrieval-Augmented Generation (RAG), and vector databases to dramatically improve enterprise information retrieval.</span>
+                </li>
+                <li class="timeline-point">
+                  <span class="timeline-point-bullet">▹</span>
+                  <span><strong>Intelligent Quotation Pipelines:</strong> Engineered end-to-end quotation automation workflows integrating autonomous AI agents, structured document processing, approval governance pipelines, and automated email delivery.</span>
+                </li>
+                <li class="timeline-point">
+                  <span class="timeline-point-bullet">▹</span>
+                  <span><strong>Backend Microservices & APIs:</strong> Developed backend services and API integrations in FastAPI for centralized customer interaction, document lifecycle management, and workflow automation.</span>
+                </li>
+                <li class="timeline-point">
+                  <span class="timeline-point-bullet">▹</span>
+                  <span><strong>Cross-Functional Delivery:</strong> Collaborated closely with cross-functional teams to translate complex operational bottlenecks into scalable, secure AI-driven solutions aligned with business targets.</span>
+                </li>
+              </ul>
+
+              <div class="badge-tags" style="margin-top:1.25rem;">
+                <span class="tech-tag">LangChain</span>
+                <span class="tech-tag">RAG</span>
+                <span class="tech-tag">Vector DB</span>
+                <span class="tech-tag">FastAPI</span>
+                <span class="tech-tag">AI Agents</span>
+                <span class="tech-tag">Document OCR</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         FEATURED PROJECTS SECTION WITH EMBEDDED SYSTEM VIDEOS
+         ====================================================================== -->
+    <section class="section-wrapper" id="projects">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Production & Research</span>
+          <h2 class="section-title">Featured AI Systems</h2>
+          <p class="section-desc">
+            Engineered systems highlighting multi-agent orchestration, healthcare OCR intelligence, edge computer vision, and autonomous fleet document pipelines.
+          </p>
+        </div>
+
+        <!-- Projects View Switcher (Interactive Stepper vs All Projects Grid) -->
+        <div class="projects-view-toggle-bar">
+          <button class="projects-toggle-tab active" id="tab-projects-stepper">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            <span>Architecture Stepper Tour (4 Phases)</span>
+          </button>
+          <button class="projects-toggle-tab" id="tab-projects-grid">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+            <span>All Projects Grid (4 Systems)</span>
+          </button>
+        </div>
+
+        <!-- View 1: Interactive Stepper Showcase -->
+        <div class="projects-stepper-outer-wrap projects-view-content" id="projects-stepper-outer">
+          <div id="projects-stepper-mount"></div>
+        </div>
+
+        <!-- View 2: All Projects Matrix Grid -->
+        <div class="projects-view-content is-hidden" id="projects-grid-wrap">
+          <div class="projects-grid">
+          <!-- Project 1: SYNAPSE -->
+          <div class="project-card tilt-card spotlight-card border-beam-card">
+            <div>
+              <div class="project-header">
+                <span class="project-category-pill">Multi-Agent System</span>
+                <span style="font-size:0.75rem;font-family:var(--font-mono);color:var(--color-primary);font-weight:700;">Production Grade</span>
+              </div>
+              <h3>SYNAPSE</h3>
+              <div class="project-subtitle">Autonomous Multi-Agent Code Reviewer</div>
+              <p class="project-desc">
+                An intelligent multi-agent AI platform capable of autonomously reviewing source code for security vulnerabilities (CWE/OWASP), maintainability, performance bottlenecks, and coding best practices.
+              </p>
+
+              <ul class="project-features">
+                <li class="project-feature-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Parallel agent execution with LangGraph consensus graph</span>
+                </li>
+                <li class="project-feature-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Native GitHub Actions workflow & automated PR Markdown triage</span>
+                </li>
+                <li class="project-feature-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>AST parsing & intelligent prompt orchestration</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="project-footer">
+              <div class="badge-tags">
+                <span class="tech-tag">LangGraph</span>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">FastAPI</span>
+              </div>
+
+              <div class="project-links">
+                <button class="btn-pill-link open-project-deepdive" data-project="synapse">
+                  <span>Architecture</span>
+                </button>
+                <a href="https://github.com/bharathvk75" target="_blank" class="btn-pill-link" aria-label="SYNAPSE on GitHub">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                  <span>GitHub</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: DeepXMed -->
+          <div class="project-card tilt-card spotlight-card border-beam-card">
+            <div>
+              <div class="project-header">
+                <span class="project-category-pill">Healthcare AI</span>
+                <span style="font-size:0.75rem;font-family:var(--font-mono);color:var(--color-accent-cyan);font-weight:700;">Vision & RAG</span>
+              </div>
+              <h3>DeepXMed</h3>
+              <div class="project-subtitle">AI Medicine Discovery Platform</div>
+              <p class="project-desc">
+                An end-to-end intelligent healthcare platform engineered for doctor prescription digitisation via OCR, active drug interaction checks, nearby pharmacy geo-discovery, and cross-platform pricing intelligence.
+              </p>
+
+              <ul class="project-features">
+                <li class="project-feature-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Generative AI prescription OCR & structured molecule parsing</span>
+                </li>
+                <li class="project-feature-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Real-time pharmacy inventory search & price comparison</span>
+                </li>
+                <li class="project-feature-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Secure cloud data management with PostgreSQL & authentication</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="project-footer">
+              <div class="badge-tags">
+                <span class="tech-tag">OpenCV</span>
+                <span class="tech-tag">GenAI</span>
+                <span class="tech-tag">PostgreSQL</span>
+              </div>
+
+              <div class="project-links">
+                <button class="btn-pill-link open-project-deepdive" data-project="deepxmed">
+                  <span>Architecture</span>
+                </button>
+                <a href="https://github.com/bharathvk75" target="_blank" class="btn-pill-link" aria-label="DeepXMed on GitHub">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                  <span>GitHub</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3: AEGIS -->
+          <div class="project-card tilt-card spotlight-card border-beam-card">
+            <div>
+              <div class="project-header">
+                <span class="project-category-pill">Edge Computer Vision</span>
+                <span style="font-size:0.75rem;font-family:var(--font-mono);color:var(--color-accent-purple);font-weight:700;">Sub-20ms</span>
+              </div>
+              <h3>AEGIS</h3>
+              <div class="project-subtitle">Real-Time Edge Video Analytics</div>
+              <p class="project-desc">
+                High-performance edge-AI video analytics system applying state-of-the-art computer-vision models for real-time object detection, safety perimeter enforcement, and automated anomaly event streaming.
+              </p>
+
+              <ul class="project-features">
+                <li class="project-feature-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Optimized inference pipeline for ultra-low latency processing</span>
+                </li>
+                <li class="project-feature-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>High-accuracy multi-class object detection & tracking</span>
+                </li>
+                <li class="project-feature-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Intelligent edge event dispatch & bounding overlay render</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="project-footer">
+              <div class="badge-tags">
+                <span class="tech-tag">PyTorch</span>
+                <span class="tech-tag">TensorFlow</span>
+                <span class="tech-tag">OpenCV</span>
+              </div>
+
+              <div class="project-links">
+                <button class="btn-pill-link open-project-deepdive" data-project="aegis">
+                  <span>Architecture</span>
+                </button>
+                <a href="https://github.com/bharathvk75" target="_blank" class="btn-pill-link" aria-label="AEGIS on GitHub">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                  <span>GitHub</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4: CabLog AI -->
+          <div class="project-card tilt-card spotlight-card border-beam-card">
+            <div>
+              <div class="project-header">
+                <span class="project-category-pill">Agentic Automation</span>
+                <span style="font-size:0.75rem;font-family:var(--font-mono);color:var(--color-accent-blue);font-weight:700;">Vision LLMs & CDP</span>
+              </div>
+              <h3>CabLog AI</h3>
+              <div class="project-subtitle">Agentic Document Processing & Fleet Operations</div>
+              <p class="project-desc">
+                Autonomous operations pipeline for logistics fleet management. Continuously monitors incoming vehicle duty slips & receipts, extracts structured trip metrics with Vision LLMs, and drives headless browser automation via Chrome DevTools Protocol.
+              </p>
+
+              <ul class="project-features">
+                <li class="project-feature-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Vision LLM multi-document parsing with Gemini 2.5 Flash</span>
+                </li>
+                <li class="project-feature-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Autonomous CDP browser filling for enterprise IndeCabs portal</span>
+                </li>
+                <li class="project-feature-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Automated Excel trip reconciliation with validation auditing</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="project-footer">
+              <div class="badge-tags">
+                <span class="tech-tag">Vision AI</span>
+                <span class="tech-tag">CDP:9222</span>
+                <span class="tech-tag">FastAPI</span>
+              </div>
+
+              <div class="project-links">
+                <button class="btn-pill-link open-project-deepdive" data-project="cablog">
+                  <span>Architecture</span>
+                </button>
+                <a href="https://github.com/bharathvk75" target="_blank" class="btn-pill-link" aria-label="CabLog AI on GitHub">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                  <span>GitHub</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         CERTIFICATIONS - INTERACTIVE MATRIX DECK (NEW ELEVATED APPROACH)
+         ====================================================================== -->
+    <section class="section-wrapper" id="certifications">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">25 Accredited Credentials</span>
+          <h2 class="section-title">Verified Credentials Showcase</h2>
+          <p class="section-desc">
+            Interactive 3D credentials matrix displaying 25 verified certifications spanning Anthropic, LangChain, Cisco, AWS, and Imperial College London. Hover over any tile to elevate, and click to view official verified certificates.
+          </p>
+        </div>
+
+        <!-- React Bits: 3D DriftWall Showcase Experience -->
+        <div class="drift-wall-showcase-wrapper">
+          <div class="drift-wall-hud-bar">
+            <div class="drift-wall-hud-left">
+              <span class="drift-wall-live-dot"></span>
+              <span class="drift-wall-hud-title">3D Infinite Credential Drift Matrix</span>
+              <span class="drift-wall-hud-tag">React Bits • 3D Perspective</span>
+            </div>
+            <div class="drift-wall-hud-right">
+              <span class="drift-wall-hud-hint">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                Hover to elevate • Click tile to view PDF
+              </span>
+              <button class="drift-wall-toggle-btn" id="drift-wall-toggle-direction" title="Toggle Drift Direction" aria-label="Toggle Drift Direction">
+                <span id="drift-dir-label">Direction: ↑ Up</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 3D DriftWall Engine Container Mount -->
+          <div id="drift-wall-mount" style="width:100%; position:relative;"></div>
+        </div>
+
+        <!-- Accredited Certification Partners LogoLoop -->
+        <div class="logo-loop-banner-wrapper" style="margin-top: 1rem;">
+          <span class="logo-loop-header-tag">
+            <span style="width:6px;height:6px;border-radius:50%;background:#10b981;"></span>
+            Accrediting Bodies & Industry Organizations
+          </span>
+          <div id="certs-partners-loop" style="width:100%;"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SKILLS MATRIX SECTION
+         ====================================================================== -->
+    <section class="section-wrapper" id="skills">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Technical Competencies</span>
+          <h2 class="section-title">Skills & Stack Matrix</h2>
+          <p class="section-desc">
+            A comprehensive overview of programming languages, frameworks, vector databases, and developer infrastructure in my daily toolkit.
+          </p>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Category 1: AI & GenAI -->
+          <div class="skill-category-card spotlight-card border-beam-card">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+              </div>
+              <h3 style="font-size:1.15rem;font-weight:700;">AI & GenAI Systems</h3>
+            </div>
+            <div class="skill-pills-wrap">
+              <span class="skill-pill">⚡ LangGraph</span>
+              <span class="skill-pill">🦜 LangChain</span>
+              <span class="skill-pill">🔌 MCP (Anthropic)</span>
+              <span class="skill-pill">🤖 AI Agents</span>
+              <span class="skill-pill">📚 RAG Systems</span>
+              <span class="skill-pill">🧬 LLMs & Prompting</span>
+              <span class="skill-pill">🗄️ Vector Databases</span>
+              <span class="skill-pill">📊 pgvector</span>
+            </div>
+          </div>
+
+          <!-- Category 2: Machine Learning & CV -->
+          <div class="skill-category-card spotlight-card border-beam-card">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+              </div>
+              <h3 style="font-size:1.15rem;font-weight:700;">Machine Learning & CV</h3>
+            </div>
+            <div class="skill-pills-wrap">
+              <span class="skill-pill">🔥 PyTorch</span>
+              <span class="skill-pill">🧠 TensorFlow</span>
+              <span class="skill-pill">👁️ OpenCV</span>
+              <span class="skill-pill">📈 Scikit-learn</span>
+              <span class="skill-pill">📄 Document OCR</span>
+              <span class="skill-pill">🎯 Object Detection</span>
+              <span class="skill-pill">⏱️ Low-Latency Inference</span>
+            </div>
+          </div>
+
+          <!-- Category 3: Backend & Databases -->
+          <div class="skill-category-card spotlight-card border-beam-card">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+              </div>
+              <h3 style="font-size:1.15rem;font-weight:700;">Backend & Databases</h3>
+            </div>
+            <div class="skill-pills-wrap">
+              <span class="skill-pill">🐍 Python</span>
+              <span class="skill-pill">⚡ FastAPI</span>
+              <span class="skill-pill">🟢 Node.js</span>
+              <span class="skill-pill">🚂 Express.js</span>
+              <span class="skill-pill">🐘 PostgreSQL</span>
+              <span class="skill-pill">🐬 MySQL</span>
+              <span class="skill-pill">🌐 RESTful APIs</span>
+              <span class="skill-pill">💻 C++ & TypeScript</span>
+            </div>
+          </div>
+
+          <!-- Category 4: Cloud & Tooling -->
+          <div class="skill-category-card spotlight-card border-beam-card">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+              </div>
+              <h3 style="font-size:1.15rem;font-weight:700;">Cloud, DevOps & Tooling</h3>
+            </div>
+            <div class="skill-pills-wrap">
+              <span class="skill-pill">🐳 Docker</span>
+              <span class="skill-pill">☸️ Kubernetes</span>
+              <span class="skill-pill">☁️ AWS Fundamentals</span>
+              <span class="skill-pill">🐙 GitHub Actions</span>
+              <span class="skill-pill">🔄 CI/CD Automation</span>
+              <span class="skill-pill">🐧 Linux Environment</span>
+              <span class="skill-pill">📮 Postman</span>
+              <span class="skill-pill">🔀 n8n Automation</span>
+              <span class="skill-pill">🔢 NumPy & Pandas</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI Models & Infrastructure LogoLoop -->
+        <div class="logo-loop-banner-wrapper" style="margin-top: 3.5rem;">
+          <span class="logo-loop-header-tag">
+            <span style="width:6px;height:6px;border-radius:50%;background:#a855f7;"></span>
+            Advanced LLMs, Vector Engines & Agentic Tooling
+          </span>
+          <div id="skills-models-loop" style="width:100%;"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         INTERACTIVE CONTACT & CONNECT SECTION
+         ====================================================================== -->
+    <section class="section-wrapper" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Direct Communication</span>
+          <h2 class="section-title">Let's Build Something Intelligent</h2>
+          <p class="section-desc">
+            Open to full-time roles, research collaborations, and engineering high-impact AI/ML systems. Click any card to copy contact details immediately.
+          </p>
+        </div>
+
+        <div class="contact-container">
+          <!-- Left: Copyable Contact Cards & Socials -->
+          <div class="contact-cards-col">
+            <!-- Email Card -->
+            <div class="copy-contact-card spotlight-card border-beam-card" data-copy="bharathvk75@gmail.com" title="Click to copy email">
+              <div class="contact-card-info">
+                <h4>Official Email</h4>
+                <p>bharathvk75@gmail.com</p>
+              </div>
+              <span class="copy-badge">Click to Copy</span>
+            </div>
+
+            <!-- Phone Card -->
+            <div class="copy-contact-card spotlight-card border-beam-card" data-copy="+91 6363447946" title="Click to copy phone number">
+              <div class="contact-card-info">
+                <h4>Phone / WhatsApp</h4>
+                <p>+91 6363447946</p>
+              </div>
+              <span class="copy-badge">Click to Copy</span>
+            </div>
+
+            <!-- Location Card -->
+            <div class="copy-contact-card spotlight-card border-beam-card" data-copy="Bengaluru, Karnataka, India" title="Click to copy location">
+              <div class="contact-card-info">
+                <h4>Location</h4>
+                <p>Bengaluru, Karnataka, India</p>
+              </div>
+              <span class="copy-badge">Silicon Valley of India</span>
+            </div>
+
+            <!-- Social Links Pill Row -->
+            <div style="display:flex;gap:0.75rem;margin-top:0.5rem;">
+              <a href="https://linkedin.com/in/bharathvk75" target="_blank" class="btn-pill-link" style="flex:1;justify-content:center;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                <span>LinkedIn</span>
+              </a>
+
+              <a href="https://github.com/bharathvk75" target="_blank" class="btn-pill-link" style="flex:1;justify-content:center;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                <span>GitHub</span>
+              </a>
+
+              <a href="https://bharathabhinesh.me" target="_blank" class="btn-pill-link" style="flex:1;justify-content:center;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                <span>Website</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: Interactive Message Form -->
+          <form class="contact-form spotlight-card border-beam-card" id="contact-form">
+            <div class="form-group">
+              <label for="contact-name" class="form-label">Your Name</label>
+              <input type="text" id="contact-name" class="form-input" placeholder="e.g. Sarah Connor" required>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-email" class="form-label">Email Address</label>
+              <input type="email" id="contact-email" class="form-input" placeholder="e.g. sarah@enterprise.ai" required>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-subject" class="form-label">Subject / Role Opportunity</label>
+              <input type="text" id="contact-subject" class="form-input" placeholder="e.g. AI Engineering Opportunity" required>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-message" class="form-label">Project Details or Message</label>
+              <textarea id="contact-message" class="form-textarea" placeholder="Describe the opportunity, technical challenge, or team requirement..." required></textarea>
+            </div>
+
+            <button type="submit" class="shiny-btn" style="width:100%;margin-top:0.5rem;">
+              <span>Send Message to Bharath</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       FOOTER
+       ======================================================================== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <h4>Bharath Abhinesh A</h4>
+        <p>AI & ML Engineer • Multi-Agent Architecture • Bengaluru, India</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="https://github.com/bharathvk75" target="_blank" class="social-pill" aria-label="GitHub">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        </a>
+        <a href="https://linkedin.com/in/bharathvk75" target="_blank" class="social-pill" aria-label="LinkedIn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        </a>
+        <a href="mailto:bharathvk75@gmail.com" class="social-pill" aria-label="Email">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <span>© 2026 Bharath Abhinesh A. All rights reserved.</span>
+      <span>Engineered with GSAP, ReactBits & Anime.js Principles</span>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       MODAL: PROJECT ARCHITECTURE DEEP-DIVE
+       ======================================================================== -->
+  <div class="modal-overlay" id="project-modal" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="project-modal-title">Project Architecture</h3>
+        <button class="modal-close-btn" id="close-project-modal-btn" aria-label="Close Architecture Modal">✕</button>
+      </div>
+      <div class="modal-body" id="project-modal-body">
+        <!-- Populated dynamically via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Modules -->
+  <script src="js/anime.min.js"></script>
+  <script src="js/certs-data.js"></script>
+  <script src="js/drift-wall.js"></script>
+  <script src="js/logo-loop.js"></script>
+  <script src="js/stepper.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/canvas-bg.js"></script>
+  <script src="js/light-trail.js"></script>
+  <script src="js/cursor-effects.js"></script>
+  <script src="js/terminal.js"></script>
+  <script src="js/anime-effects.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
