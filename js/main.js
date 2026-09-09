@@ -236,7 +236,125 @@ document.addEventListener('DOMContentLoaded', () => {
             <span class="tech-tag">React</span>
           </div>
 
-          <a href="https://github.com/bharathvk75" target="_blank" class="shiny-btn" style="width:max-content">
+          <a href="https://github.com/bharathvk75/CABLOGs" target="_blank" class="shiny-btn" style="width:max-content">
+            <span>View Source on GitHub</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          </a>
+        </div>
+      `
+    },
+    arbor: {
+      title: 'ARBOR — Tree-Search Reasoning & Heuristic Agent',
+      content: `
+        <div style="display:flex;flex-direction:column;gap:1.25rem">
+          <p>ARBOR is an algorithmic planning and reasoning framework applying Monte Carlo Tree Search (MCTS) principles and heuristic branch pruning for complex multi-step reasoning, mathematical problem decomposition, and backtracking state trees.</p>
+          
+          <div style="background:var(--bg-secondary);padding:1.25rem;border-radius:var(--radius-md);border:1px solid var(--border-medium)">
+            <h4 style="color:#10b981;margin-bottom:0.5rem">Architecture Workflow:</h4>
+            <ol style="margin-left:1.5rem;display:flex;flex-direction:column;gap:0.4rem;color:var(--text-secondary);font-size:0.92rem">
+              <li><strong>MCTS State Expansion:</strong> Explores tree nodes via Upper Confidence Bound applied to Trees (UCT).</li>
+              <li><strong>Heuristic Evaluation Node:</strong> Verifies intermediate deduction steps and eliminates invalid computational branches.</li>
+              <li><strong>Execution Trajectory Graph:</strong> Outputs structured execution traces for transparent model decision auditing.</li>
+            </ol>
+          </div>
+
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">MCTS</span>
+            <span class="tech-tag">Tree Search</span>
+            <span class="tech-tag">Algorithmic AI</span>
+            <span class="tech-tag">Graph Planning</span>
+          </div>
+
+          <a href="https://github.com/bharathvk75/ARBOR" target="_blank" class="shiny-btn" style="width:max-content">
+            <span>View Source on GitHub</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          </a>
+        </div>
+      `
+    },
+    expense_tracker: {
+      title: 'Smart Expense Tracker API — Financial Analytics Backend',
+      content: `
+        <div style="display:flex;flex-direction:column;gap:1.25rem">
+          <p>A production-ready financial analytics REST API engineered with FastAPI and SQLAlchemy. Provides automated transaction categorisation, recurring expense anomaly alerts, and monthly cashflow aggregation.</p>
+          
+          <div style="background:var(--bg-secondary);padding:1.25rem;border-radius:var(--radius-md);border:1px solid var(--border-medium)">
+            <h4 style="color:#f59e0b;margin-bottom:0.5rem">Architecture Workflow:</h4>
+            <ol style="margin-left:1.5rem;display:flex;flex-direction:column;gap:0.4rem;color:var(--text-secondary);font-size:0.92rem">
+              <li><strong>Pydantic Data Schemas:</strong> Strict validation of inbound bank transaction payloads and ledger entries.</li>
+              <li><strong>Analytics Engine:</strong> Aggregates historical burn rates and calculates moving-average spending projections.</li>
+              <li><strong>JWT Security & RBAC:</strong> Secure token-based user authentication and segregated data privacy.</li>
+            </ol>
+          </div>
+
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+            <span class="tech-tag">FastAPI</span>
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">SQLAlchemy</span>
+            <span class="tech-tag">PostgreSQL</span>
+            <span class="tech-tag">JWT Auth</span>
+          </div>
+
+          <a href="https://github.com/bharathvk75/bharathvk75-smart-expense-tracker-api" target="_blank" class="shiny-btn" style="width:max-content">
+            <span>View Source on GitHub</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          </a>
+        </div>
+      `
+    },
+    isolate: {
+      title: 'ISOLATE — Android System Sandboxing & Hardware Security Enclave',
+      content: `
+        <div style="display:flex;flex-direction:column;gap:1.25rem">
+          <p>ISOLATE is a security architecture exploring process isolation boundaries, encrypted Inter-Process Communication (IPC), Android Hardware KeyStore integration, and runtime tamper detection.</p>
+          
+          <div style="background:var(--bg-secondary);padding:1.25rem;border-radius:var(--radius-md);border:1px solid var(--border-medium)">
+            <h4 style="color:#ef4444;margin-bottom:0.5rem">Architecture Workflow:</h4>
+            <ol style="margin-left:1.5rem;display:flex;flex-direction:column;gap:0.4rem;color:var(--text-secondary);font-size:0.92rem">
+              <li><strong>Secure IPC Enclave:</strong> Establishes authenticated cryptographic message exchanges across application sandboxes.</li>
+              <li><strong>Hardware KeyStore:</strong> Manages asymmetric cryptographic keys inside hardware-backed secure elements.</li>
+              <li><strong>Integrity Telemetry:</strong> Detects debugger attachment, memory injection, and signature alteration in real time.</li>
+            </ol>
+          </div>
+
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+            <span class="tech-tag">Kotlin</span>
+            <span class="tech-tag">Android Security</span>
+            <span class="tech-tag">Cryptographic Enclave</span>
+            <span class="tech-tag">Hardware KeyStore</span>
+          </div>
+
+          <a href="https://github.com/bharathvk75/ISOLATE" target="_blank" class="shiny-btn" style="width:max-content">
+            <span>View Source on GitHub</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          </a>
+        </div>
+      `
+    },
+    induspic: {
+      title: 'Induspic Enterprise — Industrial Chemical Products & Quotation Engine',
+      content: `
+        <div style="display:flex;flex-direction:column;gap:1.25rem">
+          <p>Production enterprise web portal engineered for Induspic Engineers Chemicals Division, modernising the commercial presentation of industrial chemicals, technical MSDS compliance sheets, and real-time B2B quotation dispatch.</p>
+          
+          <div style="background:var(--bg-secondary);padding:1.25rem;border-radius:var(--radius-md);border:1px solid var(--border-medium)">
+            <h4 style="color:#06b6d4;margin-bottom:0.5rem">Architecture Workflow:</h4>
+            <ol style="margin-left:1.5rem;display:flex;flex-direction:column;gap:0.4rem;color:var(--text-secondary);font-size:0.92rem">
+              <li><strong>Interactive Product Matrix:</strong> Dynamic filtering by chemical category, technical specifications, and applications.</li>
+              <li><strong>MSDS Technical Datasheets:</strong> Embedded compliance documents with instant viewing and download capabilities.</li>
+              <li><strong>B2B Quotation Telemetry:</strong> Interactive RFQ (Request for Quotation) engine with automated dispatch.</li>
+            </ol>
+          </div>
+
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+            <span class="tech-tag">HTML5 / JavaScript</span>
+            <span class="tech-tag">Enterprise UI</span>
+            <span class="tech-tag">B2B RFQ Engine</span>
+            <span class="tech-tag">Industrial Tech</span>
+          </div>
+
+          <a href="https://github.com/bharathvk75/Induspic" target="_blank" class="shiny-btn" style="width:max-content">
             <span>View Source on GitHub</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
           </a>

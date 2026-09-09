@@ -83,24 +83,26 @@
 .logoloop__node {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-size: 0.95rem;
+  gap: 10px;
+  font-size: 0.92rem;
   font-weight: 600;
   font-family: var(--font-sans);
   color: var(--text-secondary);
-  transition: color 0.25s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  padding: 6px 14px;
+  transition: color 0.25s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  padding: 8px 18px;
   border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(15, 23, 42, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
 }
 
 [data-theme="light"] .logoloop__node {
-  background: rgba(255, 255, 255, 0.55);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  color: #334155;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  color: #1e293b;
+  box-shadow: 0 4px 14px rgba(100, 120, 160, 0.12);
 }
 
 .logoloop__node svg {
@@ -126,15 +128,15 @@
 
 .logoloop--scale-hover .logoloop__item:hover img,
 .logoloop--scale-hover .logoloop__item:hover .logoloop__node {
-  transform: scale(1.12);
+  transform: translateY(-2px) scale(1.08);
   transform-origin: center center;
   color: var(--text-primary);
   border-color: var(--color-primary);
-  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.25);
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.35);
 }
 
 .logoloop--scale-hover .logoloop__node {
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease, color 0.25s ease;
 }
 
 .logoloop__link {
@@ -154,14 +156,14 @@
   outline-offset: 2px;
 }
 
-/* Edge Fade Out */
+/* Edge Fade Out - Ultra Smooth */
 .logoloop--fade::before,
 .logoloop--fade::after {
   content: '';
   position: absolute;
   top: 0;
   bottom: 0;
-  width: clamp(28px, 10%, 140px);
+  width: clamp(48px, 14%, 180px);
   pointer-events: none;
   z-index: 10;
 }
@@ -189,7 +191,7 @@
   left: 0;
   right: 0;
   width: 100%;
-  height: clamp(28px, 10%, 140px);
+  height: clamp(36px, 12%, 140px);
 }
 
 .logoloop--vertical.logoloop--fade::before {
@@ -223,34 +225,55 @@
   }
 }
 
-/* Banner container styles */
+/* Banner container styles - Refined UI/UX Glass Capsules */
 .logo-loop-banner-wrapper {
   width: 100%;
-  padding: 1.25rem 0;
+  padding: 1.5rem 0;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
+  gap: 1.15rem;
 }
 
 .logo-loop-header-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.42rem 1.25rem;
+  border-radius: 9999px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--text-muted);
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+}
+
+[data-theme="light"] .logo-loop-header-tag {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 6px 20px rgba(100, 120, 160, 0.1);
+  color: #334155;
+}
+
+.logo-loop-header-tag:hover {
+  border-color: var(--color-primary);
+  color: var(--text-primary);
+  transform: translateY(-1px);
 }
 
 .tech-loop-ribbon {
   width: 100%;
   position: relative;
   z-index: 10;
-  padding: 1.25rem 0 2.5rem;
+  padding: 0.75rem 0 2rem;
   background: transparent;
 }
 
