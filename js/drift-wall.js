@@ -604,10 +604,10 @@
 
     const driftWallInstance = new DriftWallEngine(mount, {
       items: certs,
-      columns: window.innerWidth < 640 ? 3 : window.innerWidth < 1024 ? 4 : window.innerWidth < 1400 ? 5 : 6,
-      tileWidth: window.innerWidth < 640 ? 155 : window.innerWidth < 1024 ? 180 : window.innerWidth < 1400 ? 210 : 224,
-      tileHeight: window.innerWidth < 640 ? 102 : window.innerWidth < 1024 ? 118 : window.innerWidth < 1400 ? 138 : 148,
-      gap: 18,
+      columns: window.innerWidth < 420 ? 3 : window.innerWidth < 640 ? 3 : window.innerWidth < 1024 ? 4 : window.innerWidth < 1400 ? 5 : 6,
+      tileWidth: window.innerWidth < 420 ? 130 : window.innerWidth < 640 ? 145 : window.innerWidth < 1024 ? 180 : window.innerWidth < 1400 ? 210 : 224,
+      tileHeight: window.innerWidth < 420 ? 86 : window.innerWidth < 640 ? 96 : window.innerWidth < 1024 ? 118 : window.innerWidth < 1400 ? 138 : 148,
+      gap: window.innerWidth < 420 ? 9 : window.innerWidth < 640 ? 11 : window.innerWidth < 1024 ? 14 : 18,
       radius: 14,
       tilt: 16,
       turn: -14,

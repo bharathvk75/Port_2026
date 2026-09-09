@@ -566,21 +566,58 @@
 @media (max-width: 1024px) {
   .skills-split-layout {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.75rem;
   }
   .skills-spiral-col {
     position: static;
   }
   .skills-spiral-stage-wrapper {
-    height: 480px;
+    height: 440px;
   }
 }
 
 @media (max-width: 640px) {
+  .skills-split-layout {
+    gap: 1.35rem;
+  }
+  .spiral-category-nav {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+  .spiral-category-nav::-webkit-scrollbar {
+    display: none;
+  }
+  .spiral-cat-btn {
+    padding: 5px 11px;
+    font-size: 0.71rem;
+    flex-shrink: 0;
+  }
   .skills-spiral-stage-wrapper {
-    height: 420px;
+    height: 330px;
   }
   .skill-category-card {
-    padding: 1.15rem;
+    padding: 1rem 0.9rem;
+    border-radius: 16px;
+    gap: 0.7rem;
+  }
+  .skill-category-title {
+    font-size: 0.95rem;
+  }
+  .skill-chips-wrap {
+    gap: 6px;
+  }
+  .skill-chip {
+    padding: 4px 8px;
+    font-size: 0.71rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .skills-spiral-stage-wrapper {
+    height: 290px;
   }
 }
