@@ -629,21 +629,6 @@
   background: currentColor;
 }
 
-.cert-deck-year {
-  font-family: var(--font-mono, monospace);
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--text-muted, #94a3b8);
-  padding: 2px 8px;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.06);
-}
-
-[data-theme="light"] .cert-deck-year {
-  background: rgba(0, 0, 0, 0.05);
-  color: #64748b;
-}
-
 .cert-deck-title {
   font-size: 1.08rem;
   font-weight: 700;

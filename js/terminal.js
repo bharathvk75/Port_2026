@@ -85,7 +85,6 @@ Opening certificate explorer modal...
     contact: () => `
 📬 <strong style="color:#38bdf8">Get In Touch:</strong>
 • Email    : <a href="mailto:bharathvk75@gmail.com" style="color:#38bdf8;text-decoration:underline;">bharathvk75@gmail.com</a>
-• Phone    : <a href="tel:+916363447946" style="color:#38bdf8;text-decoration:underline;">+91 6363447946</a>
 • LinkedIn : <a href="https://linkedin.com/in/bharathvk75" target="_blank" style="color:#38bdf8;text-decoration:underline;">linkedin.com/in/bharathvk75</a>
 • GitHub   : <a href="https://github.com/bharathvk75" target="_blank" style="color:#38bdf8;text-decoration:underline;">github.com/bharathvk75</a>
 • Location : Bengaluru, Karnataka, India

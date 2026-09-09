@@ -7,7 +7,7 @@
 (function () {
   'use strict';
 
-  // SVG Thumbnail Generator for Verified Credentials with High Legibility
+  // SVG Thumbnail Generator for Verified Credentials with High Legibility (Year removed per design specs)
   function generateCertThumbnail(cert) {
     const color = cert.color || '#6366f1';
     const escapedTitle = cert.title
@@ -71,17 +71,11 @@
           <text x="30" y="21" fill="#ffffff" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="12.5" font-weight="800" letter-spacing="0.8">${escapedBadge.toUpperCase()}</text>
         </g>
 
-        <!-- Year Pill -->
-        <g transform="translate(344, 24)">
-          <rect width="72" height="32" rx="16" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.28)" stroke-width="1.2" />
-          <text x="36" y="21" fill="#f1f5f9" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="800">${cert.year}</text>
-        </g>
-
         <!-- Issuer Subtitle -->
-        <text x="24" y="92" fill="${color}" font-family="'JetBrains Mono', monospace" font-size="13.5" font-weight="800" letter-spacing="0.8">${escapedIssuer.toUpperCase()}</text>
+        <text x="24" y="88" fill="${color}" font-family="'JetBrains Mono', monospace" font-size="13.5" font-weight="800" letter-spacing="0.8">${escapedIssuer.toUpperCase()}</text>
 
         <!-- Certificate Title (Large & Readable) -->
-        <text x="24" y="130" fill="#ffffff" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="23" font-weight="800" letter-spacing="-0.3">
+        <text x="24" y="126" fill="#ffffff" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="23" font-weight="800" letter-spacing="-0.3">
           <tspan x="24" dy="0">${line1}</tspan>
           ${line2 ? `<tspan x="24" dy="30" font-size="22">${line2}</tspan>` : ''}
         </text>
@@ -133,7 +127,7 @@
       this.direction = options.direction || 'up';
       this.variance = options.variance !== undefined ? options.variance : 0.45;
       this.parallax = options.parallax !== undefined ? options.parallax : 0.6;
-      this.pauseOnHover = options.pauseOnHover || false;
+      this.pauseOnHover = options.pauseOnHover !== undefined ? options.pauseOnHover : true;
       this.lift = options.lift || 72;
       this.fade = options.fade !== undefined ? options.fade : 0.6;
       this.dim = options.dim !== undefined ? options.dim : 0.65;
@@ -147,6 +141,9 @@
       this.velocities = [];
       this.hoveredCol = -1;
       this.wallHovered = false;
+      this.isBoxHovered = false;
+      this.isPointerMoving = false;
+      this.pointerMoveTimer = null;
       this.pointer = { x: 0, y: 0 };
       this.pointerDamped = { x: 0, y: 0 };
       this.lastTs = null;
@@ -194,8 +191,6 @@
       const unit = this.tileHeight + this.gap;
 
       // Dynamic calculation to ensure zero missing boxes during 3D perspective scroll:
-      // Tilted plane perspective (16deg) projects ~2.5x container height.
-      // We generate ample copies (minimum 6 full repetitions) and center them with a 2x copy buffer.
       this.columnMeta = this.columnItems.map((col) => {
         const copyHeight = Math.max(unit, col.length * unit);
         const copies = Math.max(6, Math.ceil((this.containerHeight * 5) / copyHeight) + 2);
@@ -351,7 +346,7 @@
           categoryDeck.style.display = 'grid';
           categoryDeck.innerHTML = '';
 
-          // Filter matching certificates from the raw 25 items catalog (each shown exactly ONCE)
+          // Filter matching certificates from the raw 25 items catalog (each shown exactly ONCE, year removed)
           const matches = this.rawItems.filter((cert) => {
             if (categoryKey === 'genai') return cert.category === 'genai';
             if (categoryKey === 'ml') return cert.category === 'ml';
@@ -373,7 +368,7 @@
 
           matches.forEach((cert) => {
             const card = document.createElement('div');
-            card.className = 'cert-deck-card';
+            card.className = 'cert-deck-card liquid-glass-card';
             card.style.setProperty('--card-accent', cert.color || '#6366f1');
 
             card.innerHTML = `
@@ -382,7 +377,6 @@
                   <span class="cert-deck-dot"></span>
                   ${cert.badge || 'VERIFIED'}
                 </span>
-                <span class="cert-deck-year">${cert.year}</span>
               </div>
 
               <h3 class="cert-deck-title">${cert.title}</h3>
@@ -399,7 +393,7 @@
                   </svg>
                   <span>VERIFIED CREDENTIAL</span>
                 </div>
-                <a href="Certifications/${encodeURIComponent(cert.file)}" target="_blank" rel="noreferrer noopener" class="cert-deck-action" title="Open verification PDF for ${cert.title}">
+                <a href="Certifications/${encodeURIComponent(cert.file)}" target="_blank" rel="noreferrer noopener" class="cert-deck-action liquid-glass-btn" title="Open verification PDF for ${cert.title}">
                   <span>View PDF</span>
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
                 </a>
@@ -434,11 +428,11 @@
       this.activeTileEl = tile;
       tile.classList.add('is-active');
 
-      // Update inspection pill
+      // Update inspection pill (without year per design specs)
       if (this.activePillEl && item) {
         const textSpan = this.activePillEl.querySelector('.drift-wall-active-text');
         if (textSpan) {
-          textSpan.textContent = `${item.title} • ${item.issuer} (${item.year})`;
+          textSpan.textContent = `${item.title} • ${item.issuer}`;
         }
         this.activePillEl.style.opacity = '1';
         this.activePillEl.style.transform = 'translateX(-50%) translateY(0)';
@@ -451,6 +445,7 @@
         this.activeTileEl = null;
       }
       this.hoveredCol = -1;
+      this.isBoxHovered = false;
 
       if (this.activePillEl) {
         this.activePillEl.style.opacity = '0';
@@ -461,9 +456,16 @@
     attachEvents() {
       if (!this.containerEl) return;
 
-      // Smooth pointer parallax tracking without synchronous layout reflows
+      // Smooth pointer parallax tracking with movement detection
       let pointerTicking = false;
       this.containerEl.addEventListener('pointermove', (e) => {
+        // When cursor moves, animation starts moving again!
+        this.isPointerMoving = true;
+        if (this.pointerMoveTimer) clearTimeout(this.pointerMoveTimer);
+        this.pointerMoveTimer = setTimeout(() => {
+          this.isPointerMoving = false;
+        }, 220);
+
         if (this.parallax <= 0 || this.reduced) return;
         if (!pointerTicking) {
           requestAnimationFrame(() => {
@@ -478,10 +480,11 @@
         }
       }, { passive: true });
 
-      // Fast, lag-free tile hover using event delegation
+      // Fast, lag-free tile hover: pause scrolling when resting on the box
       this.containerEl.addEventListener('pointerover', (e) => {
         const tile = e.target.closest('.drift-wall__tile');
         if (tile) {
+          this.isBoxHovered = true;
           const certId = parseInt(tile.getAttribute('data-cert-id'), 10);
           const matchedItem = this.items.find((it) => it.id === certId);
           this.activate(tile, matchedItem);
@@ -491,6 +494,7 @@
       this.containerEl.addEventListener('pointerout', (e) => {
         const related = e.relatedTarget;
         if (!related || !this.containerEl.contains(related)) {
+          this.isBoxHovered = false;
           this.release();
         }
       }, { passive: true });
@@ -501,6 +505,9 @@
 
       this.containerEl.addEventListener('pointerleave', () => {
         this.wallHovered = false;
+        this.isBoxHovered = false;
+        this.isPointerMoving = false;
+        if (this.pointerMoveTimer) clearTimeout(this.pointerMoveTimer);
         this.pointer = { x: 0, y: 0 };
         this.release();
       }, { passive: true });
@@ -592,11 +599,12 @@
             const meta = this.columnMeta[c];
             if (!meta) continue;
 
-            const paused = this.wallHovered && this.pauseOnHover;
-            const factor = paused || this.hoveredCol === c ? 0 : 1;
+            // When cursor is resting on the box, scrolling down/up stops. When cursor moves, it moves again!
+            const boxStopped = this.isBoxHovered && !this.isPointerMoving;
+            const factor = boxStopped ? 0 : 1;
             const target = this.baseVelocities[c] * factor;
 
-            const ease = 1 - Math.exp(-dt / (target === 0 ? 0.16 : 0.28));
+            const ease = 1 - Math.exp(-dt / (target === 0 ? 0.12 : 0.28));
             this.velocities[c] += (target - this.velocities[c]) * ease;
 
             let next = (this.offsets[c] ?? 0) + this.velocities[c] * dt;
@@ -669,7 +677,7 @@
       direction: 'up',
       variance: 0.45,
       parallax: 0.6,
-      pauseOnHover: false,
+      pauseOnHover: true,
       lift: 72,
       fade: 0.6,
       dim: 0.65,

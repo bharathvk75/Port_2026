@@ -346,26 +346,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ------------------------------------------------------------------------
-  // 6. Interactive Contact Form Submission
-  // ------------------------------------------------------------------------
   // 6. Autonomous Collaboration & Dispatch Station Interactive Controller
   // ------------------------------------------------------------------------
-  const intentPills = document.querySelectorAll('.intent-pill');
-  const subjectInput = document.getElementById('contact-subject');
-  if (intentPills.length > 0 && subjectInput) {
-    intentPills.forEach((pill) => {
-      pill.addEventListener('click', () => {
-        intentPills.forEach((p) => p.classList.remove('active'));
-        pill.classList.add('active');
-        const subject = pill.getAttribute('data-subject');
-        if (subject) {
-          subjectInput.value = subject;
-          subjectInput.focus();
-        }
-      });
-    });
-  }
-
   // Fast-Dispatch Direct Beacon Copy Buttons
   document.querySelectorAll('.copy-beacon-btn').forEach((btn) => {
     btn.addEventListener('click', (e) => {
@@ -400,7 +382,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const name = document.getElementById('contact-name')?.value || 'Colleague';
       submitBtn.disabled = true;
-      if (btnText) btnText.textContent = 'Encrypting & Transmitting Payload...';
+      if (btnText) btnText.textContent = 'Transmitting Message...';
 
       setTimeout(() => {
         submitBtn.disabled = false;
@@ -408,11 +390,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (statusBanner) {
           statusBanner.style.display = 'block';
           statusBanner.className = 'dispatch-status-banner success';
-          statusBanner.innerHTML = `✓ Transmission Acknowledged! Thank you, <strong>${name}</strong>. Direct dispatch routed to BLR-SYS-01. Expected latency &lt; 2 hours.`;
+          statusBanner.innerHTML = `✓ Transmission Acknowledged! Thank you, <strong>${name}</strong>. Your message has been sent directly to Bharath.`;
         }
         contactForm.reset();
         if (window.showToast) {
-          window.showToast(`📡 Dispatch successfully transmitted to Bharath!`);
+          window.showToast(`📡 Message successfully transmitted to Bharath!`);
         }
         setTimeout(() => {
           if (statusBanner) statusBanner.style.display = 'none';
