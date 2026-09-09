@@ -20,8 +20,8 @@
   padding: 5px 8px 5px 12px;
 
   /* TRUE BORDERLESS GLASS */
-  border: none;
-  outline: none;
+  border: none !important;
+  outline: none !important;
 
   background: rgba(255, 255, 255, 0.22);
 
@@ -38,12 +38,10 @@
 
   border-radius: 9999px;
 
-  /* Floating Glass Depth without outer outline */
+  /* Floating Soft Depth with zero outer border line */
   box-shadow:
     0 16px 40px rgba(15, 23, 42, 0.08),
-    0 2px 8px rgba(15, 23, 42, 0.04),
-    inset 0 1px 1.5px rgba(255, 255, 255, 0.75),
-    inset 0 -1px 1.5px rgba(255, 255, 255, 0.15);
+    0 2px 8px rgba(15, 23, 42, 0.04);
 
   overflow: hidden;
   z-index: 1000;
@@ -51,13 +49,12 @@
 }
 
 [data-theme="dark"] .glass-nav {
-  border: none;
+  border: none !important;
+  outline: none !important;
   background: rgba(12, 17, 29, 0.55);
   box-shadow:
-    0 20px 48px rgba(0, 0, 0, 0.5),
-    0 4px 14px rgba(0, 0, 0, 0.35),
-    inset 0 1px 1px rgba(255, 255, 255, 0.22),
-    inset 0 -1px 1px rgba(255, 255, 255, 0.03);
+    0 20px 48px rgba(0, 0, 0, 0.45),
+    0 4px 14px rgba(0, 0, 0, 0.25);
 }
 
 /* Glass Surface Reflection */
@@ -69,28 +66,18 @@
   background:
     linear-gradient(
       115deg,
-      rgba(255, 255, 255, 0.3) 0%,
-      rgba(255, 255, 255, 0.08) 18%,
+      rgba(255, 255, 255, 0.15) 0%,
+      rgba(255, 255, 255, 0.04) 18%,
       transparent 40%,
       transparent 70%,
-      rgba(255, 255, 255, 0.12) 100%
+      rgba(255, 255, 255, 0.08) 100%
     );
   pointer-events: none;
   mix-blend-mode: screen;
 }
 
-/* Subtle Specular Top Shine */
 .glass-nav::after {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 8%;
-  right: 8%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.95), transparent);
-  opacity: 0.7;
-  filter: blur(0.3px);
-  pointer-events: none;
+  display: none !important;
 }
 
 /* ==========================================================================

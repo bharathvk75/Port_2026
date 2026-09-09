@@ -111,25 +111,25 @@
       if (!mountEl) return;
       this.mountEl = mountEl;
 
-      // Extract options with matching React Bits defaults
+      // Extract options with matching React Bits defaults (strictly 3 columns for balanced full-width showcase)
       this.rawItems = options.items || [];
-      this.columns = options.columns || (window.innerWidth < 640 ? 3 : window.innerWidth < 1024 ? 4 : 5);
-      this.tileWidth = options.tileWidth || (window.innerWidth < 420 ? 150 : window.innerWidth < 680 ? 175 : window.innerWidth < 1024 ? 230 : 280);
-      this.tileHeight = options.tileHeight || (window.innerWidth < 420 ? 98 : window.innerWidth < 680 ? 115 : window.innerWidth < 1024 ? 152 : 184);
-      this.gap = options.gap || (window.innerWidth < 420 ? 10 : window.innerWidth < 680 ? 13 : window.innerWidth < 1024 ? 16 : 22);
+      this.columns = 3;
+      this.tileWidth = options.tileWidth || (window.innerWidth < 420 ? 150 : window.innerWidth < 680 ? 175 : window.innerWidth < 1024 ? 230 : 310);
+      this.tileHeight = options.tileHeight || (window.innerWidth < 420 ? 98 : window.innerWidth < 680 ? 115 : window.innerWidth < 1024 ? 152 : 200);
+      this.gap = options.gap || (window.innerWidth < 420 ? 10 : window.innerWidth < 680 ? 14 : window.innerWidth < 1024 ? 18 : 24);
       this.radius = options.radius || 16;
-      this.tilt = options.tilt !== undefined ? options.tilt : 16;
-      this.turn = options.turn !== undefined ? options.turn : -14;
+      this.tilt = options.tilt !== undefined ? options.tilt : 8;
+      this.turn = options.turn !== undefined ? options.turn : 0;
       this.roll = options.roll || 0;
-      this.perspective = options.perspective || 1200;
-      this.depth = options.depth || 120;
-      this.speed = options.speed || 40;
+      this.perspective = options.perspective || 1400;
+      this.depth = options.depth || 0;
+      this.speed = options.speed || 38;
       this.direction = options.direction || 'up';
-      this.variance = options.variance !== undefined ? options.variance : 0.45;
-      this.parallax = options.parallax !== undefined ? options.parallax : 0.6;
+      this.variance = options.variance !== undefined ? options.variance : 0.35;
+      this.parallax = options.parallax !== undefined ? options.parallax : 0.4;
       this.pauseOnHover = options.pauseOnHover !== undefined ? options.pauseOnHover : true;
-      this.lift = options.lift || 72;
-      this.fade = options.fade !== undefined ? options.fade : 0.6;
+      this.lift = options.lift || 65;
+      this.fade = options.fade !== undefined ? options.fade : 0.5;
       this.dim = options.dim !== undefined ? options.dim : 0.65;
       this.grayscale = options.grayscale || false;
       this.overlayColor = options.overlayColor || '#060010';
@@ -303,7 +303,35 @@
 
             tileLink.addEventListener('focus', () => this.activate(tileLink, item));
             tileLink.addEventListener('blur', () => this.release());
-            tileLink.addEventListener('click', () => {
+
+            // Track pointer interaction to guarantee click even while track is translating
+            let pDownX = 0;
+            let pDownY = 0;
+            let pDownTime = 0;
+
+            tileLink.addEventListener('pointerdown', (e) => {
+              pDownX = e.clientX;
+              pDownY = e.clientY;
+              pDownTime = Date.now();
+            });
+
+            tileLink.addEventListener('pointerup', (e) => {
+              const dist = Math.hypot(e.clientX - pDownX, e.clientY - pDownY);
+              const elapsed = Date.now() - pDownTime;
+              if (elapsed < 500 && dist < 24) {
+                e.preventDefault();
+                e.stopPropagation();
+                window.open(item.href, '_blank', 'noopener,noreferrer');
+                if (window.showToast) {
+                  window.showToast(`Opening Credential: ${item.title} (${item.issuer})`);
+                }
+              }
+            });
+
+            tileLink.addEventListener('click', (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              window.open(item.href, '_blank', 'noopener,noreferrer');
               if (window.showToast) {
                 window.showToast(`Opening Credential: ${item.title} (${item.issuer})`);
               }
@@ -400,7 +428,11 @@
               </div>
             `;
 
-            card.querySelector('.cert-deck-action').addEventListener('click', () => {
+            card.style.cursor = 'pointer';
+            card.addEventListener('click', (e) => {
+              if (!e.target.closest('.cert-deck-action')) {
+                window.open(`Certifications/${encodeURIComponent(cert.file)}`, '_blank', 'noopener,noreferrer');
+              }
               if (window.showToast) {
                 window.showToast(`Opening Credential: ${cert.title} (${cert.issuer})`);
               }
@@ -412,12 +444,11 @@
       }
     }
 
-    applyPlaneTransform(px, py) {
+    applyPlaneTransform(px = 0, py = 0) {
       if (!this.planeEl) return;
       this.planeEl.style.transform =
-        `translate(-50%, -50%) scale(1.18) ` +
-        `rotateX(${this.tilt + py}deg) rotateY(${this.turn + px}deg) rotateZ(${this.roll}deg) ` +
-        `translateZ(${-this.depth}px)`;
+        `translate(-50%, -50%) ` +
+        `rotateX(${this.tilt + py}deg) rotateY(${this.turn + px}deg) rotateZ(${this.roll}deg)`;
     }
 
     activate(tile, item) {
@@ -496,6 +527,9 @@
         if (!related || !this.containerEl.contains(related)) {
           this.isBoxHovered = false;
           this.release();
+        } else if (!related.closest('.drift-wall__tile')) {
+          this.isBoxHovered = false;
+          this.release();
         }
       }, { passive: true });
 
@@ -524,14 +558,16 @@
         ro.observe(this.containerEl);
       }
 
-      // Responsive window resize
+      // Responsive window resize (strictly maintains 3 columns)
       window.addEventListener('resize', () => {
-        const targetCols = window.innerWidth < 640 ? 3 : window.innerWidth < 1024 ? 4 : 5;
-        if (targetCols !== this.columns) {
-          this.columns = targetCols;
-          this.tileWidth = window.innerWidth < 420 ? 150 : window.innerWidth < 680 ? 175 : window.innerWidth < 1024 ? 230 : 280;
-          this.tileHeight = window.innerWidth < 420 ? 98 : window.innerWidth < 680 ? 115 : window.innerWidth < 1024 ? 152 : 184;
-          this.gap = window.innerWidth < 420 ? 10 : window.innerWidth < 680 ? 13 : window.innerWidth < 1024 ? 16 : 22;
+        this.columns = 3;
+        const newW = window.innerWidth < 420 ? 150 : window.innerWidth < 680 ? 175 : window.innerWidth < 1024 ? 230 : 310;
+        const newH = window.innerWidth < 420 ? 98 : window.innerWidth < 680 ? 115 : window.innerWidth < 1024 ? 152 : 200;
+        const newG = window.innerWidth < 420 ? 10 : window.innerWidth < 680 ? 14 : window.innerWidth < 1024 ? 18 : 24;
+        if (newW !== this.tileWidth || newH !== this.tileHeight) {
+          this.tileWidth = newW;
+          this.tileHeight = newH;
+          this.gap = newG;
           this.init();
         }
       });
@@ -663,23 +699,23 @@
 
     const driftWallInstance = new DriftWallEngine(mount, {
       items: certs,
-      columns: window.innerWidth < 640 ? 3 : window.innerWidth < 1024 ? 4 : 5,
-      tileWidth: window.innerWidth < 420 ? 150 : window.innerWidth < 680 ? 175 : window.innerWidth < 1024 ? 230 : 280,
-      tileHeight: window.innerWidth < 420 ? 98 : window.innerWidth < 680 ? 115 : window.innerWidth < 1024 ? 152 : 184,
-      gap: window.innerWidth < 420 ? 10 : window.innerWidth < 680 ? 13 : window.innerWidth < 1024 ? 16 : 22,
+      columns: 3,
+      tileWidth: window.innerWidth < 420 ? 150 : window.innerWidth < 680 ? 175 : window.innerWidth < 1024 ? 230 : 310,
+      tileHeight: window.innerWidth < 420 ? 98 : window.innerWidth < 680 ? 115 : window.innerWidth < 1024 ? 152 : 200,
+      gap: window.innerWidth < 420 ? 10 : window.innerWidth < 680 ? 14 : window.innerWidth < 1024 ? 18 : 24,
       radius: 16,
-      tilt: 16,
-      turn: -14,
+      tilt: 8,
+      turn: 0,
       roll: 0,
-      perspective: 1200,
-      depth: 120,
-      speed: 40,
+      perspective: 1400,
+      depth: 0,
+      speed: 38,
       direction: 'up',
-      variance: 0.45,
-      parallax: 0.6,
+      variance: 0.35,
+      parallax: 0.4,
       pauseOnHover: true,
-      lift: 72,
-      fade: 0.6,
+      lift: 65,
+      fade: 0.5,
       dim: 0.65,
       grayscale: false
     });

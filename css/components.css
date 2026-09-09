@@ -26,7 +26,7 @@
   align-items: center;
   gap: 0.4rem;
   padding-left: 0.25rem;
-  border-left: 1px solid var(--border-subtle);
+  border-left: none !important;
 }
 
 .icon-btn {
@@ -2359,7 +2359,12 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 2.25rem;
+  padding: 0;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 /* Telemetry Header */
