@@ -37,11 +37,21 @@
     redis: `<svg viewBox="0 0 24 24" fill="#dc382d"><path d="M12 2L2 7.5l10 5.5 10-5.5L12 2zm-8.2 8.3L2 11.5l10 5.5 10-5.5-1.8-1.2L12 15 3.8 10.3zm0 4L2 15.5l10 5.5 10-5.5-1.8-1.2L12 19 3.8 14.3z"/></svg>`,
     aws: `<svg viewBox="0 0 24 24" fill="none" stroke="#ff9900" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>`,
     typescript: `<svg viewBox="0 0 24 24" fill="#3178c6"><rect x="2" y="2" width="20" height="20" rx="4"></rect><path fill="#fff" d="M11 9H6v2h2v7h2v-7h2V9zm4 0h3c1 0 2 1 2 2v1c0 .8-.5 1.5-1.2 1.8.8.3 1.2 1 1.2 1.8v1.4c0 1-1 2-2 2h-3V9zm2 3.5h1c.3 0 .5-.2.5-.5s-.2-.5-.5-.5h-1v1zm0 4.5h1c.3 0 .5-.2.5-.5v-.5c0-.3-.2-.5-.5-.5h-1v1.5z"/></svg>`,
-    scikit: `<svg viewBox="0 0 24 24" fill="none" stroke="#f89939" stroke-width="2"><circle cx="12" cy="12" r="8"></circle><line x1="12" y1="2" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line></svg>`
+    scikit: `<svg viewBox="0 0 24 24" fill="none" stroke="#f89939" stroke-width="2"><circle cx="12" cy="12" r="8"></circle><line x1="12" y1="2" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line></svg>`,
+    react: `<svg viewBox="0 0 24 24" fill="none" stroke="#00d8ff" stroke-width="2"><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(0 12 12)"></ellipse><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"></ellipse><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"></ellipse><circle cx="12" cy="12" r="1.5" fill="#00d8ff"></circle></svg>`,
+    nextjs: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm3.8 14.2l-5.6-7.4v7.4H8.4V7.8h2.1l5.4 7.2V7.8h1.8v8.4z"/></svg>`,
+    tailwind: `<svg viewBox="0 0 24 24" fill="#38bdf8"><path d="M12 6c-2.4 0-3.9 1.2-4.5 3.6 1-.8 2-.9 3-.4.6.3 1 1 1.5 1.7C12.8 12.1 14 13.5 17 13.5c2.4 0 3.9-1.2 4.5-3.6-1 .8-2 .9-3 .4-.6-.3-1-1-1.5-1.7C16.2 7.4 15 6 12 6zM7 12c-2.4 0-3.9 1.2-4.5 3.6 1-.8 2-.9 3-.4.6.3 1 1 1.5 1.7C7.8 18.1 9 19.5 12 19.5c2.4 0 3.9-1.2 4.5-3.6-1 .8-2 .9-3 .4-.6-.3-1-1-1.5-1.7C11.2 13.4 10 12 7 12z"/></svg>`,
+    chromadb: `<svg viewBox="0 0 24 24" fill="none" stroke="#f43f5e" stroke-width="2"><circle cx="7" cy="7" r="4"></circle><circle cx="17" cy="7" r="4"></circle><circle cx="12" cy="17" r="4"></circle><line x1="7" y1="7" x2="12" y2="17"></line><line x1="17" y1="7" x2="12" y2="17"></line></svg>`
   };
 
-  // 16 Core Technical Skills in Spiral with Section Categories
+  // Core Technical Skills in Spiral with Section Categories (Resume Aligned)
   const SKILL_ITEMS = [
+    // Frontend & Interactive UI
+    { id: 'react', label: 'React', sub: 'Interactive UI', icon: SKILL_ICONS.react, color: '#00d8ff', category: 'frontend' },
+    { id: 'typescript', label: 'TypeScript', sub: 'Typed Web APIs', icon: SKILL_ICONS.typescript, color: '#3178c6', category: 'frontend' },
+    { id: 'tailwind', label: 'Tailwind CSS', sub: 'Responsive UI', icon: SKILL_ICONS.tailwind, color: '#38bdf8', category: 'frontend' },
+    { id: 'nextjs', label: 'Next.js', sub: 'SSR & Edge', icon: SKILL_ICONS.nextjs, color: '#ffffff', category: 'frontend' },
+
     // Agentic & AI Architecture
     { id: 'langgraph', label: 'LangGraph', sub: 'Multi-Agent Core', icon: SKILL_ICONS.langgraph, color: '#38bdf8', category: 'agentic' },
     { id: 'mcp', label: 'Claude MCP', sub: 'Tool Protocol', icon: SKILL_ICONS.mcp, color: '#a855f7', category: 'agentic' },
@@ -57,9 +67,11 @@
     // High-Throughput Backend & APIs
     { id: 'python', label: 'Python 3.12', sub: 'AI Core Lang', icon: SKILL_ICONS.python, color: '#3b82f6', category: 'backend' },
     { id: 'fastapi', label: 'FastAPI', sub: 'Async Microservices', icon: SKILL_ICONS.fastapi, color: '#009688', category: 'backend' },
-    { id: 'postgresql', label: 'PostgreSQL', sub: 'pgvector RAG', icon: SKILL_ICONS.postgresql, color: '#336791', category: 'backend' },
-    { id: 'redis', label: 'Redis', sub: 'Cache & State', icon: SKILL_ICONS.redis, color: '#dc382d', category: 'backend' },
-    { id: 'typescript', label: 'TypeScript', sub: 'Typed Web APIs', icon: SKILL_ICONS.typescript, color: '#3178c6', category: 'backend' },
+
+    // Databases & Vector Stores
+    { id: 'postgresql', label: 'PostgreSQL', sub: 'pgvector RAG', icon: SKILL_ICONS.postgresql, color: '#336791', category: 'database' },
+    { id: 'redis', label: 'Redis', sub: 'Cache & State', icon: SKILL_ICONS.redis, color: '#dc382d', category: 'database' },
+    { id: 'chromadb', label: 'ChromaDB', sub: 'Vector Embeddings', icon: SKILL_ICONS.chromadb, color: '#f43f5e', category: 'database' },
 
     // Cloud Infrastructure & DevOps
     { id: 'docker', label: 'Docker', sub: 'Containerization', icon: SKILL_ICONS.docker, color: '#2496ed', category: 'cloud' },
@@ -382,9 +394,139 @@
 
       window.infiniteSpiralInstance = spiral;
 
-      // Category filter tabs & right-side section cards bi-directional sync
+      // Category filter tabs & right-side boxless resume display bi-directional sync
       const catBtns = document.querySelectorAll('.spiral-cat-btn');
-      const catCards = document.querySelectorAll('.skill-category-card');
+      const wheelMount = document.getElementById('skills-option-wheel');
+
+      const RESUME_SKILL_SECTIONS = [
+        {
+          key: 'frontend',
+          label: 'Frontend & UI Engineering',
+          title: 'Frontend & Interactive UI Engineering',
+          desc: 'Engineering fluid, accessible interfaces with modern CSS systems, component-driven layouts, and reactive client state.',
+          chips: [
+            { name: 'React', desc: 'Component Architecture' },
+            { name: 'TypeScript', desc: 'Strict Typed UI' },
+            { name: 'Next.js', desc: 'SSR & Edge Routing' },
+            { name: 'Modern CSS3', desc: 'Vanilla & Responsive Design' },
+            { name: 'Tailwind CSS', desc: 'Utility Design System' },
+            { name: 'HTML5 Semantic Web', desc: 'Accessible Standards' }
+          ]
+        },
+        {
+          key: 'backend',
+          label: 'Backend & Microservices',
+          title: 'Backend & High-Throughput Microservices',
+          desc: 'Constructing resilient asynchronous microservices, RESTful interfaces, event streaming, and background queue workers.',
+          chips: [
+            { name: 'Python 3.12', desc: 'Asynchronous Core' },
+            { name: 'FastAPI', desc: 'High-Throughput ASGI' },
+            { name: 'Node.js / Express', desc: 'API Gateways' },
+            { name: 'REST & GraphQL', desc: 'Contract Design' },
+            { name: 'Pydantic v2', desc: 'Schema Validation' },
+            { name: 'Celery / Redis Queues', desc: 'Task Orchestration' }
+          ]
+        },
+        {
+          key: 'agentic',
+          label: 'AI & Multi-Agent Architecture',
+          title: 'AI & Multi-Agent Architecture',
+          desc: 'Designing autonomous multi-agent graphs, dynamic tool calling via Claude MCP, and human-in-the-loop reasoning workflows.',
+          chips: [
+            { name: 'LangGraph', desc: 'Cyclic Agent Graphs' },
+            { name: 'Claude MCP', desc: 'Model Context Protocol' },
+            { name: 'Claude 3.7 Sonnet', desc: 'Frontier Reasoning' },
+            { name: 'LangChain', desc: 'RAG Pipelines & Memory' },
+            { name: 'Multi-Agent Swarms', desc: 'Cooperative Orchestration' },
+            { name: 'Function Calling', desc: 'Dynamic Tool Execution' }
+          ]
+        },
+        {
+          key: 'ml',
+          label: 'Machine Learning & Vision',
+          title: 'Machine Learning & Computer Vision',
+          desc: 'Developing deep learning architectures for edge computer vision, real-time spatial tracking, OCR pipelines, and tabular models.',
+          chips: [
+            { name: 'PyTorch', desc: 'Deep Learning & Tensors' },
+            { name: 'OpenCV', desc: 'Spatial Edge Vision' },
+            { name: 'TensorFlow / Keras', desc: 'Neural Inference' },
+            { name: 'Scikit-Learn', desc: 'Classical ML Algorithms' },
+            { name: 'Tesseract & PaddleOCR', desc: 'Document Extraction' },
+            { name: 'NumPy & Pandas', desc: 'Vectorized Analytics' }
+          ]
+        },
+        {
+          key: 'cloud',
+          label: 'Cloud Infrastructure & DevOps',
+          title: 'Cloud Infrastructure & DevOps',
+          desc: 'Containerizing distributed microservices and deploying reproducible CI/CD pipelines across AWS cloud and container clusters.',
+          chips: [
+            { name: 'Docker', desc: 'Multi-Stage Containerization' },
+            { name: 'Kubernetes', desc: 'Container Orchestration' },
+            { name: 'AWS (EC2, S3, Lambda)', desc: 'Cloud Infrastructure' },
+            { name: 'CI/CD Pipelines', desc: 'Automated GitHub Actions' },
+            { name: 'Linux / Bash', desc: 'POSIX Systems' },
+            { name: 'Nginx', desc: 'Reverse Proxy & TLS' }
+          ]
+        },
+        {
+          key: 'database',
+          label: 'Databases & Vector Stores',
+          title: 'Databases & Vector Retrieval',
+          desc: 'Architecting high-performance relational databases, memory caches, and vector databases for enterprise semantic search.',
+          chips: [
+            { name: 'PostgreSQL', desc: 'Relational ACID Core' },
+            { name: 'pgvector', desc: 'Native Vector Embeddings' },
+            { name: 'ChromaDB', desc: 'Lightweight Vector Index' },
+            { name: 'Redis', desc: 'In-Memory Cache & PubSub' },
+            { name: 'Pinecone / Qdrant', desc: 'Distributed Similarity Search' },
+            { name: 'SQLAlchemy 2.0', desc: 'Async ORM Layer' }
+          ]
+        }
+      ];
+
+      let optionWheel = null;
+      if (wheelMount && window.OptionWheelEngine) {
+        const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+        optionWheel = new window.OptionWheelEngine(wheelMount, {
+          items: RESUME_SKILL_SECTIONS,
+          side: 'right',
+          defaultSelected: 0,
+          fontSize: window.innerWidth < 640 ? 1.05 : window.innerWidth < 900 ? 1.25 : 1.45,
+          spacing: 1.45,
+          curve: 1.25,
+          tilt: 8,
+          fade: 0.35,
+          blur: 1.5,
+          textColor: isLight ? '#475569' : '#94a3b8',
+          activeColor: isLight ? '#000000' : '#ffffff',
+          onChange: (index, item) => {
+            if (!item) return;
+            const categoryKey = item.key;
+
+            // 1. Filter 3D swirl on the left
+            spiral.filterCategory(categoryKey);
+
+            // 2. Sync category buttons on the left
+            catBtns.forEach(b => {
+              const isTarget = b.getAttribute('data-category') === categoryKey;
+              b.classList.toggle('active', isTarget);
+              b.setAttribute('aria-selected', isTarget ? 'true' : 'false');
+            });
+          }
+        });
+        window.skillsOptionWheelInstance = optionWheel;
+
+        // Theme switch listener for OptionWheel
+        window.addEventListener('themeChanged', (e) => {
+          const theme = e.detail?.theme || document.documentElement.getAttribute('data-theme') || 'light';
+          const isLightMode = theme === 'light';
+          if (optionWheel && optionWheel.rootEl) {
+            optionWheel.rootEl.style.setProperty('--ow-text-color', isLightMode ? '#475569' : '#94a3b8');
+            optionWheel.rootEl.style.setProperty('--ow-active-color', isLightMode ? '#000000' : '#ffffff');
+          }
+        });
+      }
 
       catBtns.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -398,30 +540,12 @@
 
           spiral.filterCategory(category);
 
-          // Highlight right-side section cards
-          catCards.forEach(card => {
-            const cardCat = card.getAttribute('data-category');
-            const match = category === 'all' || cardCat === category;
-            card.classList.toggle('is-selected', match && category !== 'all');
-          });
-        });
-      });
-
-      // Clicking any skill category card on the right filters the 3D swirl on the left
-      catCards.forEach(card => {
-        card.addEventListener('click', () => {
-          const category = card.getAttribute('data-category');
-          const targetBtn = document.querySelector(`.spiral-cat-btn[data-category="${category}"]`);
-          if (targetBtn) {
-            targetBtn.click();
-          }
-        });
-
-        // Keyboard accessibility (Enter or Space)
-        card.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            card.click();
+          // Synchronize OptionWheel on right
+          if (category !== 'all') {
+            const wheelIdx = RESUME_SKILL_SECTIONS.findIndex(d => d.key === category);
+            if (wheelIdx !== -1 && optionWheel) {
+              optionWheel.select(wheelIdx);
+            }
           }
         });
       });

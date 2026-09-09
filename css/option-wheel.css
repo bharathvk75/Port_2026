@@ -1,0 +1,164 @@
+/* ==========================================================================
+   REACT BITS: OPTIONWHEEL COMPONENT CSS
+   Curved Option Picker with Inertial Dragging, Parallax Tilt & Curve
+   ========================================================================== */
+
+.option-wheel {
+  --ow-text-color: #64748b;
+  --ow-active-color: #ffffff;
+  --ow-font-size: 1.55rem;
+  --ow-inset: 32px;
+
+  position: relative;
+  width: 100%;
+  height: 480px;
+  overflow: hidden;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  outline: none;
+  background: transparent;
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%);
+}
+
+[data-theme="light"] .option-wheel {
+  --ow-text-color: #475569;
+  --ow-active-color: #000000;
+}
+
+.option-wheel--dragging {
+  cursor: grabbing;
+}
+
+/* Each option is absolutely centered, then offset along the curve by the
+   rAF loop through transform/opacity/filter, so everything stays in step. */
+.option-wheel__item {
+  position: absolute;
+  top: 50%;
+  left: var(--ow-inset);
+  white-space: nowrap;
+  font-family: var(--font-sans);
+  font-size: var(--ow-font-size);
+  line-height: 1.25;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  transform-origin: left center;
+  cursor: pointer;
+  will-change: transform, opacity, filter;
+  transition: color 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 0;
+  /* --ow-p goes 0 -> 1 as an option approaches the middle of the wheel */
+  color: color-mix(in srgb, var(--ow-active-color) calc(var(--ow-p, 0) * 100%), var(--ow-text-color));
+}
+
+.option-wheel--right .option-wheel__item {
+  left: auto;
+  right: var(--ow-inset);
+  transform-origin: right center;
+  text-align: right;
+  flex-direction: row-reverse;
+}
+
+.option-wheel__label {
+  font-family: var(--font-sans);
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  letter-spacing: -0.015em;
+  transition: all 0.2s ease;
+}
+
+.option-wheel__item--selected {
+  font-weight: 800;
+  color: var(--ow-active-color) !important;
+  text-shadow: none;
+}
+
+[data-theme="light"] .option-wheel__item--selected {
+  color: #000000 !important;
+  font-weight: 800;
+  text-shadow: none;
+}
+
+/* OptionWheel Wrapper & Skills Section Integration (Boxless & Scroll-Free) */
+.skills-matrix-col--boxless {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  overflow: visible;
+  height: 100%;
+  min-height: 560px;
+}
+
+.skills-wheel-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  margin: auto 0;
+}
+
+.skills-wheel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+}
+
+.skills-wheel-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.skills-wheel-hint {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Responsive OptionWheel */
+@media (max-width: 1024px) {
+  .skills-matrix-col--boxless {
+    min-height: auto;
+  }
+  .option-wheel {
+    --ow-font-size: 1.35rem;
+    --ow-inset: 22px;
+    height: 420px;
+  }
+}
+
+@media (max-width: 900px) {
+  .option-wheel {
+    --ow-font-size: 1.2rem;
+    --ow-inset: 16px;
+    height: 380px;
+  }
+}
+
+@media (max-width: 640px) {
+  .option-wheel {
+    --ow-font-size: 1.05rem;
+    --ow-inset: 10px;
+    height: 320px;
+  }
+}

@@ -28,6 +28,7 @@
   <link rel="stylesheet" href="css/glass-surface.css">
   <link rel="stylesheet" href="css/drift-wall.css">
   <link rel="stylesheet" href="css/infinite-spiral.css">
+  <link rel="stylesheet" href="css/option-wheel.css">
   <link rel="stylesheet" href="css/logo-loop.css">
   <link rel="stylesheet" href="css/stepper.css">
   <link rel="stylesheet" href="css/main.css">
@@ -147,14 +148,15 @@
         </li>
       </ul>
 
-      <!-- Right Quick Actions: Perfectly Aligned Theme Toggle -->
+      <!-- Right Quick Actions: Perfectly Aligned Theme Toggle Pill -->
       <div class="nav-actions">
-        <button class="icon-btn" id="theme-toggle-btn" title="Toggle Theme (Shortcut: T)" aria-label="Toggle Theme">
+        <button class="theme-toggle-pill" id="theme-toggle-btn" title="Toggle Theme (Shortcut: T)" aria-label="Toggle Theme">
           <span id="theme-icon">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
             </svg>
           </span>
+          <span class="theme-toggle-label" id="theme-toggle-label">Enter Glass Dark World</span>
         </button>
 
         <!-- Mobile Menu Toggle Button -->
@@ -668,22 +670,28 @@
               <p class="spiral-col-desc">Filter swirl by technical domain or drag in 3D space</p>
             </div>
 
-            <!-- Section-Wise Category Filter Tabs -->
+            <!-- Section-Wise Category Filter Tabs (Resume Aligned) -->
             <div class="spiral-category-nav" id="spiral-category-nav" role="tablist" aria-label="Filter 3D swirl by skill category">
               <button class="spiral-cat-btn active" data-category="all" role="tab" aria-selected="true">
-                <span class="cat-dot" style="background:#6366f1;"></span> All Stacks
+                <span class="cat-dot" style="background:#6366f1;"></span> All
               </button>
-              <button class="spiral-cat-btn" data-category="agentic" role="tab" aria-selected="false">
-                <span class="cat-dot" style="background:#38bdf8;"></span> Agentic & AI
-              </button>
-              <button class="spiral-cat-btn" data-category="ml" role="tab" aria-selected="false">
-                <span class="cat-dot" style="background:#ee4c2c;"></span> ML & Vision
+              <button class="spiral-cat-btn" data-category="frontend" role="tab" aria-selected="false">
+                <span class="cat-dot" style="background:#38bdf8;"></span> Frontend
               </button>
               <button class="spiral-cat-btn" data-category="backend" role="tab" aria-selected="false">
-                <span class="cat-dot" style="background:#009688;"></span> Backend & DB
+                <span class="cat-dot" style="background:#10b981;"></span> Backend
+              </button>
+              <button class="spiral-cat-btn" data-category="agentic" role="tab" aria-selected="false">
+                <span class="cat-dot" style="background:#8b5cf6;"></span> AI & Agents
+              </button>
+              <button class="spiral-cat-btn" data-category="ml" role="tab" aria-selected="false">
+                <span class="cat-dot" style="background:#f59e0b;"></span> ML & Vision
               </button>
               <button class="spiral-cat-btn" data-category="cloud" role="tab" aria-selected="false">
-                <span class="cat-dot" style="background:#ff9900;"></span> Cloud & DevOps
+                <span class="cat-dot" style="background:#0284c7;"></span> Cloud & DevOps
+              </button>
+              <button class="spiral-cat-btn" data-category="database" role="tab" aria-selected="false">
+                <span class="cat-dot" style="background:#06b6d4;"></span> Databases
               </button>
             </div>
 
@@ -698,108 +706,22 @@
             </div>
           </div>
 
-          <!-- RIGHT COLUMN: Section-Wise Technical Stacks & Competencies -->
-          <div class="skills-matrix-col">
+          <!-- RIGHT COLUMN: Boxless Technical Stacks with OptionWheel -->
+          <div class="skills-matrix-col skills-matrix-col--boxless">
             
-            <!-- Section 1: AI & Multi-Agent Architecture -->
-            <div class="skill-category-card" data-category="agentic" tabindex="0" role="button" aria-label="Explore AI and Multi-Agent Architecture">
-              <div class="skill-cat-header">
-                <div class="skill-cat-icon-wrap" style="background: rgba(56, 189, 248, 0.12); color: #38bdf8; border-color: rgba(56, 189, 248, 0.3);">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><circle cx="12" cy="12" r="2"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
-                </div>
-                <div class="skill-cat-title-group">
-                  <h3 class="skill-cat-title">AI & Multi-Agent Architecture</h3>
-                  <span class="skill-cat-sub">Autonomous Orchestration • Graph Consensus</span>
-                </div>
-                <span class="skill-cat-status-pill">Core Focus</span>
+            <!-- React Bits: OptionWheel Curved Domain Navigator (Right Hand) -->
+            <div class="skills-wheel-wrapper">
+              <div class="skills-wheel-header">
+                <span class="skills-wheel-label">
+                  <span class="spiral-pulse-indicator"></span>
+                  Technical Competencies Wheel
+                </span>
+                <span class="skills-wheel-hint">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+                  Drag or scroll wheel
+                </span>
               </div>
-              <p class="skill-cat-desc">
-                Engineering autonomous agent teams, cyclic state machines with LangGraph, Anthropic Model Context Protocol (MCP) servers, and enterprise RAG pipelines.
-              </p>
-              <div class="skill-chips-flex">
-                <span class="skill-chip"><span class="skill-chip-dot" style="background:#38bdf8;"></span>LangGraph</span>
-                <span class="skill-chip"><span class="skill-chip-dot" style="background:#a855f7;"></span>Anthropic MCP</span>
-                <span class="skill-chip"><span class="skill-chip-dot" style="background:#d97706;"></span>Claude 3.7</span>
-                <span class="skill-chip"><span class="skill-chip-dot" style="background:#10b981;"></span>LangChain</span>
-                <span class="skill-chip"><span class="skill-chip-dot" style="background:#6366f1;"></span>RAG Workflows</span>
-                <span class="skill-chip"><span class="skill-chip-dot" style="background:#f59e0b;"></span>MCTS Tree-Search</span>
-                <span class="skill-chip"><span class="skill-chip-dot" style="background:#0ea5e9;"></span>pgvector</span>
-              </div>
-            </div>
-
-            <!-- Section 2: Machine Learning & Computer Vision -->
-            <div class="skill-category-card" data-category="ml" tabindex="0" role="button" aria-label="Explore Machine Learning and Computer Vision">
-              <div class="skill-cat-header">
-                <div class="skill-cat-icon-wrap" style="background: rgba(238, 76, 44, 0.12); color: #ee4c2c; border-color: rgba(238, 76, 44, 0.3);">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-                </div>
-                <div class="skill-cat-title-group">
-                  <h3 class="skill-cat-title">Machine Learning & Vision</h3>
-                  <span class="skill-cat-sub">Edge Inference • Multimodal OCR</span>
-                </div>
-                <span class="skill-cat-status-pill">Sub-20ms</span>
-              </div>
-              <p class="skill-cat-desc">
-                High-accuracy object detection, real-time edge video streaming, prescription OCR parsing, and optimized tensor runtimes.
-              </p>
-              <div class="skill-chips-flex">
-                <span class="skill-chip"><span class="skill-chip-dot" style="background:#ee4c2c;"></span>PyTorch</span>
-                <span class="skill-chip"><span class="skill-chip-dot" style="background:#ff6f00;"></span>TensorFlow</span>
-                <span class="skill-chip"><span class="skill-chip-dot" style="background:#6366f1;"></span>OpenCV</span>
-                <span class="skill-chip"><span class="skill-chip-dot" style="background:#f89939;"></span>Scikit-Learn</span>
-                <span class="skill-chip"><span class="skill-chip-dot" style="background:#06b6d4;"></span>Vision LLMs</span>
-                <span class="skill-chip"><span class="skill-chip-dot" style="background:#4dabcf;"></span>NumPy / SciPy</span>
-              </div>
-            </div>
-
-            <!-- Section 3: High-Throughput Backend & APIs -->
-            <div class="skill-category-card" data-category="backend" tabindex="0" role="button" aria-label="Explore High-Throughput Backend and APIs">
-              <div class="skill-cat-header">
-                <div class="skill-cat-icon-wrap" style="background: rgba(0, 150, 136, 0.12); color: #009688; border-color: rgba(0, 150, 136, 0.3);">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                </div>
-                <div class="skill-cat-title-group">
-                  <h3 class="skill-cat-title">High-Throughput Backend & Data</h3>
-                  <span class="skill-cat-sub">Async Microservices • Vector Stores</span>
-                </div>
-                <span class="skill-cat-status-pill">Scalable</span>
-              </div>
-              <p class="skill-cat-desc">
-                Asynchronous RESTful APIs with Pydantic v2 schemas, transactional data streams, high-speed in-memory caching, and robust security protocols.
-              </p>
-              <div class="skill-chips-flex">
-                <span class="skill-chip"><span class="skill-chip-dot" style="background:#3b82f6;"></span>Python 3.12</span>
-                <span class="skill-chip"><span class="skill-chip-dot" style="background:#009688;"></span>FastAPI</span>
-                <span class="skill-chip"><span class="skill-chip-dot" style="background:#336791;"></span>PostgreSQL</span>
-                <span class="skill-chip"><span class="skill-chip-dot" style="background:#dc382d;"></span>Redis Cache</span>
-                <span class="skill-chip"><span class="skill-chip-dot" style="background:#3178c6;"></span>TypeScript</span>
-                <span class="skill-chip"><span class="skill-chip-dot" style="background:#8b5cf6;"></span>Pydantic v2</span>
-              </div>
-            </div>
-
-            <!-- Section 4: Cloud Infrastructure & DevOps -->
-            <div class="skill-category-card" data-category="cloud" tabindex="0" role="button" aria-label="Explore Cloud Infrastructure and DevOps">
-              <div class="skill-cat-header">
-                <div class="skill-cat-icon-wrap" style="background: rgba(255, 153, 0, 0.12); color: #ff9900; border-color: rgba(255, 153, 0, 0.3);">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
-                </div>
-                <div class="skill-cat-title-group">
-                  <h3 class="skill-cat-title">Cloud Infrastructure & DevOps</h3>
-                  <span class="skill-cat-sub">Containerization • Automated CI/CD</span>
-                </div>
-                <span class="skill-cat-status-pill">Cloud-Native</span>
-              </div>
-              <p class="skill-cat-desc">
-                Deploying reproducible containers with Docker and Kubernetes, automated multi-stage GitHub Actions testing pipelines, and Linux server hardening.
-              </p>
-              <div class="skill-chips-flex">
-                <span class="skill-chip"><span class="skill-chip-dot" style="background:#2496ed;"></span>Docker</span>
-                <span class="skill-chip"><span class="skill-chip-dot" style="background:#326ce5;"></span>Kubernetes</span>
-                <span class="skill-chip"><span class="skill-chip-dot" style="background:#ff9900;"></span>AWS Cloud</span>
-                <span class="skill-chip"><span class="skill-chip-dot" style="background:#f05032;"></span>GitHub Actions</span>
-                <span class="skill-chip"><span class="skill-chip-dot" style="background:#fcc624;"></span>Linux / Shell</span>
-                <span class="skill-chip"><span class="skill-chip-dot" style="background:#38bdf8;"></span>Chrome DevTools Protocol</span>
-              </div>
+              <div id="skills-option-wheel" class="option-wheel option-wheel--right"></div>
             </div>
 
           </div>
@@ -835,8 +757,9 @@
             <div class="telemetry-panel-header">
               <div class="radar-status-row">
                 <span class="radar-pulse-dot"></span>
-                <span class="radar-status-text">Direct Link Active • Immediate Availability</span>
+                <span class="radar-status-text">DIRECT LINK ACTIVE</span>
               </div>
+              <span class="telemetry-avail-badge">IMMEDIATE AVAILABILITY</span>
             </div>
 
             <!-- Primary Email Beacon -->
@@ -989,6 +912,7 @@
   <script src="js/anime.min.js"></script>
   <script src="js/certs-data.js"></script>
   <script src="js/drift-wall.js"></script>
+  <script src="js/option-wheel.js"></script>
   <script src="js/infinite-spiral.js"></script>
   <script src="js/logo-loop.js"></script>
   <script src="js/theme.js"></script>

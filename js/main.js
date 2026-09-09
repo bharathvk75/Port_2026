@@ -4,28 +4,10 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   // ------------------------------------------------------------------------
-  // 1. Toast Notification System
+  // 1. Toast Notification System (Disabled per user requirement)
   // ------------------------------------------------------------------------
-  const toastContainer = document.getElementById('toast-container');
-
-  window.showToast = function (message, duration = 3000) {
-    if (!toastContainer) return;
-    const toast = document.createElement('div');
-    toast.className = 'toast';
-    toast.innerHTML = `
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="20 6 9 17 4 12"></polyline>
-      </svg>
-      <span>${message}</span>
-    `;
-    toastContainer.appendChild(toast);
-
-    setTimeout(() => {
-      toast.style.opacity = '0';
-      toast.style.transform = 'translateY(15px)';
-      toast.style.transition = 'all 0.3s ease';
-      setTimeout(() => toast.remove(), 300);
-    }, duration);
+  window.showToast = function () {
+    // Popup messages disabled
   };
 
   // ------------------------------------------------------------------------
@@ -337,10 +319,8 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.copy-contact-card').forEach((card) => {
     card.addEventListener('click', () => {
       const copyVal = card.getAttribute('data-copy');
-      if (copyVal) {
-        navigator.clipboard.writeText(copyVal).then(() => {
-          showToast(`📋 Copied to clipboard: ${copyVal}`);
-        });
+      if (copyVal && navigator.clipboard) {
+        navigator.clipboard.writeText(copyVal);
       }
     });
   });
@@ -358,14 +338,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (copyVal && navigator.clipboard) {
         navigator.clipboard.writeText(copyVal).then(() => {
           btn.textContent = 'Copied!';
-          if (window.showToast) {
-            window.showToast(`Copied to clipboard: ${copyVal}`);
-          }
           setTimeout(() => {
             btn.textContent = 'Copy';
           }, 2000);
-        }).catch(() => {
-          if (window.showToast) window.showToast(`Value: ${copyVal}`);
         });
       }
     });
@@ -393,9 +368,6 @@ document.addEventListener('DOMContentLoaded', () => {
           statusBanner.innerHTML = `✓ Transmission Acknowledged! Thank you, <strong>${name}</strong>. Your message has been sent directly to Bharath.`;
         }
         contactForm.reset();
-        if (window.showToast) {
-          window.showToast(`📡 Message successfully transmitted to Bharath!`);
-        }
         setTimeout(() => {
           if (statusBanner) statusBanner.style.display = 'none';
         }, 8000);

@@ -7,8 +7,8 @@
 (function () {
   'use strict';
 
-  // SVG Thumbnail Generator for Verified Credentials with High Legibility (Year removed per design specs)
-  function generateCertThumbnail(cert) {
+  // SVG Thumbnail Generator for Verified Credentials with High Legibility & Light/Dark Theme Support
+  function generateCertThumbnail(cert, isLight = false) {
     const color = cert.color || '#6366f1';
     const escapedTitle = cert.title
       .replace(/&/g, '&amp;')
@@ -32,25 +32,44 @@
       line2 = '';
     }
 
+    // Dynamic color tokens for distinct Dark vs Light mode appearance
+    const bgStart = isLight ? '#ffffff' : '#0a0e1a';
+    const bgMid = isLight ? '#f8fafc' : '#111827';
+    const bgEnd = isLight ? '#f1f5f9' : '#070a12';
+    const gridColor = isLight ? 'rgba(15,23,42,0.04)' : 'rgba(255,255,255,0.04)';
+    const glowOp1 = isLight ? '0.22' : '0.4';
+    const glowOp2 = isLight ? '0.06' : '0.1';
+    const borderMid = isLight ? 'rgba(0,0,0,0.12)' : 'rgba(255,255,255,0.25)';
+    const innerBorder = isLight ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.1)';
+    const titleColor = isLight ? '#0f172a' : '#ffffff';
+    const badgeBgOp = isLight ? '0.14' : '0.32';
+    const badgeStrokeOp = isLight ? '0.5' : '0.95';
+    const badgeTextColor = isLight ? (color === '#ffffff' ? '#4f46e5' : color) : '#ffffff';
+    const issuerColor = isLight ? (color === '#ffffff' ? '#4338ca' : color) : color;
+    const sealText = isLight ? '#334155' : '#e2e8f0';
+    const pdfBg = isLight ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.15)';
+    const pdfStroke = isLight ? 'rgba(0,0,0,0.14)' : 'rgba(255,255,255,0.3)';
+    const pdfText = isLight ? '#0f172a' : '#ffffff';
+
     const svg = `
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 288" width="440" height="288">
         <defs>
           <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#0a0e1a" />
-            <stop offset="50%" stop-color="#111827" />
-            <stop offset="100%" stop-color="#070a12" />
+            <stop offset="0%" stop-color="${bgStart}" />
+            <stop offset="50%" stop-color="${bgMid}" />
+            <stop offset="100%" stop-color="${bgEnd}" />
           </linearGradient>
           <radialGradient id="glow" cx="82%" cy="18%" r="75%">
-            <stop offset="0%" stop-color="${color}" stop-opacity="0.4" />
-            <stop offset="55%" stop-color="${color}" stop-opacity="0.1" />
+            <stop offset="0%" stop-color="${color}" stop-opacity="${glowOp1}" />
+            <stop offset="55%" stop-color="${color}" stop-opacity="${glowOp2}" />
             <stop offset="100%" stop-color="${color}" stop-opacity="0" />
           </radialGradient>
           <pattern id="grid" width="22" height="22" patternUnits="userSpaceOnUse">
-            <path d="M 22 0 L 0 0 0 22" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1" />
+            <path d="M 22 0 L 0 0 0 22" fill="none" stroke="${gridColor}" stroke-width="1" />
           </pattern>
           <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stop-color="${color}" stop-opacity="0.9" />
-            <stop offset="50%" stop-color="rgba(255,255,255,0.25)" />
+            <stop offset="50%" stop-color="${borderMid}" />
             <stop offset="100%" stop-color="${color}" stop-opacity="0.6" />
           </linearGradient>
         </defs>
@@ -62,35 +81,35 @@
         
         <!-- Luxury Dual Borders -->
         <rect x="2" y="2" width="436" height="284" rx="15" fill="none" stroke="url(#borderGrad)" stroke-width="2.5" />
-        <rect x="8" y="8" width="424" height="272" rx="11" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1" />
+        <rect x="8" y="8" width="424" height="272" rx="11" fill="none" stroke="${innerBorder}" stroke-width="1" />
 
         <!-- Header: Issuer Badge -->
         <g transform="translate(24, 24)">
-          <rect width="146" height="32" rx="16" fill="${color}" fill-opacity="0.32" stroke="${color}" stroke-opacity="0.95" stroke-width="1.8" />
+          <rect width="146" height="32" rx="16" fill="${color}" fill-opacity="${badgeBgOp}" stroke="${color}" stroke-opacity="${badgeStrokeOp}" stroke-width="1.8" />
           <circle cx="16" cy="16" r="5" fill="${color}" />
-          <text x="30" y="21" fill="#ffffff" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="12.5" font-weight="800" letter-spacing="0.8">${escapedBadge.toUpperCase()}</text>
+          <text x="30" y="21" fill="${badgeTextColor}" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="12.5" font-weight="800" letter-spacing="0.8">${escapedBadge.toUpperCase()}</text>
         </g>
 
         <!-- Issuer Subtitle -->
-        <text x="24" y="88" fill="${color}" font-family="'JetBrains Mono', monospace" font-size="13.5" font-weight="800" letter-spacing="0.8">${escapedIssuer.toUpperCase()}</text>
+        <text x="24" y="88" fill="${issuerColor}" font-family="'JetBrains Mono', monospace" font-size="13.5" font-weight="800" letter-spacing="0.8">${escapedIssuer.toUpperCase()}</text>
 
         <!-- Certificate Title (Large & Readable) -->
-        <text x="24" y="126" fill="#ffffff" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="23" font-weight="800" letter-spacing="-0.3">
+        <text x="24" y="126" fill="${titleColor}" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="23" font-weight="800" letter-spacing="-0.3">
           <tspan x="24" dy="0">${line1}</tspan>
           ${line2 ? `<tspan x="24" dy="30" font-size="22">${line2}</tspan>` : ''}
         </text>
 
         <!-- Bottom Verified Credential Seal -->
         <g transform="translate(24, 230)">
-          <circle cx="13" cy="13" r="12" fill="${color}" fill-opacity="0.35" stroke="${color}" stroke-width="2" />
+          <circle cx="13" cy="13" r="12" fill="${color}" fill-opacity="${isLight ? '0.15' : '0.35'}" stroke="${color}" stroke-width="2" />
           <path d="M7.5 13 L11.5 17 L18.5 9.5" fill="none" stroke="${color}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
-          <text x="35" y="17.5" fill="#e2e8f0" font-family="'JetBrains Mono', monospace" font-size="11.5" font-weight="700" letter-spacing="0.6">VERIFIED CREDENTIAL</text>
+          <text x="35" y="17.5" fill="${sealText}" font-family="'JetBrains Mono', monospace" font-size="11.5" font-weight="700" letter-spacing="0.6">VERIFIED CREDENTIAL</text>
         </g>
 
         <!-- Clickable Action Badge -->
         <g transform="translate(356, 226)">
-          <rect width="60" height="30" rx="15" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="1.2" />
-          <text x="30" y="19.5" fill="#ffffff" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800">PDF ↗</text>
+          <rect width="60" height="30" rx="15" fill="${pdfBg}" stroke="${pdfStroke}" stroke-width="1.2" />
+          <text x="30" y="19.5" fill="${pdfText}" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800">PDF ↗</text>
         </g>
       </svg>
     `.trim();
@@ -111,28 +130,30 @@
       if (!mountEl) return;
       this.mountEl = mountEl;
 
-      // Extract options with matching React Bits defaults (strictly 3 columns for balanced full-width showcase)
+      // Extract options matching React Bits component specifications
       this.rawItems = options.items || [];
-      this.columns = 3;
-      this.tileWidth = options.tileWidth || (window.innerWidth < 420 ? 150 : window.innerWidth < 680 ? 175 : window.innerWidth < 1024 ? 230 : 310);
-      this.tileHeight = options.tileHeight || (window.innerWidth < 420 ? 98 : window.innerWidth < 680 ? 115 : window.innerWidth < 1024 ? 152 : 200);
-      this.gap = options.gap || (window.innerWidth < 420 ? 10 : window.innerWidth < 680 ? 14 : window.innerWidth < 1024 ? 18 : 24);
-      this.radius = options.radius || 16;
-      this.tilt = options.tilt !== undefined ? options.tilt : 8;
-      this.turn = options.turn !== undefined ? options.turn : 0;
+      const isMobile = typeof window !== 'undefined' && window.innerWidth < 680;
+      const isTablet = typeof window !== 'undefined' && window.innerWidth < 1024;
+      this.columns = options.columns !== undefined ? options.columns : (isMobile ? 3 : isTablet ? 4 : 5);
+      this.tileWidth = options.tileWidth || (isMobile ? 150 : isTablet ? 175 : 200);
+      this.tileHeight = options.tileHeight || (isMobile ? 99 : isTablet ? 115 : 132);
+      this.gap = options.gap !== undefined ? options.gap : 18;
+      this.radius = options.radius !== undefined ? options.radius : 14;
+      this.tilt = options.tilt !== undefined ? options.tilt : 16;
+      this.turn = options.turn !== undefined ? options.turn : -14;
       this.roll = options.roll || 0;
-      this.perspective = options.perspective || 1400;
-      this.depth = options.depth || 0;
-      this.speed = options.speed || 38;
+      this.perspective = options.perspective || 1200;
+      this.depth = options.depth !== undefined ? options.depth : 120;
+      this.speed = options.speed || 42;
       this.direction = options.direction || 'up';
-      this.variance = options.variance !== undefined ? options.variance : 0.35;
-      this.parallax = options.parallax !== undefined ? options.parallax : 0.4;
-      this.pauseOnHover = options.pauseOnHover !== undefined ? options.pauseOnHover : true;
-      this.lift = options.lift || 65;
-      this.fade = options.fade !== undefined ? options.fade : 0.5;
-      this.dim = options.dim !== undefined ? options.dim : 0.65;
+      this.variance = options.variance !== undefined ? options.variance : 0.45;
+      this.parallax = options.parallax !== undefined ? options.parallax : 0.6;
+      this.pauseOnHover = options.pauseOnHover !== undefined ? options.pauseOnHover : false;
+      this.lift = options.lift || 64;
+      this.fade = options.fade !== undefined ? options.fade : 0.1;
+      this.dim = options.dim !== undefined ? options.dim : 0.94;
       this.grayscale = options.grayscale || false;
-      this.overlayColor = options.overlayColor || '#060010';
+      this.overlayColor = options.overlayColor || 'transparent';
 
       // State & tracking
       this.trackEls = [];
@@ -141,13 +162,11 @@
       this.velocities = [];
       this.hoveredCol = -1;
       this.wallHovered = false;
-      this.isBoxHovered = false;
-      this.isPointerMoving = false;
-      this.pointerMoveTimer = null;
+      this.activeId = null;
       this.pointer = { x: 0, y: 0 };
       this.pointerDamped = { x: 0, y: 0 };
       this.lastTs = null;
-      this.containerHeight = 680;
+      this.containerHeight = 600;
       this.activeTileEl = null;
       this.reduced = prefersReducedMotion();
       this.currentCategory = 'all';
@@ -158,27 +177,42 @@
     }
 
     init() {
-      // Build items with SVG visuals
+      const currentTheme = (typeof document !== 'undefined' && document.documentElement.getAttribute('data-theme')) || 'light';
+      const isLight = currentTheme === 'light';
+
+      // Build items with SVG visuals for both dark and light themes
       this.items = this.rawItems.map((cert, index) => {
         return {
           id: cert.id || index + 1,
+          rawCert: cert,
           title: cert.title,
           issuer: cert.issuer,
           year: cert.year,
           badge: cert.badge,
           color: cert.color,
           file: cert.file,
-          image: generateCertThumbnail(cert),
+          image: generateCertThumbnail(cert, isLight),
+          imageDark: generateCertThumbnail(cert, false),
+          imageLight: generateCertThumbnail(cert, true),
           href: `Certifications/${encodeURIComponent(cert.file)}`
         };
       });
 
-      // Prepare columns
+      // Prepare columns (strictly balanced to equal count to eliminate row disappearance)
       this.columnItems = Array.from({ length: this.columns }, () => []);
       this.items.forEach((item, i) => {
         this.columnItems[i % this.columns].push(item);
       });
-      this.columnItems = this.columnItems.map((col) => (col.length ? col : this.items.slice(0, 1)));
+      
+      // Ensure all columns have identical item counts for seamless repeating wraps
+      const maxLen = Math.max(...this.columnItems.map((col) => col.length));
+      this.columnItems.forEach((col) => {
+        let padIdx = 0;
+        while (col.length < maxLen) {
+          col.push(col[padIdx % col.length]);
+          padIdx++;
+        }
+      });
 
       this.calculateDimensions();
       this.render();
@@ -187,20 +221,20 @@
     }
 
     calculateDimensions() {
-      this.containerHeight = this.containerEl ? this.containerEl.offsetHeight || 680 : 680;
+      this.containerHeight = this.containerEl ? this.containerEl.offsetHeight || 600 : 600;
       const unit = this.tileHeight + this.gap;
 
-      // Dynamic calculation to ensure zero missing boxes during 3D perspective scroll:
+      // Equal height across all columns with generous copies to prevent any row or tile disappearing:
       this.columnMeta = this.columnItems.map((col) => {
         const copyHeight = Math.max(unit, col.length * unit);
-        const copies = Math.max(6, Math.ceil((this.containerHeight * 5) / copyHeight) + 2);
+        const copies = Math.max(4, Math.ceil((this.containerHeight * 2.5) / copyHeight) + 3);
         return { copyHeight, copies };
       });
 
       const dirSign = this.direction === 'up' ? 1 : -1;
       this.baseVelocities = this.columnItems.map((_, c) => {
         const altSign = c % 2 === 0 ? 1 : -1;
-        return this.speed * columnFactor(c, variance(this.variance)) * dirSign * altSign;
+        return this.speed * columnFactor(c, this.variance) * dirSign * altSign;
       });
 
       this.offsets = this.columnMeta.map((meta, c) => meta.copyHeight * ((c * 0.37) % 1));
@@ -289,8 +323,6 @@
             const img = document.createElement('img');
             img.src = item.image;
             img.alt = item.title;
-            img.loading = 'lazy';
-            img.decoding = 'async';
             img.draggable = false;
 
             const overlay = document.createElement('span');
@@ -322,9 +354,6 @@
                 e.preventDefault();
                 e.stopPropagation();
                 window.open(item.href, '_blank', 'noopener,noreferrer');
-                if (window.showToast) {
-                  window.showToast(`Opening Credential: ${item.title} (${item.issuer})`);
-                }
               }
             });
 
@@ -332,9 +361,6 @@
               e.preventDefault();
               e.stopPropagation();
               window.open(item.href, '_blank', 'noopener,noreferrer');
-              if (window.showToast) {
-                window.showToast(`Opening Credential: ${item.title} (${item.issuer})`);
-              }
             });
 
             trackEl.appendChild(tileLink);
@@ -433,9 +459,6 @@
               if (!e.target.closest('.cert-deck-action')) {
                 window.open(`Certifications/${encodeURIComponent(cert.file)}`, '_blank', 'noopener,noreferrer');
               }
-              if (window.showToast) {
-                window.showToast(`Opening Credential: ${cert.title} (${cert.issuer})`);
-              }
             });
 
             categoryDeck.appendChild(card);
@@ -446,9 +469,12 @@
 
     applyPlaneTransform(px = 0, py = 0) {
       if (!this.planeEl) return;
+      // Optical perspective centering: compensate for rotateY(-14deg) rightward visual projection
+      const xOffset = window.innerWidth < 680 ? -20 : window.innerWidth < 1024 ? -45 : -75;
       this.planeEl.style.transform =
-        `translate(-50%, -50%) ` +
-        `rotateX(${this.tilt + py}deg) rotateY(${this.turn + px}deg) rotateZ(${this.roll}deg)`;
+        `translate(calc(-50% + ${xOffset}px), -50%) scale(1.18) ` +
+        `rotateX(${this.tilt + py}deg) rotateY(${this.turn + px}deg) rotateZ(${this.roll}deg) ` +
+        `translateZ(${-this.depth}px)`;
     }
 
     activate(tile, item) {
@@ -487,15 +513,13 @@
     attachEvents() {
       if (!this.containerEl) return;
 
-      // Smooth pointer parallax tracking with movement detection
+      // Smooth pointer parallax tracking
       let pointerTicking = false;
       this.containerEl.addEventListener('pointermove', (e) => {
-        // When cursor moves, animation starts moving again!
-        this.isPointerMoving = true;
-        if (this.pointerMoveTimer) clearTimeout(this.pointerMoveTimer);
-        this.pointerMoveTimer = setTimeout(() => {
-          this.isPointerMoving = false;
-        }, 220);
+        const currentTile = e.target.closest('.drift-wall__tile');
+        if (currentTile) {
+          this.isBoxHovered = true;
+        }
 
         if (this.parallax <= 0 || this.reduced) return;
         if (!pointerTicking) {
@@ -511,7 +535,7 @@
         }
       }, { passive: true });
 
-      // Fast, lag-free tile hover: pause scrolling when resting on the box
+      // Fast, lag-free tile hover: completely stops animation while on any box
       this.containerEl.addEventListener('pointerover', (e) => {
         const tile = e.target.closest('.drift-wall__tile');
         if (tile) {
@@ -527,9 +551,13 @@
         if (!related || !this.containerEl.contains(related)) {
           this.isBoxHovered = false;
           this.release();
-        } else if (!related.closest('.drift-wall__tile')) {
-          this.isBoxHovered = false;
-          this.release();
+        } else {
+          const nextTile = related.closest('.drift-wall__tile');
+          if (!nextTile) {
+            // Cursor is away from all boxes (in gap or outside)
+            this.isBoxHovered = false;
+            this.release();
+          }
         }
       }, { passive: true });
 
@@ -540,8 +568,6 @@
       this.containerEl.addEventListener('pointerleave', () => {
         this.wallHovered = false;
         this.isBoxHovered = false;
-        this.isPointerMoving = false;
-        if (this.pointerMoveTimer) clearTimeout(this.pointerMoveTimer);
         this.pointer = { x: 0, y: 0 };
         this.release();
       }, { passive: true });
@@ -549,7 +575,7 @@
       // ResizeObserver for dynamic height adjustments
       if (typeof ResizeObserver !== 'undefined') {
         const ro = new ResizeObserver(([entry]) => {
-          const newHeight = entry.contentRect.height || 680;
+          const newHeight = entry.contentRect.height || 600;
           if (newHeight !== this.containerHeight) {
             this.containerHeight = newHeight;
             this.calculateDimensions();
@@ -558,13 +584,16 @@
         ro.observe(this.containerEl);
       }
 
-      // Responsive window resize (strictly maintains 3 columns)
+      // Responsive window resize matching React Bits specifications
       window.addEventListener('resize', () => {
-        this.columns = 3;
-        const newW = window.innerWidth < 420 ? 150 : window.innerWidth < 680 ? 175 : window.innerWidth < 1024 ? 230 : 310;
-        const newH = window.innerWidth < 420 ? 98 : window.innerWidth < 680 ? 115 : window.innerWidth < 1024 ? 152 : 200;
-        const newG = window.innerWidth < 420 ? 10 : window.innerWidth < 680 ? 14 : window.innerWidth < 1024 ? 18 : 24;
-        if (newW !== this.tileWidth || newH !== this.tileHeight) {
+        const isMobile = window.innerWidth < 680;
+        const isTablet = window.innerWidth < 1024;
+        const newCols = isMobile ? 3 : isTablet ? 4 : 5;
+        const newW = isMobile ? 150 : isTablet ? 175 : 200;
+        const newH = isMobile ? 99 : isTablet ? 115 : 132;
+        const newG = isMobile ? 12 : isTablet ? 14 : 18;
+        if (newCols !== this.columns || newW !== this.tileWidth || newH !== this.tileHeight) {
+          this.columns = newCols;
           this.tileWidth = newW;
           this.tileHeight = newH;
           this.gap = newG;
@@ -572,14 +601,35 @@
         }
       });
 
-      // Reactive theme styling
+      // Reactive theme styling with real-time SVG thumbnail replacement
       window.addEventListener('themeChanged', (e) => {
-        const theme = e.detail?.theme || document.documentElement.getAttribute('data-theme');
+        const theme = e.detail?.theme || document.documentElement.getAttribute('data-theme') || 'light';
+        const isLight = theme === 'light';
+        this.updateTheme(isLight);
         if (this.containerEl) {
-          this.containerEl.style.setProperty('--dw-overlay', theme === 'light' ? '#c8d8ec' : '#060010');
-          this.containerEl.style.setProperty('--dw-dim', theme === 'light' ? '0.85' : '0.65');
+          this.containerEl.style.setProperty('--dw-overlay', isLight ? '#dbeafe' : '#060010');
+          this.containerEl.style.setProperty('--dw-dim', isLight ? '0.92' : '0.65');
         }
       });
+    }
+
+    updateTheme(isLight) {
+      this.items.forEach((item) => {
+        item.image = isLight ? item.imageLight : item.imageDark;
+      });
+      if (this.planeEl) {
+        const tiles = this.planeEl.querySelectorAll('.drift-wall__tile');
+        tiles.forEach((tile) => {
+          const certId = parseInt(tile.getAttribute('data-cert-id'), 10);
+          const matched = this.items.find((it) => it.id === certId);
+          if (matched) {
+            const img = tile.querySelector('img');
+            if (img && img.src !== matched.image) {
+              img.src = matched.image;
+            }
+          }
+        });
+      }
     }
 
     toggleDirection() {
@@ -635,12 +685,11 @@
             const meta = this.columnMeta[c];
             if (!meta) continue;
 
-            // When cursor is resting on the box, scrolling down/up stops. When cursor moves, it moves again!
-            const boxStopped = this.isBoxHovered && !this.isPointerMoving;
-            const factor = boxStopped ? 0 : 1;
+            // When cursor is on any certification box, animation stops completely until cursor leaves the box
+            const factor = this.isBoxHovered ? 0 : 1;
             const target = this.baseVelocities[c] * factor;
 
-            const ease = 1 - Math.exp(-dt / (target === 0 ? 0.12 : 0.28));
+            const ease = 1 - Math.exp(-dt / (target === 0 ? 0.08 : 0.28));
             this.velocities[c] += (target - this.velocities[c]) * ease;
 
             let next = (this.offsets[c] ?? 0) + this.velocities[c] * dt;
@@ -648,20 +697,13 @@
             this.offsets[c] = next;
 
             const el = this.trackEls[c];
-            if (el) {
-              // Offset by 2 full copy heights to prevent disappearing edge tiles during tilt
-              const startBuffer = 2 * meta.copyHeight;
-              el.style.transform = `translate3d(0, ${-(startBuffer + next)}px, 0)`;
-            }
+            if (el) el.style.transform = `translate3d(0, ${-next}px, 0)`;
           }
         } else {
           for (let c = 0; c < this.trackEls.length; c++) {
             const el = this.trackEls[c];
             const meta = this.columnMeta[c];
-            if (el && meta) {
-              const startBuffer = 2 * meta.copyHeight;
-              el.style.transform = `translate3d(0, ${-(startBuffer + (this.offsets[c] ?? 0))}px, 0)`;
-            }
+            if (el && meta) el.style.transform = `translate3d(0, ${-(this.offsets[c] ?? 0)}px, 0)`;
           }
         }
 
@@ -697,26 +739,30 @@
 
     const certs = typeof CERTIFICATIONS_DATA !== 'undefined' ? CERTIFICATIONS_DATA : [];
 
+    const isMobile = window.innerWidth < 680;
+    const isTablet = window.innerWidth < 1024;
+
     const driftWallInstance = new DriftWallEngine(mount, {
       items: certs,
-      columns: 3,
-      tileWidth: window.innerWidth < 420 ? 150 : window.innerWidth < 680 ? 175 : window.innerWidth < 1024 ? 230 : 310,
-      tileHeight: window.innerWidth < 420 ? 98 : window.innerWidth < 680 ? 115 : window.innerWidth < 1024 ? 152 : 200,
-      gap: window.innerWidth < 420 ? 10 : window.innerWidth < 680 ? 14 : window.innerWidth < 1024 ? 18 : 24,
-      radius: 16,
-      tilt: 8,
-      turn: 0,
+      columns: isMobile ? 3 : isTablet ? 4 : 5,
+      tileWidth: isMobile ? 150 : isTablet ? 175 : 200,
+      tileHeight: isMobile ? 99 : isTablet ? 115 : 132,
+      gap: isMobile ? 12 : isTablet ? 14 : 18,
+      radius: 14,
+      tilt: 16,
+      turn: -14,
       roll: 0,
-      perspective: 1400,
-      depth: 0,
-      speed: 38,
+      perspective: 1200,
+      depth: 120,
+      speed: 42,
       direction: 'up',
-      variance: 0.35,
-      parallax: 0.4,
+      variance: 0.45,
+      parallax: 0.6,
       pauseOnHover: true,
-      lift: 65,
-      fade: 0.5,
-      dim: 0.65,
+      lift: 64,
+      fade: 0.1,
+      dim: 0.94,
+      overlayColor: 'transparent',
       grayscale: false
     });
 

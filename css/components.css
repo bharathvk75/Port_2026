@@ -83,18 +83,18 @@
    2. HERO SECTION & PHOTO WITH TOP NAME AND DEGREE HEADER
    -------------------------------------------------------------------------- */
 .hero {
-  min-height: 100vh;
+  min-height: 92vh;
   display: flex;
   align-items: center;
   position: relative;
-  padding: 8.5rem 0 4.5rem;
+  padding: 5.2rem 0 3rem;
   overflow: hidden;
 }
 
 .hero-container {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
-  align-items: center;
+  align-items: flex-start;
   gap: 3.5rem;
   width: 100%;
 }
@@ -102,9 +102,10 @@
 .hero-content {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.35rem;
   position: relative;
   z-index: 2;
+  padding-top: 0.5rem;
 }
 
 /* Refined Status Row */
@@ -320,6 +321,7 @@
   justify-content: center;
   align-items: center;
   z-index: 2;
+  margin-top: 2.5rem;
 }
 
 .photo-aura-backdrop {
@@ -2349,9 +2351,9 @@
 .dispatch-station-grid {
   display: grid;
   grid-template-columns: 1fr 1.15fr;
-  gap: 2rem;
-  align-items: stretch;
-  margin-top: 1.5rem;
+  gap: 2.5rem;
+  align-items: start;
+  margin-top: 2rem;
 }
 
 .dispatch-telemetry-panel,
@@ -2367,15 +2369,22 @@
   -webkit-backdrop-filter: none !important;
 }
 
-/* Telemetry Header */
-.telemetry-panel-header {
+/* Symmetrical Header Baselines */
+.telemetry-panel-header,
+.console-panel-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1.5rem;
+  min-height: 48px;
+  margin-bottom: 1.75rem;
   padding-bottom: 1.25rem;
   border-bottom: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
-  gap: 1rem;
+  box-sizing: border-box;
+}
+
+[data-theme="light"] .telemetry-panel-header,
+[data-theme="light"] .console-panel-header {
+  border-bottom-color: rgba(0, 0, 0, 0.08);
 }
 
 .radar-status-row {
@@ -2386,11 +2395,12 @@
 
 .radar-pulse-dot {
   position: relative;
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   background: #10b981;
   box-shadow: 0 0 12px #10b981;
+  flex-shrink: 0;
 }
 
 .radar-pulse-dot::after {
@@ -2416,9 +2426,20 @@
 .radar-status-text {
   font-family: var(--font-mono, monospace);
   font-size: 0.82rem;
-  font-weight: 600;
+  font-weight: 700;
   color: #10b981;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.5px;
+}
+
+.telemetry-avail-badge {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #10b981;
 }
 
 /* Direct Beacons List */
@@ -2426,16 +2447,18 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .beacon-card {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 1rem;
-  padding: 1rem 1.25rem;
-  border-radius: var(--radius-lg, 14px);
+  padding: 1.1rem 1.35rem;
+  border-radius: var(--radius-lg, 16px);
   transition: all 0.25s ease;
+  box-sizing: border-box;
 }
 
 .beacon-card:hover {
@@ -2463,7 +2486,7 @@
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 3px;
 }
 
 .beacon-label {
@@ -2491,12 +2514,20 @@
 .beacon-actions {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
+  flex-shrink: 0;
 }
 
 .beacon-action-btn {
-  padding: 6px 12px !important;
-  font-size: 0.76rem !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 14px !important;
+  font-size: 0.78rem !important;
+  font-weight: 600;
+  border-radius: 9999px !important;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 /* End Action Buttons Stack (Resume, LinkedIn, GitHub) */
@@ -2504,7 +2535,6 @@
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
-  margin-top: 0.5rem;
 }
 
 .end-liquid-btn {
@@ -2512,23 +2542,33 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 0.95rem 1.25rem;
+  padding: 1.05rem 1.35rem;
   border-radius: var(--radius-lg, 14px);
+  text-decoration: none;
+  box-sizing: border-box;
 }
 
 .end-btn-left {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 0.92rem;
+  gap: 12px;
+  font-size: 0.93rem;
   font-weight: 600;
 }
 
 .end-btn-tag {
   font-family: var(--font-mono, monospace);
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   font-weight: 700;
   color: var(--color-primary, #818cf8);
+  background: rgba(99, 102, 241, 0.12);
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+[data-theme="light"] .end-btn-tag {
+  color: #4f46e5;
+  background: rgba(79, 70, 229, 0.1);
 }
 
 /* Console Panel (Right Form) */

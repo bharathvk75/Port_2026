@@ -95,9 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
           </svg>
         `;
       }
-      if (window.showToast) {
-        window.showToast(soundEnabled ? '🔊 Audio Micro-Interactions On' : '🔇 Audio Muted');
-      }
       if (soundEnabled) playTickSound(800, 0.08);
     });
   }
