@@ -221,36 +221,6 @@
           { label: 'License', val: 'GPL-3.0' }
         ]
       }
-    },
-    {
-      id: 'induspic',
-      title: 'Induspic Enterprise',
-      category: 'Industrial Tech',
-      domain: 'automation',
-      status: 'Live Commercial',
-      statusColor: '#06b6d4',
-      subtitle: 'Chemical Products Operations & Quotation Engine',
-      desc: 'Commercial enterprise web application powering Induspic Engineers Chemicals Division. Modernized digital industrial product catalogs, technical MSDS compliance sheets, and automated B2B quote inquiries.',
-      features: [
-        'Interactive product directory with dynamic MSDS technical datasheets',
-        'Real-time B2B quotation dispatch and inquiry telemetry',
-        'Responsive corporate architecture with interactive vCard integration'
-      ],
-      tags: ['HTML5/JS', 'Enterprise UI', 'Chemicals B2B', 'MSDS Engine'],
-      github: 'https://github.com/bharathvk75/Induspic',
-      blueprint: {
-        nodes: [
-          { num: '01', label: 'Product Catalog', sub: '100+ Chemical Formulations' },
-          { num: '02', label: 'MSDS Engine', sub: 'Dynamic Safety Datasheet Engine' },
-          { num: '03', label: 'Quote Dispatcher', sub: 'Automated Pricing & B2B Inquiry' },
-          { num: '04', label: 'Client Telemetry', sub: 'vCard & Industrial CRM Bridge' }
-        ],
-        benchmarks: [
-          { label: 'Production Status', val: 'Live Commercial' },
-          { label: 'Datasheets', val: 'Full MSDS Dynamic' },
-          { label: 'Inquiry Speed', val: 'Instant Telemetry' }
-        ]
-      }
     }
   ];
 

@@ -7,7 +7,7 @@
 (function () {
   'use strict';
 
-  // SVG Thumbnail Generator for Verified Credentials
+  // SVG Thumbnail Generator for Verified Credentials with High Legibility
   function generateCertThumbnail(cert) {
     const color = cert.color || '#6366f1';
     const escapedTitle = cert.title
@@ -23,7 +23,7 @@
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;');
 
-    // Split title into 2 lines if needed
+    // Split title into 2 lines if needed for optimal card presentation
     const words = escapedTitle.split(' ');
     let line1 = words.slice(0, Math.ceil(words.length / 2)).join(' ');
     let line2 = words.slice(Math.ceil(words.length / 2)).join(' ');
@@ -33,71 +33,70 @@
     }
 
     const svg = `
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 276" width="420" height="276">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 288" width="440" height="288">
         <defs>
           <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#0e1322" />
-            <stop offset="50%" stop-color="#141c30" />
-            <stop offset="100%" stop-color="#090d18" />
+            <stop offset="0%" stop-color="#0a0e1a" />
+            <stop offset="50%" stop-color="#111827" />
+            <stop offset="100%" stop-color="#070a12" />
           </linearGradient>
-          <radialGradient id="glow" cx="80%" cy="20%" r="70%">
-            <stop offset="0%" stop-color="${color}" stop-opacity="0.35" />
-            <stop offset="60%" stop-color="${color}" stop-opacity="0.08" />
+          <radialGradient id="glow" cx="82%" cy="18%" r="75%">
+            <stop offset="0%" stop-color="${color}" stop-opacity="0.4" />
+            <stop offset="55%" stop-color="${color}" stop-opacity="0.1" />
             <stop offset="100%" stop-color="${color}" stop-opacity="0" />
           </radialGradient>
-          <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
-            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1" />
+          <pattern id="grid" width="22" height="22" patternUnits="userSpaceOnUse">
+            <path d="M 22 0 L 0 0 0 22" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1" />
           </pattern>
           <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="${color}" stop-opacity="0.8" />
-            <stop offset="50%" stop-color="rgba(255,255,255,0.2)" />
-            <stop offset="100%" stop-color="${color}" stop-opacity="0.5" />
+            <stop offset="0%" stop-color="${color}" stop-opacity="0.9" />
+            <stop offset="50%" stop-color="rgba(255,255,255,0.25)" />
+            <stop offset="100%" stop-color="${color}" stop-opacity="0.6" />
           </linearGradient>
         </defs>
 
         <!-- Base Background Card -->
-        <rect width="420" height="276" rx="14" fill="url(#bgGrad)" />
-        <rect width="420" height="276" rx="14" fill="url(#grid)" />
-        <rect width="420" height="276" rx="14" fill="url(#glow)" />
+        <rect width="440" height="288" rx="16" fill="url(#bgGrad)" />
+        <rect width="440" height="288" rx="16" fill="url(#grid)" />
+        <rect width="440" height="288" rx="16" fill="url(#glow)" />
         
-        <!-- Luxury Border -->
-        <rect x="1.5" y="1.5" width="417" height="273" rx="13" fill="none" stroke="url(#borderGrad)" stroke-width="2" />
-        <rect x="7" y="7" width="406" height="262" rx="10" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+        <!-- Luxury Dual Borders -->
+        <rect x="2" y="2" width="436" height="284" rx="15" fill="none" stroke="url(#borderGrad)" stroke-width="2.5" />
+        <rect x="8" y="8" width="424" height="272" rx="11" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1" />
 
         <!-- Header: Issuer Badge -->
-        <g transform="translate(24, 22)">
-          <rect width="138" height="30" rx="15" fill="${color}" fill-opacity="0.28" stroke="${color}" stroke-opacity="0.85" stroke-width="1.5" />
-          <circle cx="15" cy="15" r="5" fill="${color}" />
-          <text x="28" y="19" fill="#ffffff" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="11.5" font-weight="800" letter-spacing="0.8">${escapedBadge.toUpperCase()}</text>
+        <g transform="translate(24, 24)">
+          <rect width="146" height="32" rx="16" fill="${color}" fill-opacity="0.32" stroke="${color}" stroke-opacity="0.95" stroke-width="1.8" />
+          <circle cx="16" cy="16" r="5" fill="${color}" />
+          <text x="30" y="21" fill="#ffffff" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="12.5" font-weight="800" letter-spacing="0.8">${escapedBadge.toUpperCase()}</text>
         </g>
 
         <!-- Year Pill -->
-        <g transform="translate(328, 22)">
-          <rect width="68" height="30" rx="15" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.22)" stroke-width="1" />
-          <text x="34" y="19" fill="#e2e8f0" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700">${cert.year}</text>
+        <g transform="translate(344, 24)">
+          <rect width="72" height="32" rx="16" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.28)" stroke-width="1.2" />
+          <text x="36" y="21" fill="#f1f5f9" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="800">${cert.year}</text>
         </g>
 
         <!-- Issuer Subtitle -->
-        <text x="24" y="86" fill="${color}" font-family="'JetBrains Mono', monospace" font-size="12.5" font-weight="700" letter-spacing="0.8">${escapedIssuer.toUpperCase()}</text>
+        <text x="24" y="92" fill="${color}" font-family="'JetBrains Mono', monospace" font-size="13.5" font-weight="800" letter-spacing="0.8">${escapedIssuer.toUpperCase()}</text>
 
-        <!-- Certificate Title -->
-        <text x="24" y="122" fill="#ffffff" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="20" font-weight="800" letter-spacing="-0.3">
+        <!-- Certificate Title (Large & Readable) -->
+        <text x="24" y="130" fill="#ffffff" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="23" font-weight="800" letter-spacing="-0.3">
           <tspan x="24" dy="0">${line1}</tspan>
-          ${line2 ? `<tspan x="24" dy="28">${line2}</tspan>` : ''}
+          ${line2 ? `<tspan x="24" dy="30" font-size="22">${line2}</tspan>` : ''}
         </text>
 
         <!-- Bottom Verified Credential Seal -->
-        <g transform="translate(24, 220)">
-          <!-- Seal Icon -->
-          <circle cx="12" cy="12" r="11" fill="${color}" fill-opacity="0.3" stroke="${color}" stroke-width="1.8" />
-          <path d="M7 12 L10.5 15.5 L17 8.5" fill="none" stroke="${color}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
-          <text x="32" y="16" fill="#cbd5e1" font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="600" letter-spacing="0.6">VERIFIED CREDENTIAL</text>
+        <g transform="translate(24, 230)">
+          <circle cx="13" cy="13" r="12" fill="${color}" fill-opacity="0.35" stroke="${color}" stroke-width="2" />
+          <path d="M7.5 13 L11.5 17 L18.5 9.5" fill="none" stroke="${color}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+          <text x="35" y="17.5" fill="#e2e8f0" font-family="'JetBrains Mono', monospace" font-size="11.5" font-weight="700" letter-spacing="0.6">VERIFIED CREDENTIAL</text>
         </g>
 
         <!-- Clickable Action Badge -->
-        <g transform="translate(346, 218)">
-          <rect width="50" height="26" rx="13" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.25)" stroke-width="1" />
-          <text x="25" y="17" fill="#ffffff" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700">PDF ↗</text>
+        <g transform="translate(356, 226)">
+          <rect width="60" height="30" rx="15" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="1.2" />
+          <text x="30" y="19.5" fill="#ffffff" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800">PDF ↗</text>
         </g>
       </svg>
     `.trim();
@@ -121,21 +120,21 @@
       // Extract options with matching React Bits defaults
       this.rawItems = options.items || [];
       this.columns = options.columns || (window.innerWidth < 640 ? 3 : window.innerWidth < 1024 ? 4 : 5);
-      this.tileWidth = options.tileWidth || (window.innerWidth < 640 ? 155 : window.innerWidth < 1024 ? 180 : 210);
-      this.tileHeight = options.tileHeight || (window.innerWidth < 640 ? 102 : window.innerWidth < 1024 ? 118 : 138);
-      this.gap = options.gap || 18;
-      this.radius = options.radius || 14;
+      this.tileWidth = options.tileWidth || (window.innerWidth < 420 ? 150 : window.innerWidth < 680 ? 175 : window.innerWidth < 1024 ? 230 : 280);
+      this.tileHeight = options.tileHeight || (window.innerWidth < 420 ? 98 : window.innerWidth < 680 ? 115 : window.innerWidth < 1024 ? 152 : 184);
+      this.gap = options.gap || (window.innerWidth < 420 ? 10 : window.innerWidth < 680 ? 13 : window.innerWidth < 1024 ? 16 : 22);
+      this.radius = options.radius || 16;
       this.tilt = options.tilt !== undefined ? options.tilt : 16;
       this.turn = options.turn !== undefined ? options.turn : -14;
       this.roll = options.roll || 0;
       this.perspective = options.perspective || 1200;
       this.depth = options.depth || 120;
-      this.speed = options.speed || 42;
+      this.speed = options.speed || 40;
       this.direction = options.direction || 'up';
       this.variance = options.variance !== undefined ? options.variance : 0.45;
       this.parallax = options.parallax !== undefined ? options.parallax : 0.6;
       this.pauseOnHover = options.pauseOnHover || false;
-      this.lift = options.lift || 64;
+      this.lift = options.lift || 72;
       this.fade = options.fade !== undefined ? options.fade : 0.6;
       this.dim = options.dim !== undefined ? options.dim : 0.65;
       this.grayscale = options.grayscale || false;
@@ -151,9 +150,10 @@
       this.pointer = { x: 0, y: 0 };
       this.pointerDamped = { x: 0, y: 0 };
       this.lastTs = null;
-      this.containerHeight = 600;
-      this.activeId = null;
+      this.containerHeight = 680;
+      this.activeTileEl = null;
       this.reduced = prefersReducedMotion();
+      this.currentCategory = 'all';
 
       this.activePillEl = null;
 
@@ -183,19 +183,22 @@
       });
       this.columnItems = this.columnItems.map((col) => (col.length ? col : this.items.slice(0, 1)));
 
-      this.render();
       this.calculateDimensions();
+      this.render();
       this.attachEvents();
       this.setupObserver();
     }
 
     calculateDimensions() {
-      this.containerHeight = this.containerEl ? this.containerEl.offsetHeight || 600 : 600;
+      this.containerHeight = this.containerEl ? this.containerEl.offsetHeight || 680 : 680;
       const unit = this.tileHeight + this.gap;
 
+      // Dynamic calculation to ensure zero missing boxes during 3D perspective scroll:
+      // Tilted plane perspective (16deg) projects ~2.5x container height.
+      // We generate ample copies (minimum 6 full repetitions) and center them with a 2x copy buffer.
       this.columnMeta = this.columnItems.map((col) => {
         const copyHeight = Math.max(unit, col.length * unit);
-        const copies = Math.max(2, Math.ceil((this.containerHeight * 1.6) / copyHeight) + 1);
+        const copies = Math.max(6, Math.ceil((this.containerHeight * 5) / copyHeight) + 2);
         return { copyHeight, copies };
       });
 
@@ -235,7 +238,7 @@
       plane.className = 'drift-wall__plane';
       this.planeEl = plane;
 
-      // Build Columns & Tracks
+      // Build Columns & Tracks with sufficient copies to prevent disappearance
       this.rebuildTracks();
       container.appendChild(plane);
 
@@ -244,9 +247,9 @@
       activePill.className = 'drift-wall-active-pill';
       activePill.style.opacity = '0';
       activePill.innerHTML = `
-        <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#10b981;"></span>
+        <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#10b981;box-shadow:0 0 10px #10b981;"></span>
         <span class="drift-wall-active-text" style="font-weight:600;">Hover over any tile</span>
-        <span style="font-size:0.75rem;opacity:0.7;margin-left:4px;">↗ Click to open PDF</span>
+        <span style="font-size:0.75rem;opacity:0.75;margin-left:4px;">↗ Click to open PDF</span>
       `;
       container.appendChild(activePill);
 
@@ -268,7 +271,9 @@
         const trackEl = document.createElement('div');
         trackEl.className = 'drift-wall__track';
 
-        const copiesCount = 3;
+        const meta = this.columnMeta ? this.columnMeta[c] : null;
+        const copiesCount = meta ? meta.copies : 6;
+
         for (let copyIdx = 0; copyIdx < copiesCount; copyIdx++) {
           col.forEach((item, itemIdx) => {
             const tileId = `${c}-${copyIdx}-${itemIdx}`;
@@ -320,57 +325,97 @@
     }
 
     filterCategory(categoryKey) {
-      if (this.currentCategory === categoryKey) return;
-      this.currentCategory = categoryKey;
+      this.currentCategory = categoryKey || 'all';
 
-      if (this.containerEl) {
-        this.containerEl.style.transition = 'opacity 0.22s cubic-bezier(0.4, 0, 0.2, 1), transform 0.22s cubic-bezier(0.4, 0, 0.2, 1)';
-        this.containerEl.style.opacity = '0.35';
-        this.containerEl.style.transform = 'scale(0.985)';
-      }
+      const driftMount = document.getElementById('drift-wall-mount');
+      const categoryDeck = document.getElementById('certs-category-deck');
 
-      setTimeout(() => {
-        let filtered = this.rawItems;
-        if (categoryKey && categoryKey !== 'all') {
-          filtered = this.rawItems.filter((it) => {
-            if (categoryKey === 'genai') return it.category === 'genai';
-            if (categoryKey === 'ml') return it.category === 'ml';
-            if (categoryKey === 'python') return it.category === 'python';
-            if (categoryKey === 'cloud') return it.category === 'cloud' || it.category === 'software' || it.category === 'systems';
-            if (categoryKey === 'data') return it.category === 'data' || it.category === 'business';
-            return it.category === categoryKey;
+      if (categoryKey === 'all') {
+        // Mode 1: All Credentials (25) -> Continuous 3D Rolling Wall
+        if (categoryDeck) {
+          categoryDeck.style.display = 'none';
+          categoryDeck.innerHTML = '';
+        }
+        if (driftMount) {
+          driftMount.style.display = 'block';
+        }
+        this.startLoop();
+      } else {
+        // Mode 2: Specific Category -> Dedicated Single-Instance Showcase Deck (Zero duplicates)
+        this.stopLoop();
+        if (driftMount) {
+          driftMount.style.display = 'none';
+        }
+
+        if (categoryDeck) {
+          categoryDeck.style.display = 'grid';
+          categoryDeck.innerHTML = '';
+
+          // Filter matching certificates from the raw 25 items catalog (each shown exactly ONCE)
+          const matches = this.rawItems.filter((cert) => {
+            if (categoryKey === 'genai') return cert.category === 'genai';
+            if (categoryKey === 'ml') return cert.category === 'ml';
+            if (categoryKey === 'python') return cert.category === 'python';
+            if (categoryKey === 'cloud') return cert.category === 'cloud' || cert.category === 'software' || cert.category === 'systems';
+            if (categoryKey === 'data') return cert.category === 'data' || cert.category === 'business';
+            return cert.category === categoryKey;
           });
-          while (filtered.length < 15 && filtered.length > 0) {
-            filtered = [...filtered, ...filtered];
+
+          if (matches.length === 0) {
+            categoryDeck.innerHTML = `
+              <div style="grid-column: 1 / -1; text-align: center; padding: 3rem 1rem; color: var(--text-secondary);">
+                <p style="font-size: 1.1rem; margin-bottom: 0.5rem;">No verified credentials found for this category.</p>
+                <button class="certs-nav-btn active" style="margin: 0 auto;" onclick="document.querySelector('.certs-nav-btn[data-category=all]').click()">View All 25 Credentials</button>
+              </div>
+            `;
+            return;
           }
+
+          matches.forEach((cert) => {
+            const card = document.createElement('div');
+            card.className = 'cert-deck-card';
+            card.style.setProperty('--card-accent', cert.color || '#6366f1');
+
+            card.innerHTML = `
+              <div class="cert-deck-header">
+                <span class="cert-deck-badge" style="--card-accent: ${cert.color || '#6366f1'};">
+                  <span class="cert-deck-dot"></span>
+                  ${cert.badge || 'VERIFIED'}
+                </span>
+                <span class="cert-deck-year">${cert.year}</span>
+              </div>
+
+              <h3 class="cert-deck-title">${cert.title}</h3>
+              <div class="cert-deck-issuer">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                <span>${cert.issuer}</span>
+              </div>
+
+              <div class="cert-deck-footer">
+                <div class="cert-deck-seal">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                  <span>VERIFIED CREDENTIAL</span>
+                </div>
+                <a href="Certifications/${encodeURIComponent(cert.file)}" target="_blank" rel="noreferrer noopener" class="cert-deck-action" title="Open verification PDF for ${cert.title}">
+                  <span>View PDF</span>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </a>
+              </div>
+            `;
+
+            card.querySelector('.cert-deck-action').addEventListener('click', () => {
+              if (window.showToast) {
+                window.showToast(`Opening Credential: ${cert.title} (${cert.issuer})`);
+              }
+            });
+
+            categoryDeck.appendChild(card);
+          });
         }
-
-        this.items = filtered.map((cert, index) => ({
-          id: cert.id || index + 1,
-          title: cert.title,
-          issuer: cert.issuer,
-          year: cert.year,
-          badge: cert.badge,
-          color: cert.color,
-          file: cert.file,
-          image: generateCertThumbnail(cert),
-          href: `Certifications/${encodeURIComponent(cert.file)}`
-        }));
-
-        this.columnItems = Array.from({ length: this.columns }, () => []);
-        this.items.forEach((item, i) => {
-          this.columnItems[i % this.columns].push(item);
-        });
-        this.columnItems = this.columnItems.map((col) => (col.length ? col : this.items.slice(0, 1)));
-
-        this.rebuildTracks();
-        this.calculateDimensions();
-
-        if (this.containerEl) {
-          this.containerEl.style.opacity = '1';
-          this.containerEl.style.transform = 'scale(1)';
-        }
-      }, 200);
+      }
     }
 
     applyPlaneTransform(px, py) {
@@ -433,7 +478,7 @@
         }
       }, { passive: true });
 
-      // Fast, lag-free tile hover using event delegation (NO elementFromPoint!)
+      // Fast, lag-free tile hover using event delegation
       this.containerEl.addEventListener('pointerover', (e) => {
         const tile = e.target.closest('.drift-wall__tile');
         if (tile) {
@@ -460,10 +505,10 @@
         this.release();
       }, { passive: true });
 
-      // ResizeObserver
+      // ResizeObserver for dynamic height adjustments
       if (typeof ResizeObserver !== 'undefined') {
         const ro = new ResizeObserver(([entry]) => {
-          const newHeight = entry.contentRect.height || 600;
+          const newHeight = entry.contentRect.height || 680;
           if (newHeight !== this.containerHeight) {
             this.containerHeight = newHeight;
             this.calculateDimensions();
@@ -474,11 +519,12 @@
 
       // Responsive window resize
       window.addEventListener('resize', () => {
-        const targetCols = window.innerWidth < 640 ? 3 : window.innerWidth < 1024 ? 4 : window.innerWidth < 1400 ? 5 : 6;
+        const targetCols = window.innerWidth < 640 ? 3 : window.innerWidth < 1024 ? 4 : 5;
         if (targetCols !== this.columns) {
           this.columns = targetCols;
-          this.tileWidth = window.innerWidth < 640 ? 155 : window.innerWidth < 1024 ? 180 : window.innerWidth < 1400 ? 210 : 224;
-          this.tileHeight = window.innerWidth < 640 ? 102 : window.innerWidth < 1024 ? 118 : window.innerWidth < 1400 ? 138 : 148;
+          this.tileWidth = window.innerWidth < 420 ? 150 : window.innerWidth < 680 ? 175 : window.innerWidth < 1024 ? 230 : 280;
+          this.tileHeight = window.innerWidth < 420 ? 98 : window.innerWidth < 680 ? 115 : window.innerWidth < 1024 ? 152 : 184;
+          this.gap = window.innerWidth < 420 ? 10 : window.innerWidth < 680 ? 13 : window.innerWidth < 1024 ? 16 : 22;
           this.init();
         }
       });
@@ -507,7 +553,9 @@
       if ('IntersectionObserver' in window) {
         this.observer = new IntersectionObserver(([entry]) => {
           if (entry.isIntersecting) {
-            this.startLoop();
+            if (this.currentCategory === 'all') {
+              this.startLoop();
+            }
           } else {
             this.stopLoop();
           }
@@ -557,7 +605,9 @@
 
             const el = this.trackEls[c];
             if (el) {
-              el.style.transform = `translate3d(0, ${-next}px, 0)`;
+              // Offset by 2 full copy heights to prevent disappearing edge tiles during tilt
+              const startBuffer = 2 * meta.copyHeight;
+              el.style.transform = `translate3d(0, ${-(startBuffer + next)}px, 0)`;
             }
           }
         } else {
@@ -565,7 +615,8 @@
             const el = this.trackEls[c];
             const meta = this.columnMeta[c];
             if (el && meta) {
-              el.style.transform = `translate3d(0, ${-(this.offsets[c] ?? 0)}px, 0)`;
+              const startBuffer = 2 * meta.copyHeight;
+              el.style.transform = `translate3d(0, ${-(startBuffer + (this.offsets[c] ?? 0))}px, 0)`;
             }
           }
         }
@@ -604,22 +655,22 @@
 
     const driftWallInstance = new DriftWallEngine(mount, {
       items: certs,
-      columns: window.innerWidth < 420 ? 3 : window.innerWidth < 640 ? 3 : window.innerWidth < 1024 ? 4 : window.innerWidth < 1400 ? 5 : 6,
-      tileWidth: window.innerWidth < 420 ? 130 : window.innerWidth < 640 ? 145 : window.innerWidth < 1024 ? 180 : window.innerWidth < 1400 ? 210 : 224,
-      tileHeight: window.innerWidth < 420 ? 86 : window.innerWidth < 640 ? 96 : window.innerWidth < 1024 ? 118 : window.innerWidth < 1400 ? 138 : 148,
-      gap: window.innerWidth < 420 ? 9 : window.innerWidth < 640 ? 11 : window.innerWidth < 1024 ? 14 : 18,
-      radius: 14,
+      columns: window.innerWidth < 640 ? 3 : window.innerWidth < 1024 ? 4 : 5,
+      tileWidth: window.innerWidth < 420 ? 150 : window.innerWidth < 680 ? 175 : window.innerWidth < 1024 ? 230 : 280,
+      tileHeight: window.innerWidth < 420 ? 98 : window.innerWidth < 680 ? 115 : window.innerWidth < 1024 ? 152 : 184,
+      gap: window.innerWidth < 420 ? 10 : window.innerWidth < 680 ? 13 : window.innerWidth < 1024 ? 16 : 22,
+      radius: 16,
       tilt: 16,
       turn: -14,
       roll: 0,
       perspective: 1200,
       depth: 120,
-      speed: 42,
+      speed: 40,
       direction: 'up',
       variance: 0.45,
       parallax: 0.6,
       pauseOnHover: false,
-      lift: 64,
+      lift: 72,
       fade: 0.6,
       dim: 0.65,
       grayscale: false

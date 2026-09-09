@@ -301,35 +301,6 @@ document.addEventListener('DOMContentLoaded', () => {
           </a>
         </div>
       `
-    },
-    induspic: {
-      title: 'Induspic Enterprise — Industrial Chemical Products & Quotation Engine',
-      content: `
-        <div style="display:flex;flex-direction:column;gap:1.25rem">
-          <p>Production enterprise web portal engineered for Induspic Engineers Chemicals Division, modernising the commercial presentation of industrial chemicals, technical MSDS compliance sheets, and real-time B2B quotation dispatch.</p>
-          
-          <div style="background:var(--bg-secondary);padding:1.25rem;border-radius:var(--radius-md);border:1px solid var(--border-medium)">
-            <h4 style="color:#06b6d4;margin-bottom:0.5rem">Architecture Workflow:</h4>
-            <ol style="margin-left:1.5rem;display:flex;flex-direction:column;gap:0.4rem;color:var(--text-secondary);font-size:0.92rem">
-              <li><strong>Interactive Product Matrix:</strong> Dynamic filtering by chemical category, technical specifications, and applications.</li>
-              <li><strong>MSDS Technical Datasheets:</strong> Embedded compliance documents with instant viewing and download capabilities.</li>
-              <li><strong>B2B Quotation Telemetry:</strong> Interactive RFQ (Request for Quotation) engine with automated dispatch.</li>
-            </ol>
-          </div>
-
-          <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
-            <span class="tech-tag">HTML5 / JavaScript</span>
-            <span class="tech-tag">Enterprise UI</span>
-            <span class="tech-tag">B2B RFQ Engine</span>
-            <span class="tech-tag">Industrial Tech</span>
-          </div>
-
-          <a href="https://github.com/bharathvk75/Induspic" target="_blank" class="shiny-btn" style="width:max-content">
-            <span>View Source on GitHub</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-          </a>
-        </div>
-      `
     }
   };
 
@@ -377,20 +348,75 @@ document.addEventListener('DOMContentLoaded', () => {
   // ------------------------------------------------------------------------
   // 6. Interactive Contact Form Submission
   // ------------------------------------------------------------------------
+  // 6. Autonomous Collaboration & Dispatch Station Interactive Controller
+  // ------------------------------------------------------------------------
+  const intentPills = document.querySelectorAll('.intent-pill');
+  const subjectInput = document.getElementById('contact-subject');
+  if (intentPills.length > 0 && subjectInput) {
+    intentPills.forEach((pill) => {
+      pill.addEventListener('click', () => {
+        intentPills.forEach((p) => p.classList.remove('active'));
+        pill.classList.add('active');
+        const subject = pill.getAttribute('data-subject');
+        if (subject) {
+          subjectInput.value = subject;
+          subjectInput.focus();
+        }
+      });
+    });
+  }
+
+  // Fast-Dispatch Direct Beacon Copy Buttons
+  document.querySelectorAll('.copy-beacon-btn').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const card = btn.closest('.beacon-card');
+      const copyVal = card?.getAttribute('data-copy') || '';
+      if (copyVal && navigator.clipboard) {
+        navigator.clipboard.writeText(copyVal).then(() => {
+          btn.textContent = 'Copied!';
+          if (window.showToast) {
+            window.showToast(`Copied to clipboard: ${copyVal}`);
+          }
+          setTimeout(() => {
+            btn.textContent = 'Copy';
+          }, 2000);
+        }).catch(() => {
+          if (window.showToast) window.showToast(`Value: ${copyVal}`);
+        });
+      }
+    });
+  });
+
+  // Interactive Transmitter Form Submission
   const contactForm = document.getElementById('contact-form');
-  if (contactForm) {
+  const statusBanner = document.getElementById('dispatch-status-banner');
+  const submitBtn = document.getElementById('dispatch-submit-btn');
+  const btnText = document.getElementById('dispatch-btn-text');
+
+  if (contactForm && submitBtn) {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const submitBtn = contactForm.querySelector('button[type="submit"]');
-      const origText = submitBtn.innerHTML;
+      const name = document.getElementById('contact-name')?.value || 'Colleague';
       submitBtn.disabled = true;
-      submitBtn.innerHTML = `<span>Transmitting Message...</span>`;
+      if (btnText) btnText.textContent = 'Encrypting & Transmitting Payload...';
 
       setTimeout(() => {
         submitBtn.disabled = false;
-        submitBtn.innerHTML = origText;
+        if (btnText) btnText.textContent = 'Transmit Dispatch to Bharath';
+        if (statusBanner) {
+          statusBanner.style.display = 'block';
+          statusBanner.className = 'dispatch-status-banner success';
+          statusBanner.innerHTML = `✓ Transmission Acknowledged! Thank you, <strong>${name}</strong>. Direct dispatch routed to BLR-SYS-01. Expected latency &lt; 2 hours.`;
+        }
         contactForm.reset();
-        showToast('🚀 Message Sent! Bharath will reach back out soon.');
+        if (window.showToast) {
+          window.showToast(`📡 Dispatch successfully transmitted to Bharath!`);
+        }
+        setTimeout(() => {
+          if (statusBanner) statusBanner.style.display = 'none';
+        }, 8000);
       }, 900);
     });
   }

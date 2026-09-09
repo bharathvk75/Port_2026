@@ -328,11 +328,11 @@
   overflow: hidden;
   perspective: var(--dw-perspective, 1200px);
   perspective-origin: 50% 50%;
-  --dw-tile-w: 220px;
-  --dw-tile-h: 144px;
-  --dw-gap: 20px;
-  --dw-radius: 14px;
-  --dw-lift: 64px;
+  --dw-tile-w: 280px;
+  --dw-tile-h: 184px;
+  --dw-gap: 22px;
+  --dw-radius: 16px;
+  --dw-lift: 72px;
   --dw-dim: 0.65;
   --dw-gray: 0;
   --dw-overlay: #060010;
@@ -439,38 +439,37 @@
   opacity: 0.18;
 }
 
+.drift-wall__tile:hover .drift-wall__inner,
 .drift-wall__tile.is-active .drift-wall__inner,
 .drift-wall__tile:focus-visible .drift-wall__inner {
-  opacity: 1;
-  transform: translateZ(var(--dw-lift));
+  opacity: 1 !important;
+  transform: translateZ(var(--dw-lift, 72px)) scale(1.05);
   box-shadow:
-    0 30px 70px -15px rgba(0, 0, 0, 0.8),
-    0 0 0 1.5px rgba(255, 255, 255, 0.5),
-    0 0 25px rgba(99, 102, 241, 0.35);
+    0 32px 75px -12px rgba(0, 0, 0, 0.88),
+    0 0 0 2px rgba(99, 102, 241, 0.9),
+    0 0 35px rgba(99, 102, 241, 0.45) !important;
+  z-index: 50;
 }
 
+[data-theme="light"] .drift-wall__tile:hover .drift-wall__inner,
 [data-theme="light"] .drift-wall__tile.is-active .drift-wall__inner,
 [data-theme="light"] .drift-wall__tile:focus-visible .drift-wall__inner {
   box-shadow:
-    0 30px 65px -15px rgba(40, 60, 100, 0.35),
-    0 0 0 1.5px rgba(59, 130, 246, 0.6),
-    0 0 25px rgba(59, 130, 246, 0.25);
+    0 30px 65px -12px rgba(40, 60, 100, 0.4),
+    0 0 0 2px rgba(59, 130, 246, 0.85),
+    0 0 30px rgba(59, 130, 246, 0.3) !important;
 }
 
+.drift-wall__tile:hover img,
 .drift-wall__tile.is-active img,
 .drift-wall__tile:focus-visible img {
-  filter: grayscale(0) saturate(1.08);
+  filter: grayscale(0) saturate(1.12);
 }
 
+.drift-wall__tile:hover .drift-wall__overlay,
 .drift-wall__tile.is-active .drift-wall__overlay,
 .drift-wall__tile:focus-visible .drift-wall__overlay {
   opacity: 0;
-}
-
-.drift-wall__tile:focus-visible .drift-wall__inner {
-  box-shadow:
-    0 24px 60px -18px rgba(0, 0, 0, 0.7),
-    0 0 0 2px rgba(255, 255, 255, 0.9);
 }
 
 /* Reduced motion support */
@@ -481,38 +480,261 @@
   }
 }
 
-/* Responsive adjustments */
-@media (max-width: 900px) {
+/* Responsive tile scaling */
+@media (max-width: 1024px) {
   .drift-wall {
-    height: 500px;
-    --dw-tile-w: 180px;
-    --dw-tile-h: 118px;
-    --dw-gap: 14px;
-    --dw-lift: 45px;
+    height: 580px;
+    --dw-tile-w: 230px;
+    --dw-tile-h: 152px;
+    --dw-gap: 16px;
+    --dw-lift: 52px;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 680px) {
   .drift-wall {
-    height: 420px;
-    --dw-tile-w: 145px;
-    --dw-tile-h: 96px;
-    --dw-gap: 11px;
-    --dw-lift: 32px;
+    height: 480px;
+    --dw-tile-w: 175px;
+    --dw-tile-h: 115px;
+    --dw-gap: 13px;
+    --dw-lift: 36px;
   }
   .drift-wall-active-pill {
-    max-width: 90vw;
-    padding: 5px 12px;
-    font-size: 0.72rem;
+    max-width: 92vw;
+    padding: 6px 14px;
+    font-size: 0.74rem;
+    bottom: 16px;
   }
 }
 
 @media (max-width: 420px) {
   .drift-wall {
-    height: 380px;
-    --dw-tile-w: 130px;
-    --dw-tile-h: 86px;
-    --dw-gap: 9px;
-    --dw-lift: 24px;
+    height: 420px;
+    --dw-tile-w: 150px;
+    --dw-tile-h: 98px;
+    --dw-gap: 10px;
+    --dw-lift: 26px;
   }
 }
+
+/* ==========================================================================
+   DEDICATED SECTION-WISE CATEGORY DECK (SINGLE-INSTANCE, ZERO DUPLICATES)
+   ========================================================================== */
+
+.certs-category-deck {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  animation: deckFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes deckFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.cert-deck-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+  border-radius: var(--radius-lg, 16px);
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.45);
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.cert-deck-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--card-accent, var(--color-primary, #6366f1));
+  opacity: 0.85;
+  transition: opacity 0.3s ease, height 0.3s ease;
+}
+
+.cert-deck-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow:
+    0 20px 40px -10px rgba(0, 0, 0, 0.6),
+    0 0 25px rgba(99, 102, 241, 0.2);
+}
+
+.cert-deck-card:hover::before {
+  height: 4px;
+  opacity: 1;
+}
+
+[data-theme="light"] .cert-deck-card {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 25px -8px rgba(70, 90, 130, 0.12);
+}
+
+[data-theme="light"] .cert-deck-card:hover {
+  box-shadow:
+    0 18px 35px -8px rgba(70, 90, 130, 0.2),
+    0 0 25px rgba(59, 130, 246, 0.15);
+  border-color: rgba(59, 130, 246, 0.35);
+}
+
+.cert-deck-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  gap: 0.75rem;
+}
+
+.cert-deck-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  background: rgba(99, 102, 241, 0.15);
+  color: var(--card-accent, #818cf8);
+  border: 1px solid var(--card-accent, rgba(99, 102, 241, 0.4));
+}
+
+.cert-deck-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.cert-deck-year {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted, #94a3b8);
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="light"] .cert-deck-year {
+  background: rgba(0, 0, 0, 0.05);
+  color: #64748b;
+}
+
+.cert-deck-title {
+  font-size: 1.08rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--text-primary, #f8fafc);
+  margin-bottom: 0.6rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cert-deck-issuer {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--card-accent, #a5b4fc);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cert-deck-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: auto;
+  gap: 0.5rem;
+}
+
+[data-theme="light"] .cert-deck-footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.cert-deck-seal {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #10b981;
+}
+
+.cert-deck-seal svg {
+  width: 14px;
+  height: 14px;
+}
+
+.cert-deck-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  font-size: 0.76rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.cert-deck-card:hover .cert-deck-action {
+  background: var(--card-accent, #6366f1);
+  border-color: var(--card-accent, #6366f1);
+  color: #ffffff;
+  transform: translateX(2px);
+}
+
+[data-theme="light"] .cert-deck-action {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #0f172a;
+}
+
+@media (max-width: 640px) {
+  .certs-category-deck {
+    grid-template-columns: 1fr;
+    padding: 0.5rem 1rem 2rem;
+    gap: 1rem;
+  }
+  .cert-deck-card {
+    padding: 1.15rem;
+  }
+  .cert-deck-title {
+    font-size: 0.98rem;
+  }
+}
+
