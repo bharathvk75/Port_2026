@@ -339,7 +339,7 @@
 .hero-live-wrapper {
   position: relative;
   width: 100%;
-  max-width: 380px;
+  max-width: 324px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -356,7 +356,7 @@
 .tilted-card-figure {
   position: relative;
   width: 100%;
-  max-width: 360px;
+  max-width: 306px;
   height: auto;
   perspective: 800px;
   display: flex;
@@ -396,22 +396,22 @@
 .tilted-card-inner {
   position: relative;
   width: 100%;
-  max-width: 360px;
+  max-width: 306px;
   transform-style: preserve-3d;
   will-change: transform;
 }
 
 .tilted-card-img {
   width: 100%;
-  max-width: 360px;
+  max-width: 306px;
   height: auto;
   aspect-ratio: 2 / 3;
   object-fit: cover;
   display: block;
-  border-radius: 20px;
+  border-radius: 18px;
   border: none !important;
   outline: none !important;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
   will-change: transform;
   transform: translateZ(0);
 }
@@ -476,7 +476,7 @@
 .hero-photo-meta-above,
 .hero-photo-meta-below {
   width: 100%;
-  max-width: 360px;
+  max-width: 306px;
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
