@@ -472,10 +472,11 @@
   outline: none;
 }
 
-/* Identity Meta Below Picture - Zero Borders, Clean Typographic Layout */
+/* Identity Meta - Zero Borders, Clean Typographic Layout */
+.hero-photo-meta-above,
 .hero-photo-meta-below {
   width: 100%;
-  padding-top: 1.25rem;
+  max-width: 360px;
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
@@ -484,6 +485,16 @@
   box-shadow: none !important;
   outline: none !important;
   text-align: left;
+}
+
+.hero-photo-meta-above {
+  padding-bottom: 1.15rem;
+  padding-top: 0;
+}
+
+.hero-photo-meta-below {
+  padding-top: 1.25rem;
+  padding-bottom: 0;
 }
 
 .meta-below-name-row {
