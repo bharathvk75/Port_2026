@@ -384,7 +384,8 @@ body.is-scrolling * {
     order: 2;
   }
 
-  .hero-photo-card {
+  .hero-photo-card,
+  .hero-live-wrapper {
     max-width: 360px;
   }
 
@@ -519,7 +520,8 @@ body.is-scrolling * {
     filter: blur(35px);
   }
 
-  .hero-photo-card {
+  .hero-photo-card,
+  .hero-live-wrapper {
     max-width: 320px;
     padding: 0.85rem;
     border-radius: 22px;
@@ -586,7 +588,8 @@ body.is-scrolling * {
     font-size: 1.3rem;
   }
 
-  .hero-photo-card {
+  .hero-photo-card,
+  .hero-live-wrapper {
     max-width: 290px;
   }
 }
