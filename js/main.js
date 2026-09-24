@@ -69,18 +69,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const PROJECT_DETAILS = {
     synapse: {
-      title: 'SYNAPSE — Multi-Agent Autonomous Code Reviewer',
+      title: 'SYNAPSE — Multi-Agent Code Reviewer',
       content: `
         <div style="display:flex;flex-direction:column;gap:1.25rem">
-          <p>SYNAPSE is a distributed multi-agent system designed for automated code health, security auditing, and performance profiling on enterprise pull requests.</p>
+          <p>SYNAPSE is a multi-agent code-review system that analyzes repositories and pull requests for security, maintainability, performance, and coding-practice issues using specialized review agents.</p>
           
           <div style="background:var(--bg-secondary);padding:1.25rem;border-radius:var(--radius-md);border:1px solid var(--border-medium)">
-            <h4 style="color:var(--color-primary);margin-bottom:0.5rem">Architecture Workflow:</h4>
+            <h4 style="color:var(--color-primary);margin-bottom:0.5rem">Architecture & Evaluated Benchmarks:</h4>
             <ol style="margin-left:1.5rem;display:flex;flex-direction:column;gap:0.4rem;color:var(--text-secondary);font-size:0.92rem">
-              <li><strong>GitHub Webhook Ingestion:</strong> Triggers AST parsing and changed file diff isolation.</li>
-              <li><strong>Planner Agent:</strong> Deconstructs code modifications into security, syntax, and performance tasks.</li>
-              <li><strong>Parallel Execution Nodes (LangGraph):</strong> Concurrent evaluation of CWE vulnerabilities, cyclomatic complexity, and unit test coverage.</li>
-              <li><strong>Consensus Engine:</strong> Resolves conflicting suggestions and outputs structured GitHub Markdown review comments.</li>
+              <li><strong>Repository & PR Analysis:</strong> Specialized review agents analyze AST, code maintainability, performance, and security vulnerabilities.</li>
+              <li><strong>Parallel Agent Execution:</strong> Concurrent agent review pipelines with GitHub workflow integration and automated Markdown reports.</li>
+              <li><strong>Effort Reduction:</strong> Reduces manual review effort by <strong>~40%</strong> through structured review outputs.</li>
+              <li><strong>Evaluation Benchmark:</strong> Evaluated across <strong>200+ PR/repository samples</strong>, achieving <strong>78% issue-detection accuracy</strong>.</li>
             </ol>
           </div>
 
@@ -89,11 +89,11 @@ document.addEventListener('DOMContentLoaded', () => {
             <span class="tech-tag">Python</span>
             <span class="tech-tag">FastAPI</span>
             <span class="tech-tag">GitHub Actions</span>
-            <span class="tech-tag">AST</span>
-            <span class="tech-tag">Docker</span>
+            <span class="tech-tag">AI Agents</span>
+            <span class="tech-tag">REST APIs</span>
           </div>
 
-          <a href="https://github.com/bharathvk75" target="_blank" class="shiny-btn" style="width:max-content">
+          <a href="https://github.com/bharathvk75/SYNAPSE" target="_blank" class="shiny-btn" style="width:max-content">
             <span>View Source on GitHub</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
           </a>
@@ -101,30 +101,31 @@ document.addEventListener('DOMContentLoaded', () => {
       `
     },
     deepxmed: {
-      title: 'DeepXMed — AI Medicine Discovery & Verification',
+      title: 'DeepXMed — AI Medicine Discovery Platform',
       content: `
         <div style="display:flex;flex-direction:column;gap:1.25rem">
-          <p>DeepXMed streamlines pharmaceutical discovery, doctor prescription digitisation, drug interaction safety checks, and live inventory lookup across pharmacies.</p>
+          <p>DeepXMed is an AI-assisted medicine discovery platform combining prescription OCR, medicine search, pharmacy discovery, and price comparison across multiple online sources.</p>
           
           <div style="background:var(--bg-secondary);padding:1.25rem;border-radius:var(--radius-md);border:1px solid var(--border-medium)">
-            <h4 style="color:var(--color-accent-cyan);margin-bottom:0.5rem">Architecture Workflow:</h4>
+            <h4 style="color:var(--color-accent-cyan);margin-bottom:0.5rem">Architecture & Evaluated Benchmarks:</h4>
             <ol style="margin-left:1.5rem;display:flex;flex-direction:column;gap:0.4rem;color:var(--text-secondary);font-size:0.92rem">
-              <li><strong>OCR Pipeline:</strong> Preprocesses handwriting and clinical stamps via OpenCV, extracting text via vision LLMs.</li>
-              <li><strong>Medical RAG Engine:</strong> Cross-references active compounds against known contraindication databases in PostgreSQL with pgvector.</li>
-              <li><strong>Pharmacy Discovery:</strong> Geolocation distance calculation and real-time pricing comparison across localized dispensaries.</li>
+              <li><strong>Prescription Processing Pipeline:</strong> OpenCV preprocessing and Vision OCR tested across <strong>1,500+ prescription samples</strong>.</li>
+              <li><strong>OCR Accuracy:</strong> Achieved <strong>~95% recognition accuracy</strong> on the project evaluation set.</li>
+              <li><strong>Medicine Search & Pharmacy Discovery:</strong> Discovers nearby pharmacies and performs cross-store price comparison across multiple sources.</li>
+              <li><strong>Production Stack:</strong> Integrated user authentication, search history, AI-assisted responses, and cloud-based data storage.</li>
             </ol>
           </div>
 
           <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
-            <span class="tech-tag">Generative AI</span>
             <span class="tech-tag">OpenCV</span>
+            <span class="tech-tag">PyTorch</span>
             <span class="tech-tag">OCR</span>
-            <span class="tech-tag">PostgreSQL</span>
             <span class="tech-tag">FastAPI</span>
-            <span class="tech-tag">React</span>
+            <span class="tech-tag">PostgreSQL</span>
+            <span class="tech-tag">Cloud Storage</span>
           </div>
 
-          <a href="https://github.com/bharathvk75" target="_blank" class="shiny-btn" style="width:max-content">
+          <a href="https://github.com/bharathvk75/DeepXmeD" target="_blank" class="shiny-btn" style="width:max-content">
             <span>View Source on GitHub</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
           </a>
@@ -132,30 +133,30 @@ document.addEventListener('DOMContentLoaded', () => {
       `
     },
     aegis: {
-      title: 'AEGIS — Real-Time Edge Video Analytics System',
+      title: 'AEGIS — Real-Time Edge Video Analytics',
       content: `
         <div style="display:flex;flex-direction:column;gap:1.25rem">
-          <p>AEGIS provides low-latency intelligent video analytics for perimeter security, industrial safety compliance, and anomaly detection at the edge.</p>
+          <p>AEGIS is an edge-AI video analytics system for real-time object detection and event monitoring on security-camera video streams.</p>
           
           <div style="background:var(--bg-secondary);padding:1.25rem;border-radius:var(--radius-md);border:1px solid var(--border-medium)">
-            <h4 style="color:var(--color-accent-purple);margin-bottom:0.5rem">Architecture Workflow:</h4>
+            <h4 style="color:var(--color-accent-purple);margin-bottom:0.5rem">Architecture & Evaluated Benchmarks:</h4>
             <ol style="margin-left:1.5rem;display:flex;flex-direction:column;gap:0.4rem;color:var(--text-secondary);font-size:0.92rem">
-              <li><strong>RTSP Video Ingestion:</strong> Hardware-accelerated decoding using OpenCV and NVIDIA TensorRT.</li>
-              <li><strong>Edge Inference:</strong> Quantized lightweight model execution achieving sub-18ms latency.</li>
-              <li><strong>Event Dispatch:</strong> Instant event triggers, bounding box overlays, and asynchronous webhook reporting.</li>
+              <li><strong>Video Stream Ingestion:</strong> Hardware-optimized RTSP security camera stream decoding with OpenCV.</li>
+              <li><strong>Throughput & Accuracy:</strong> Sustains <strong>~40 FPS</strong> while achieving <strong>80% detection accuracy</strong> on the project evaluation dataset.</li>
+              <li><strong>Latency Optimization:</strong> Reduced average inference latency from <strong>39 ms to 24 ms</strong> through pipeline and inference optimizations.</li>
+              <li><strong>Edge Deployment:</strong> Event monitoring and alert triggers containerized with Docker for edge runtime.</li>
             </ol>
           </div>
 
           <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
-            <span class="tech-tag">Computer Vision</span>
             <span class="tech-tag">PyTorch</span>
             <span class="tech-tag">TensorFlow</span>
             <span class="tech-tag">OpenCV</span>
             <span class="tech-tag">Edge AI</span>
-            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Docker</span>
           </div>
 
-          <a href="https://github.com/bharathvk75" target="_blank" class="shiny-btn" style="width:max-content">
+          <a href="https://github.com/bharathvk75/AEGIS" target="_blank" class="shiny-btn" style="width:max-content">
             <span>View Source on GitHub</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
           </a>
@@ -346,32 +347,69 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Interactive Transmitter Form Submission
+  // Real Dispatch Transmitter Form Submission (via FormSubmit AJAX)
   const contactForm = document.getElementById('contact-form');
   const statusBanner = document.getElementById('dispatch-status-banner');
   const submitBtn = document.getElementById('dispatch-submit-btn');
   const btnText = document.getElementById('dispatch-btn-text');
 
   if (contactForm && submitBtn) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const name = document.getElementById('contact-name')?.value || 'Colleague';
+      const name = document.getElementById('contact-name')?.value.trim() || 'Colleague';
+      const email = document.getElementById('contact-email')?.value.trim() || '';
+      const subject = document.getElementById('contact-subject')?.value.trim() || 'Direct Dispatch from Portfolio';
+      const message = document.getElementById('contact-message')?.value.trim() || '';
+
       submitBtn.disabled = true;
       if (btnText) btnText.textContent = 'Transmitting Message...';
 
-      setTimeout(() => {
-        submitBtn.disabled = false;
-        if (btnText) btnText.textContent = 'Transmit Dispatch to Bharath';
+      try {
+        const response = await fetch('https://formsubmit.co/ajax/bharathvk75@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            name: name,
+            email: email,
+            _subject: `[Portfolio Dispatch] ${subject}`,
+            message: message,
+            _template: 'table',
+            _captcha: 'false'
+          })
+        });
+
+        const data = await response.json();
+
+        if (response.ok && (data.success === 'true' || data.success === true || response.status === 200)) {
+          if (statusBanner) {
+            statusBanner.style.display = 'block';
+            statusBanner.className = 'dispatch-status-banner success';
+            statusBanner.innerHTML = `✓ Transmission Dispatched! Thank you, <strong>${name}</strong>. Your message has been routed directly to Bharath's inbox.`;
+          }
+          contactForm.reset();
+        } else {
+          throw new Error(data.message || 'Transmission endpoint rejected');
+        }
+      } catch (err) {
+        // Fallback: If external API blocked or failed, offer direct mailto launch
         if (statusBanner) {
           statusBanner.style.display = 'block';
-          statusBanner.className = 'dispatch-status-banner success';
-          statusBanner.innerHTML = `✓ Transmission Acknowledged! Thank you, <strong>${name}</strong>. Your message has been sent directly to Bharath.`;
+          statusBanner.className = 'dispatch-status-banner warning';
+          const mailtoUrl = `mailto:bharathvk75@gmail.com?subject=${encodeURIComponent('[Portfolio Dispatch] ' + subject)}&body=${encodeURIComponent('From: ' + name + ' (' + email + ')\n\n' + message)}`;
+          statusBanner.innerHTML = `⚠️ Direct transmission encountered a network issue. <a href="${mailtoUrl}" style="color:var(--color-primary);text-decoration:underline;font-weight:700;">Click here to send directly via your email client ↗</a>`;
         }
-        contactForm.reset();
+      } finally {
+        submitBtn.disabled = false;
+        if (btnText) btnText.textContent = 'Transmit Dispatch to Bharath';
         setTimeout(() => {
-          if (statusBanner) statusBanner.style.display = 'none';
-        }, 8000);
-      }, 900);
+          if (statusBanner && statusBanner.classList.contains('success')) {
+            statusBanner.style.display = 'none';
+          }
+        }, 10000);
+      }
     });
   }
 

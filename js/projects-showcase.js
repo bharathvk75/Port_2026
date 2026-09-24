@@ -17,28 +17,28 @@
       title: 'SYNAPSE',
       category: 'Multi-Agent System',
       domain: 'agentic',
-      status: 'Production Grade',
+      status: '78% Detection Accuracy',
       statusColor: '#38bdf8',
-      subtitle: 'Autonomous Multi-Agent Code Reviewer',
-      desc: 'An intelligent multi-agent AI platform capable of autonomously reviewing source code for security vulnerabilities (CWE/OWASP), maintainability, performance bottlenecks, and coding best practices using LangGraph cyclic consensus graphs.',
+      subtitle: 'Multi-Agent Code Reviewer',
+      desc: 'A multi-agent code-review system that analyzes repositories and pull requests for security, maintainability, performance, and coding-practice issues using specialized review agents.',
       features: [
-        'Parallel agent execution with LangGraph cyclic state machine consensus',
-        'Native GitHub Actions workflow & automated PR Markdown triage',
-        'Deterministic AST parsing & intelligent multi-agent prompt orchestration'
+        'Multi-agent code-review system analyzing repos & PRs for security, maintainability, performance, and coding practices',
+        'Parallel agent execution, GitHub workflow integration, structured review outputs, and automated Markdown reports, reducing manual review effort by ~40%',
+        'Evaluated across 200+ PR/repository samples, achieving 78% issue-detection accuracy against the defined evaluation set'
       ],
-      tags: ['LangGraph', 'Python 3.12', 'FastAPI', 'GitHub Actions', 'CWE/OWASP'],
+      tags: ['LangGraph', 'Python', 'FastAPI', 'GitHub Actions', 'AI Agents', 'REST APIs'],
       github: 'https://github.com/bharathvk75/SYNAPSE',
       blueprint: {
         nodes: [
           { num: '01', label: 'PR Ingestion', sub: 'GitHub App / AST Parser' },
-          { num: '02', label: 'Agent Team', sub: 'LangGraph Consensus Graph' },
+          { num: '02', label: 'Agent Team', sub: 'Parallel Specialized Agents' },
           { num: '03', label: 'Security Audit', sub: 'CWE / OWASP Vulnerability Check' },
           { num: '04', label: 'Triage Delivery', sub: 'Automated PR Markdown Review' }
         ],
         benchmarks: [
-          { label: 'Architecture', val: 'LangGraph 0.2' },
-          { label: 'Review Speed', val: '< 3.8s' },
-          { label: 'Consensus Mode', val: 'Parallel Team' }
+          { label: 'Review Effort', val: '~40% Saved' },
+          { label: 'PR Samples', val: '200+ PRs' },
+          { label: 'Accuracy', val: '78%' }
         ]
       }
     },
@@ -47,28 +47,28 @@
       title: 'DeepXMed',
       category: 'Healthcare & Vision AI',
       domain: 'vision',
-      status: 'Vision & RAG',
+      status: '~95% Recognition Accuracy',
       statusColor: '#06b6d4',
-      subtitle: 'AI Medicine Discovery & Prescription OCR Platform',
-      desc: 'An end-to-end intelligent healthcare platform engineered for doctor prescription digitisation via OCR, active drug interaction checks, nearby pharmacy geo-discovery, and cross-platform pricing intelligence.',
+      subtitle: 'AI Medicine Discovery Platform',
+      desc: 'An AI-assisted medicine discovery platform combining prescription OCR, medicine search, pharmacy discovery, and price comparison across multiple online sources.',
       features: [
-        'Generative AI prescription OCR & structured molecule parsing',
-        'Real-time pharmacy inventory search & cross-store price comparison',
-        'Secure cloud data management with PostgreSQL & authentication'
+        'Prescription-processing pipeline evaluated on 1,500+ prescription samples, achieving ~95% recognition accuracy',
+        'Medicine discovery combining prescription OCR, medicine search, pharmacy discovery, and price comparison across multiple online sources',
+        'Integrated authentication, search history, AI-assisted responses, and cloud-based data storage for core user workflows'
       ],
-      tags: ['OpenCV', 'GenAI Vision', 'FastAPI', 'PostgreSQL', 'GeoDB'],
+      tags: ['OpenCV', 'PyTorch', 'FastAPI', 'PostgreSQL', 'OCR', 'Cloud Storage'],
       github: 'https://github.com/bharathvk75/DeepXmeD',
       blueprint: {
         nodes: [
-          { num: '01', label: 'Prescription Upload', sub: 'Doctor Handwriting Capture' },
-          { num: '02', label: 'Vision Processing', sub: 'OpenCV Contrast & Binarization' },
-          { num: '03', label: 'Molecule Extraction', sub: 'LLM Drug-Interaction Engine' },
-          { num: '04', label: 'Geo-Inventory', sub: 'PostgreSQL Real-Time Dispatch' }
+          { num: '01', label: 'Prescription Upload', sub: 'Doctor Prescription Capture' },
+          { num: '02', label: 'Vision Processing', sub: 'OpenCV Preprocessing & OCR' },
+          { num: '03', label: 'Medicine Search', sub: 'Drug Discovery & Comparison' },
+          { num: '04', label: 'Geo & Storage', sub: 'Cloud Data & Multi-Source Pricing' }
         ],
         benchmarks: [
-          { label: 'OCR Accuracy', val: '97.4%' },
-          { label: 'Drug Database', val: '50,000+' },
-          { label: 'Discovery Time', val: '< 2.1s' }
+          { label: 'OCR Accuracy', val: '~95%' },
+          { label: 'Evaluated Samples', val: '1,500+' },
+          { label: 'Comparison', val: 'Multi-Source' }
         ]
       }
     },
@@ -77,28 +77,28 @@
       title: 'AEGIS',
       category: 'Edge Computer Vision',
       domain: 'vision',
-      status: 'Sub-20ms Inference',
+      status: '24ms Latency | ~40 FPS',
       statusColor: '#a855f7',
-      subtitle: 'Real-Time Edge Video Analytics System',
-      desc: 'High-performance edge-AI video analytics system applying state-of-the-art computer-vision models for real-time object detection, safety perimeter enforcement, and automated anomaly event streaming.',
+      subtitle: 'Real-Time Edge Video Analytics',
+      desc: 'An edge-AI video analytics system for real-time object detection and event monitoring on a security-camera video stream.',
       features: [
-        'Optimized inference pipeline for ultra-low latency edge processing',
-        'High-accuracy multi-class object detection & tracking algorithms',
-        'Intelligent edge event dispatch & bounding overlay render'
+        'Real-time object detection and event monitoring on security-camera video streams',
+        'Optimized inference pipeline sustaining ~40 FPS while achieving 80% detection accuracy on evaluation dataset',
+        'Reduced average inference latency from 39 ms to 24 ms through pipeline and inference optimizations'
       ],
-      tags: ['PyTorch', 'TensorFlow', 'OpenCV', 'TensorRT', 'WebSockets'],
+      tags: ['PyTorch', 'TensorFlow', 'OpenCV', 'Edge AI', 'Docker'],
       github: 'https://github.com/bharathvk75/AEGIS',
       blueprint: {
         nodes: [
-          { num: '01', label: 'RTSP Video Stream', sub: 'High-FPS Edge RTSP Ingestion' },
-          { num: '02', label: 'TensorRT Acceleration', sub: 'FP16 Quantized Model Loop' },
-          { num: '03', label: 'Perimeter Engine', sub: 'Bounding Box & Anomaly Tracker' },
-          { num: '04', label: 'Event Telemetry', sub: 'WebSocket Real-Time Dispatch' }
+          { num: '01', label: 'RTSP Video Stream', sub: 'Security Camera Video Ingestion' },
+          { num: '02', label: 'Pipeline Optimize', sub: 'Quantized & Optimized Runtime' },
+          { num: '03', label: 'Perimeter Engine', sub: 'Object Detection & Event Tracking' },
+          { num: '04', label: 'Event Telemetry', sub: 'Real-Time Monitoring Stream' }
         ],
         benchmarks: [
-          { label: 'Inference Latency', val: '18ms' },
-          { label: 'Framerate', val: '60 FPS' },
-          { label: 'Edge Runtime', val: 'TensorRT / Docker' }
+          { label: 'Inference Latency', val: '24ms (from 39ms)' },
+          { label: 'Framerate', val: '~40 FPS' },
+          { label: 'Accuracy', val: '80%' }
         ]
       }
     },

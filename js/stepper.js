@@ -12,49 +12,49 @@
       step: 1,
       id: 'synapse',
       title: 'SYNAPSE',
-      subtitle: 'Multi-Agent Autonomous Code Reviewer',
+      subtitle: 'Multi-Agent Code Reviewer',
       category: 'Multi-Agent Systems',
-      highlight: 'LangGraph & AST',
-      desc: 'Distributed multi-agent system executing parallel code review pipelines on enterprise PRs. Deconstructs pull requests into security, syntax, and performance tasks using AST extraction and LangGraph state machines.',
+      highlight: '78% Accuracy & ~40% Effort Reduction',
+      desc: 'Multi-agent code-review system that analyzes repositories and pull requests for security, maintainability, performance, and coding practices using specialized review agents.',
       pipeline: [
-        'GitHub Webhook & AST parsing isolate diff context',
-        'Planner agent delegates security & complexity checks',
-        'Parallel LangGraph execution nodes review CWEs & coverage',
-        'Consensus synthesis agent writes GitHub Markdown reports'
+        'Specialized review agents analyze repos and PRs for security, maintainability, and coding practices',
+        'Parallel agent execution with structured review outputs and automated Markdown reports',
+        'GitHub workflow integration reducing manual review effort by ~40%',
+        'Evaluated across 200+ PR/repository samples with 78% issue-detection accuracy'
       ],
-      tags: ['LangGraph', 'Python', 'FastAPI', 'GitHub Actions', 'AST', 'Docker']
+      tags: ['LangGraph', 'Python', 'FastAPI', 'GitHub Actions', 'AI Agents', 'REST APIs']
     },
     {
       step: 2,
       id: 'deepxmed',
       title: 'DeepXMed',
-      subtitle: 'AI Medicine Discovery & Verification Platform',
+      subtitle: 'AI Medicine Discovery Platform',
       category: 'Healthcare AI',
-      highlight: 'Vision & RAG',
-      desc: 'Intelligent healthcare platform for doctor prescription digitisation via OCR, active drug contraindication detection via semantic vector retrieval, and live nearby pharmacy inventory search.',
+      highlight: '~95% OCR Accuracy & Multi-Source Search',
+      desc: 'AI-assisted medicine discovery platform combining prescription OCR, medicine search, pharmacy discovery, and price comparison across multiple online sources.',
       pipeline: [
-        'OpenCV preprocessing & Vision LLM prescription OCR',
-        'pgvector semantic search cross-checks contraindications',
-        'Geolocation algorithms calculate nearest pharmacy routes',
-        'Cross-platform pricing intelligence table render'
+        'Prescription-processing pipeline with OpenCV preprocessing and Vision OCR',
+        'Evaluated OCR performance on 1,500+ prescription samples achieving ~95% recognition accuracy',
+        'Integrated medicine search, pharmacy discovery, and cross-platform price comparison',
+        'Cloud-based data storage, search history, AI-assisted responses, and secure auth'
       ],
-      tags: ['OpenCV', 'GenAI', 'PostgreSQL', 'pgvector', 'FastAPI', 'React']
+      tags: ['OpenCV', 'PyTorch', 'FastAPI', 'PostgreSQL', 'OCR', 'Cloud Storage']
     },
     {
       step: 3,
       id: 'aegis',
       title: 'AEGIS',
-      subtitle: 'Real-Time Edge Video Analytics System',
+      subtitle: 'Real-Time Edge Video Analytics',
       category: 'Edge Computer Vision',
-      highlight: 'Sub-18ms Latency',
-      desc: 'High-performance edge-AI video analytics system applying state-of-the-art computer-vision models for real-time object detection, safety perimeter enforcement, and automated anomaly event streaming.',
+      highlight: '24ms Latency | ~40 FPS | 80% Accuracy',
+      desc: 'Edge-AI video analytics system for real-time object detection and event monitoring on security-camera video streams.',
       pipeline: [
-        'RTSP stream decoding via OpenCV & NVIDIA TensorRT',
-        'Quantized lightweight inference achieves sub-18ms loops',
-        'Multi-class object tracking & safety perimeter alerts',
-        'Asynchronous webhook event dispatch & boundary overlays'
+        'Real-time object detection and event monitoring on security-camera streams',
+        'Optimized inference pipeline sustaining ~40 FPS with 80% detection accuracy',
+        'Reduced average inference latency from 39 ms to 24 ms through pipeline optimizations',
+        'Lightweight edge deployment with OpenCV, PyTorch, and Docker containers'
       ],
-      tags: ['PyTorch', 'TensorFlow', 'OpenCV', 'Edge AI', 'Python']
+      tags: ['PyTorch', 'TensorFlow', 'OpenCV', 'Edge AI', 'Docker']
     },
     {
       step: 4,

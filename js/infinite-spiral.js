@@ -401,86 +401,84 @@
       const RESUME_SKILL_SECTIONS = [
         {
           key: 'frontend',
-          label: 'Frontend & UI Engineering',
-          title: 'Frontend & Interactive UI Engineering',
-          desc: 'Engineering fluid, accessible interfaces with modern CSS systems, component-driven layouts, and reactive client state.',
+          label: 'Engineering & Languages',
+          title: 'Engineering & Core Languages',
+          desc: 'High-performance systems programming, responsive user interfaces, and structured client-side architectures.',
           chips: [
+            { name: 'C++', desc: 'Systems & Algorithmic Core' },
+            { name: 'JavaScript', desc: 'Web Application Logic' },
+            { name: 'TypeScript', desc: 'Strictly Typed Codebases' },
             { name: 'React', desc: 'Component Architecture' },
-            { name: 'TypeScript', desc: 'Strict Typed UI' },
-            { name: 'Next.js', desc: 'SSR & Edge Routing' },
-            { name: 'Modern CSS3', desc: 'Vanilla & Responsive Design' },
-            { name: 'Tailwind CSS', desc: 'Utility Design System' },
-            { name: 'HTML5 Semantic Web', desc: 'Accessible Standards' }
+            { name: 'Next.js', desc: 'SSR & Edge Applications' },
+            { name: 'Modern CSS3', desc: 'Vanilla Responsive Design' }
           ]
         },
         {
           key: 'backend',
-          label: 'Backend & Microservices',
-          title: 'Backend & High-Throughput Microservices',
-          desc: 'Constructing resilient asynchronous microservices, RESTful interfaces, event streaming, and background queue workers.',
+          label: 'Backend & APIs',
+          title: 'Backend Services & REST API Integrations',
+          desc: 'Constructing resilient asynchronous microservices, RESTful interfaces, and automated business integrations.',
           chips: [
-            { name: 'Python 3.12', desc: 'Asynchronous Core' },
+            { name: 'Python', desc: 'Core Backend Language' },
             { name: 'FastAPI', desc: 'High-Throughput ASGI' },
-            { name: 'Node.js / Express', desc: 'API Gateways' },
-            { name: 'REST & GraphQL', desc: 'Contract Design' },
-            { name: 'Pydantic v2', desc: 'Schema Validation' },
-            { name: 'Celery / Redis Queues', desc: 'Task Orchestration' }
+            { name: 'Node.js', desc: 'Asynchronous Runtime' },
+            { name: 'Express.js', desc: 'Backend Services' },
+            { name: 'REST APIs', desc: 'Endpoint Architecture' },
+            { name: 'API Integration', desc: 'Internal Business Workflows' }
           ]
         },
         {
           key: 'agentic',
-          label: 'AI & Multi-Agent Architecture',
-          title: 'AI & Multi-Agent Architecture',
-          desc: 'Designing autonomous multi-agent graphs, dynamic tool calling via Claude MCP, and human-in-the-loop reasoning workflows.',
+          label: 'AI / LLM & Agents',
+          title: 'AI / LLM & Multi-Agent Architecture',
+          desc: 'Designing RAG pipelines, autonomous multi-agent workflows, and dynamic tool calling via Model Context Protocol (MCP).',
           chips: [
-            { name: 'LangGraph', desc: 'Cyclic Agent Graphs' },
-            { name: 'Claude MCP', desc: 'Model Context Protocol' },
-            { name: 'Claude 3.7 Sonnet', desc: 'Frontier Reasoning' },
-            { name: 'LangChain', desc: 'RAG Pipelines & Memory' },
-            { name: 'Multi-Agent Swarms', desc: 'Cooperative Orchestration' },
-            { name: 'Function Calling', desc: 'Dynamic Tool Execution' }
+            { name: 'RAG', desc: 'Retrieval-Augmented Generation' },
+            { name: 'LLM Applications', desc: 'Applied Language Models' },
+            { name: 'LangChain', desc: 'Chains & Document Retrieval' },
+            { name: 'LangGraph', desc: 'Cyclic Agent Consensus' },
+            { name: 'AI Agents', desc: 'Autonomous Orchestration' },
+            { name: 'MCP', desc: 'Model Context Protocol' },
+            { name: 'Vector Databases', desc: 'Semantic Embeddings' }
           ]
         },
         {
           key: 'ml',
-          label: 'Machine Learning & Vision',
-          title: 'Machine Learning & Computer Vision',
-          desc: 'Developing deep learning architectures for edge computer vision, real-time spatial tracking, OCR pipelines, and tabular models.',
+          label: 'ML / Vision & OCR',
+          title: 'Machine Learning, Vision & OCR',
+          desc: 'Developing deep learning architectures, real-time edge computer vision, and high-accuracy document OCR extraction.',
           chips: [
             { name: 'PyTorch', desc: 'Deep Learning & Tensors' },
-            { name: 'OpenCV', desc: 'Spatial Edge Vision' },
-            { name: 'TensorFlow / Keras', desc: 'Neural Inference' },
-            { name: 'Scikit-Learn', desc: 'Classical ML Algorithms' },
-            { name: 'Tesseract & PaddleOCR', desc: 'Document Extraction' },
-            { name: 'NumPy & Pandas', desc: 'Vectorized Analytics' }
+            { name: 'TensorFlow', desc: 'Neural Inference' },
+            { name: 'Scikit-learn', desc: 'Predictive ML Analytics' },
+            { name: 'OpenCV', desc: 'Computer Vision & Tracking' },
+            { name: 'OCR', desc: 'Prescription & Document Parsing' }
           ]
         },
         {
           key: 'cloud',
-          label: 'Cloud Infrastructure & DevOps',
-          title: 'Cloud Infrastructure & DevOps',
-          desc: 'Containerizing distributed microservices and deploying reproducible CI/CD pipelines across AWS cloud and container clusters.',
+          label: 'DevOps & Cloud',
+          title: 'DevOps, CI/CD & Cloud Infrastructure',
+          desc: 'Automating multi-stage container deployments, CI/CD pipelines, and cloud services.',
           chips: [
-            { name: 'Docker', desc: 'Multi-Stage Containerization' },
-            { name: 'Kubernetes', desc: 'Container Orchestration' },
-            { name: 'AWS (EC2, S3, Lambda)', desc: 'Cloud Infrastructure' },
-            { name: 'CI/CD Pipelines', desc: 'Automated GitHub Actions' },
-            { name: 'Linux / Bash', desc: 'POSIX Systems' },
-            { name: 'Nginx', desc: 'Reverse Proxy & TLS' }
+            { name: 'Docker', desc: 'Containerized Environments' },
+            { name: 'GitHub Actions', desc: 'Automated CI/CD Workflows' },
+            { name: 'AWS', desc: 'Cloud Infrastructure' },
+            { name: 'Git', desc: 'Distributed Version Control' },
+            { name: 'Linux / Bash', desc: 'Shell & Systems Administration' }
           ]
         },
         {
           key: 'database',
-          label: 'Databases & Vector Stores',
-          title: 'Databases & Vector Retrieval',
-          desc: 'Architecting high-performance relational databases, memory caches, and vector databases for enterprise semantic search.',
+          label: 'Databases & Storage',
+          title: 'Databases & Vector Storage',
+          desc: 'Architecting relational schemas, NoSQL document collections, and vector search indices.',
           chips: [
-            { name: 'PostgreSQL', desc: 'Relational ACID Core' },
-            { name: 'pgvector', desc: 'Native Vector Embeddings' },
-            { name: 'ChromaDB', desc: 'Lightweight Vector Index' },
-            { name: 'Redis', desc: 'In-Memory Cache & PubSub' },
-            { name: 'Pinecone / Qdrant', desc: 'Distributed Similarity Search' },
-            { name: 'SQLAlchemy 2.0', desc: 'Async ORM Layer' }
+            { name: 'PostgreSQL', desc: 'ACID Relational Core' },
+            { name: 'SQL', desc: 'Structured Database Queries' },
+            { name: 'MongoDB', desc: 'NoSQL Document Database' },
+            { name: 'Vector Databases', desc: 'pgvector & ChromaDB' },
+            { name: 'Redis', desc: 'In-Memory Cache & State' }
           ]
         }
       ];

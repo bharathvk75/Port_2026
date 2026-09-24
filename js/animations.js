@@ -200,6 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const roleTextEl = document.getElementById('hero-role-cycler');
   const roles = [
     'AI & ML Engineer',
+    'IT Automation Specialist',
     'Multi-Agent Architect',
     'RAG & LangGraph Specialist',
     'Model Context Protocol (MCP) Dev',
