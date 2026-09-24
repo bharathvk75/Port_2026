@@ -279,18 +279,31 @@
           </div>
         </div>
 
-        <!-- Hero Right Side: Borderless Live 3D Particle Portrait & Meta Below -->
+        <!-- Hero Right Side: Borderless Live Portrait & Identity Meta Below -->
         <div class="hero-visual">
           <div class="photo-aura-backdrop"></div>
           
           <div class="hero-live-wrapper">
-            <!-- Live Picture: Zero Borders, Organic Edge Blending -->
-            <div class="hero-live-photo-stage">
-              <picture>
-                <source srcset="assets/bharath-photo.webp" type="image/webp">
-                <img src="assets/bharath-photo.jpg" alt="Bharath Abhinesh A - AI & ML Engineer (3D Volumetric Digital Identity)" class="hero-live-photo-img" width="848" height="1264" loading="eager" decoding="async">
-              </picture>
-            </div>
+            <!-- React Bits: TiltedCard Component with 3D Motion Springs -->
+            <figure class="tilted-card-figure" id="hero-tilted-card">
+              <div class="tilted-card-inner">
+                <picture>
+                  <source srcset="assets/bharath-photo.webp" type="image/webp">
+                  <img
+                    src="assets/bharath-photo.jpg"
+                    alt="Bharath Abhinesh A - AI & ML Engineer"
+                    class="tilted-card-img"
+                    width="669"
+                    height="1006"
+                    loading="eager"
+                    decoding="async"
+                  >
+                </picture>
+              </div>
+              <figcaption class="tilted-card-caption">
+                Bharath Abhinesh A • AI / ML
+              </figcaption>
+            </figure>
 
             <!-- Identity Meta Below Picture (No Borders) -->
             <div class="hero-photo-meta-below">
@@ -927,6 +940,7 @@
   <script src="js/option-wheel.js"></script>
   <script src="js/infinite-spiral.js"></script>
   <script src="js/logo-loop.js"></script>
+  <script src="js/tilted-card.js"></script>
   <script src="js/theme.js"></script>
   <script src="js/canvas-bg.js"></script>
   <script src="js/light-trail.js"></script>
