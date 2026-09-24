@@ -347,38 +347,70 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Real Dispatch Transmitter Form Submission (via FormSubmit AJAX)
+  // Real Dispatch Transmitter Form Submission (100% Free FormSubmit Pipeline)
   const contactForm = document.getElementById('contact-form');
   const statusBanner = document.getElementById('dispatch-status-banner');
   const submitBtn = document.getElementById('dispatch-submit-btn');
   const btnText = document.getElementById('dispatch-btn-text');
+  const nextInput = document.getElementById('contact-form-next');
+  const subjectHidden = document.getElementById('form-subject-hidden');
+
+  // Dynamically set _next redirect to current origin
+  if (nextInput) {
+    try {
+      const returnUrl = window.location.origin + window.location.pathname + '?dispatched=true#contact';
+      nextInput.value = returnUrl;
+    } catch (_) {}
+  }
+
+  // Check if returning from a successful native form submission
+  if (window.location.search.includes('dispatched=true') && statusBanner) {
+    statusBanner.style.display = 'block';
+    statusBanner.className = 'dispatch-status-banner success';
+    statusBanner.innerHTML = '✓ Transmission Dispatched! Thank you. Your message has been routed directly to Bharath\'s inbox.';
+    // Clean URL query without reload
+    try {
+      window.history.replaceState({}, document.title, window.location.pathname + window.location.hash);
+    } catch (_) {}
+    setTimeout(() => {
+      statusBanner.style.display = 'none';
+    }, 10000);
+  }
 
   if (contactForm && submitBtn) {
+    let isSubmittingNatively = false;
+
     contactForm.addEventListener('submit', async (e) => {
+      if (isSubmittingNatively) return; // Allow native submit to continue
+
       e.preventDefault();
-      const name = document.getElementById('contact-name')?.value.trim() || 'Colleague';
-      const email = document.getElementById('contact-email')?.value.trim() || '';
-      const subject = document.getElementById('contact-subject')?.value.trim() || 'Direct Dispatch from Portfolio';
-      const message = document.getElementById('contact-message')?.value.trim() || '';
+      const nameInput = document.getElementById('contact-name');
+      const emailInput = document.getElementById('contact-email');
+      const subjectInput = document.getElementById('contact-subject');
+      const messageInput = document.getElementById('contact-message');
+
+      const name = nameInput?.value.trim() || 'Colleague';
+      const email = emailInput?.value.trim() || '';
+      const subject = subjectInput?.value.trim() || 'Direct Dispatch from Portfolio';
+      const message = messageInput?.value.trim() || '';
+
+      if (subjectHidden) {
+        subjectHidden.value = `[Portfolio Dispatch] ${subject} - ${name}`;
+      }
 
       submitBtn.disabled = true;
       if (btnText) btnText.textContent = 'Transmitting Message...';
 
       try {
+        const formData = new FormData(contactForm);
+        formData.set('_subject', `[Portfolio Dispatch] ${subject} - ${name}`);
+
         const response = await fetch('https://formsubmit.co/ajax/bharathvk75@gmail.com', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json',
             'Accept': 'application/json'
           },
-          body: JSON.stringify({
-            name: name,
-            email: email,
-            _subject: `[Portfolio Dispatch] ${subject}`,
-            message: message,
-            _template: 'table',
-            _captcha: 'false'
-          })
+          body: formData
         });
 
         const data = await response.json();
@@ -391,24 +423,26 @@ document.addEventListener('DOMContentLoaded', () => {
           }
           contactForm.reset();
         } else {
-          throw new Error(data.message || 'Transmission endpoint rejected');
+          // AJAX returned error or activation required — fallback to native browser POST
+          isSubmittingNatively = true;
+          contactForm.submit();
+          return;
         }
       } catch (err) {
-        // Fallback: If external API blocked or failed, offer direct mailto launch
-        if (statusBanner) {
-          statusBanner.style.display = 'block';
-          statusBanner.className = 'dispatch-status-banner warning';
-          const mailtoUrl = `mailto:bharathvk75@gmail.com?subject=${encodeURIComponent('[Portfolio Dispatch] ' + subject)}&body=${encodeURIComponent('From: ' + name + ' (' + email + ')\n\n' + message)}`;
-          statusBanner.innerHTML = `⚠️ Direct transmission encountered a network issue. <a href="${mailtoUrl}" style="color:var(--color-primary);text-decoration:underline;font-weight:700;">Click here to send directly via your email client ↗</a>`;
-        }
+        // If fetch is blocked by browser CORS/ad-blocker, execute native form submission
+        isSubmittingNatively = true;
+        contactForm.submit();
+        return;
       } finally {
-        submitBtn.disabled = false;
-        if (btnText) btnText.textContent = 'Transmit Dispatch to Bharath';
-        setTimeout(() => {
-          if (statusBanner && statusBanner.classList.contains('success')) {
-            statusBanner.style.display = 'none';
-          }
-        }, 10000);
+        if (!isSubmittingNatively) {
+          submitBtn.disabled = false;
+          if (btnText) btnText.textContent = 'Transmit Dispatch to Bharath';
+          setTimeout(() => {
+            if (statusBanner && statusBanner.classList.contains('success')) {
+              statusBanner.style.display = 'none';
+            }
+          }, 10000);
+        }
       }
     });
   }
