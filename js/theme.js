@@ -45,72 +45,69 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  function toggleTheme() {
+  function triggerThemeTransition(clickEvent, nextTheme) {
+    // Create expanding ripple effect originating from button or center
+    const ripple = document.createElement('div');
+    ripple.className = `theme-ripple to-${nextTheme}`;
+    
+    let x = window.innerWidth / 2;
+    let y = 100;
+
+    if (clickEvent && clickEvent.clientX) {
+      x = clickEvent.clientX;
+      y = clickEvent.clientY;
+    } else if (themeToggleBtn) {
+      const rect = themeToggleBtn.getBoundingClientRect();
+      x = rect.left + rect.width / 2;
+      y = rect.top + rect.height / 2;
+    }
+
+    const maxDim = Math.max(window.innerWidth, window.innerHeight) * 2.2;
+    ripple.style.width = `${maxDim}px`;
+    ripple.style.height = `${maxDim}px`;
+    ripple.style.left = `${x}px`;
+    ripple.style.top = `${y}px`;
+
+    document.body.appendChild(ripple);
+
+    // Trigger animation via requestAnimationFrame
+    requestAnimationFrame(() => {
+      ripple.classList.add('animating');
+    });
+
+    // Remove element after transition completes
+    setTimeout(() => {
+      if (ripple.parentNode) {
+        ripple.parentNode.removeChild(ripple);
+      }
+    }, 700);
+  }
+
+  function toggleTheme(event) {
     const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
     const nextTheme = currentTheme === 'light' ? 'dark' : 'light';
     
+    triggerThemeTransition(event, nextTheme);
+
     document.documentElement.setAttribute('data-theme', nextTheme);
     localStorage.setItem('portfolio-theme', nextTheme);
     updateThemeIcon(nextTheme);
 
-    // Notify window for canvas redraw and any reactive elements
+    // Notify window for Hyperspeed, OptionWheel, and canvas background
     window.dispatchEvent(new CustomEvent('themeChanged', { detail: { theme: nextTheme } }));
-    syncBackgroundVideos(nextTheme);
-  }
-
-  function syncBackgroundVideos(theme) {
-    const current = theme || document.documentElement.getAttribute('data-theme') || 'light';
-    const videoDark = document.getElementById('hero-bg-video-dark');
-    const videoLight = document.getElementById('hero-bg-video-light');
-    if (!videoDark || !videoLight) return;
-
-    if (current === 'dark') {
-      videoLight.pause();
-      const playPromise = videoDark.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {});
-      }
-    } else {
-      videoDark.pause();
-      const playPromise = videoLight.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {});
-      }
-    }
   }
 
   if (themeToggleBtn) {
-    themeToggleBtn.addEventListener('click', toggleTheme);
+    themeToggleBtn.addEventListener('click', (e) => toggleTheme(e));
     updateThemeIcon(document.documentElement.getAttribute('data-theme'));
   }
-
-  // Initialize videos once DOM is ready
-  syncBackgroundVideos();
-
-  // Retry video play on first user interaction in case browser autoplay was restricted
-  const unlockAutoplay = () => {
-    syncBackgroundVideos();
-    window.removeEventListener('click', unlockAutoplay);
-    window.removeEventListener('scroll', unlockAutoplay);
-    window.removeEventListener('keydown', unlockAutoplay);
-  };
-  window.addEventListener('click', unlockAutoplay, { once: true });
-  window.addEventListener('scroll', unlockAutoplay, { once: true });
-  window.addEventListener('keydown', unlockAutoplay, { once: true });
-
-  // Handle visibility changes to keep background running smoothly
-  document.addEventListener('visibilitychange', () => {
-    if (!document.hidden) {
-      syncBackgroundVideos();
-    }
-  });
 
   // Keyboard shortcut 'T' to toggle theme
   window.addEventListener('keydown', (e) => {
     if (['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
     if (e.key === 't' || e.key === 'T') {
       e.preventDefault();
-      toggleTheme();
+      toggleTheme(null);
     }
   });
 });

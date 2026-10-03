@@ -31,7 +31,11 @@
   <link rel="stylesheet" href="css/option-wheel.css">
   <link rel="stylesheet" href="css/logo-loop.css">
   <link rel="stylesheet" href="css/stepper.css">
+  <link rel="stylesheet" href="css/hyperspeed.css">
   <link rel="stylesheet" href="css/main.css">
+
+  <!-- Three.js CDN for Hyperspeed 3D Cyber Engine -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
   <!-- GSAP & ScrollTrigger CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -39,16 +43,15 @@
 </head>
 <body>
 
-  <!-- Ambient Atmospheric Living Background (Dual Theme Engine) -->
-  <div class="site-bg-video-wrap" id="site-bg-video-wrap">
-    <!-- Light Mode Video: Luminous Cyan Cosmic Bokeh (5200) -->
-    <video id="hero-bg-video-light" class="site-bg-video site-bg-video--light" src="Videos/5200-183786525_medium.mp4" autoplay loop muted playsinline poster="Videos/thumb_5200.jpg"></video>
-    <!-- Dark Mode Video: Cyber Matrix Wireframe Cityscape (9574) -->
-    <video id="hero-bg-video-dark" class="site-bg-video site-bg-video--dark" src="Videos/9574-220321570_medium.mp4" autoplay loop muted playsinline poster="Videos/thumb_9574.jpg"></video>
-    <!-- Multi-Layer Atmospheric Shade Overlays -->
-    <div class="site-bg-video-overlay"></div>
-    <div class="site-bg-shade-tint"></div>
-  </div>
+  <!-- Ambient Dual-Theme Background System -->
+  <!-- Dark Mode: React Bits 3D Hyperspeed WebGL Engine -->
+  <div class="site-bg-hyperspeed" id="hyperspeed-bg"></div>
+  
+  <!-- Light Mode: Whitish Gray Titanium Gradient Background -->
+  <div class="site-bg-light-gradient" id="light-gradient-bg"></div>
+
+  <!-- Subtle Atmospheric Readability Vignette -->
+  <div class="hyperspeed-vignette"></div>
 
   <!-- Glowing Ambient Background Orbs (Depth Layer) -->
   <div class="background-orb orb1"></div>
@@ -1001,6 +1004,7 @@
   <script src="js/infinite-spiral.js"></script>
   <script src="js/logo-loop.js"></script>
   <script src="js/tilted-card.js"></script>
+  <script src="js/hyperspeed.js"></script>
   <script src="js/theme.js"></script>
   <script src="js/canvas-bg.js"></script>
   <script src="js/light-trail.js"></script>

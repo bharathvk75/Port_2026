@@ -1,0 +1,124 @@
+/* ==========================================================================
+   HYPERSPEED COMPONENT & DUAL THEME BACKGROUND ARCHITECTURE
+   Dark Mode: React Bits Hyperspeed 3D Cyber Hyper-Tunnel
+   Light Mode: Whitish Gray Titanium Gradient Background
+   Includes Luxury Theme Transition Animation & Vignettes
+   ========================================================================== */
+
+/* Dark Mode Hyperspeed Container */
+.site-bg-hyperspeed {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -2;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.85s ease;
+  background: #000000;
+}
+
+[data-theme="dark"] .site-bg-hyperspeed {
+  opacity: 1;
+  visibility: visible;
+}
+
+.hyperspeed-canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+  pointer-events: none;
+}
+
+/* Light Mode Whitish Gray Titanium Gradient Background */
+.site-bg-light-gradient {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -2;
+  pointer-events: none;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.85s ease;
+  background:
+    radial-gradient(circle at 15% 18%, rgba(224, 238, 255, 0.85) 0%, transparent 42%),
+    radial-gradient(circle at 85% 65%, rgba(230, 236, 250, 0.75) 0%, transparent 45%),
+    radial-gradient(circle at 50% 95%, rgba(240, 245, 255, 0.9) 0%, transparent 50%),
+    linear-gradient(180deg, #f8fafd 0%, #f0f4f9 50%, #e9eef6 100%);
+  background-attachment: fixed;
+}
+
+[data-theme="dark"] .site-bg-light-gradient {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Subtle Vignette Overlay for Crisp Readability over Hyperspeed */
+.hyperspeed-vignette {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -1;
+  transition: background 0.75s ease, opacity 0.75s ease;
+}
+
+[data-theme="dark"] .hyperspeed-vignette {
+  background:
+    radial-gradient(ellipse at 50% 40%, rgba(3, 7, 18, 0.42) 0%, rgba(3, 7, 18, 0.78) 75%, #030712 100%),
+    linear-gradient(180deg, rgba(3, 7, 18, 0.3) 0%, transparent 40%, rgba(3, 7, 18, 0.85) 100%);
+}
+
+[data-theme="light"] .hyperspeed-vignette {
+  background:
+    radial-gradient(ellipse at 50% 40%, rgba(255, 255, 255, 0.1) 0%, rgba(248, 250, 253, 0.3) 80%, rgba(240, 244, 250, 0.5) 100%);
+}
+
+/* ==========================================================================
+   THEME TRANSITION RIPPLE & EXPANSION ANIMATION
+   ========================================================================== */
+.theme-transition-curtain {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 99999;
+  opacity: 0;
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  mix-blend-mode: normal;
+}
+
+.theme-transition-curtain.active {
+  opacity: 1;
+}
+
+.theme-ripple {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.65s ease;
+  opacity: 0.85;
+}
+
+.theme-ripple.to-dark {
+  background: radial-gradient(circle, #0a0f1d 0%, #030712 100%);
+  box-shadow: 0 0 100px rgba(56, 189, 248, 0.5);
+}
+
+.theme-ripple.to-light {
+  background: radial-gradient(circle, #ffffff 0%, #f0f4f9 100%);
+  box-shadow: 0 0 100px rgba(255, 255, 255, 0.8);
+}
+
+.theme-ripple.animating {
+  transform: translate(-50%, -50%) scale(3.5);
+  opacity: 0;
+}
