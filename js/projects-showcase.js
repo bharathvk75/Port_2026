@@ -104,31 +104,31 @@
     },
     {
       id: 'cablog',
-      title: 'CabLog AI',
-      category: 'Autonomous Automation',
+      title: 'CABLOG',
+      category: 'AI Document Intelligence',
       domain: 'automation',
-      status: 'Vision LLMs & CDP',
+      status: '60% Effort Saved | 100+ Docs',
       statusColor: '#3b82f6',
-      subtitle: 'Agentic Document Processing & Fleet Operations',
-      desc: 'Autonomous operations pipeline for logistics fleet management. Continuously monitors incoming vehicle duty slips & receipts, extracts structured trip metrics with Vision LLMs, and drives headless browser automation via Chrome DevTools Protocol.',
+      subtitle: 'AI Powered Cab Operations & Document Intelligence',
+      desc: 'An AI-powered document intelligence platform that converts handwritten cab trip sheets and receipts into structured records, automating extraction, validation, calculations, and Excel reporting across 100+ operational documents.',
       features: [
-        'Vision LLM multi-document parsing with Gemini 2.5 Flash',
-        'Autonomous CDP browser filling for enterprise IndeCabs portal',
-        'Automated Excel trip reconciliation with validation auditing'
+        'Built an AI-powered document intelligence platform converting handwritten cab trip sheets & receipts into structured records, automating extraction, validation, and Excel reporting across 100+ operational documents',
+        'Engineered a multimodal processing pipeline with batch image/PDF ingestion, schema-constrained extraction, human-in-the-loop verification, and multi-provider vision AI supporting Gemini, NVIDIA NIM, OpenRouter, and local models',
+        'Deployed and refined the platform with early-stage cab-business clients, helping digitize trip-sheet workflows and reducing repetitive manual data-entry and reconciliation effort by an estimated 60%'
       ],
-      tags: ['Gemini Vision', 'CDP:9222', 'FastAPI', 'Excel Engine', 'Python'],
+      tags: ['Vision AI', 'Gemini Vision', 'Multimodal Pipeline', 'FastAPI', 'Excel Engine', 'Python'],
       github: 'https://github.com/bharathvk75/CABLOGs',
       blueprint: {
         nodes: [
-          { num: '01', label: 'Document Slips', sub: 'Fleet Duty Slips & Fuel Receipts' },
-          { num: '02', label: 'Gemini 2.5 Vision', sub: 'Structured JSON Metric Extraction' },
-          { num: '03', label: 'CDP:9222 Browser', sub: 'Headless Chrome Automation' },
-          { num: '04', label: 'Ledger Audit', sub: 'Automated Excel Reconciliation' }
+          { num: '01', label: 'Batch Ingestion', sub: 'Handwritten Trip Sheets & Receipts' },
+          { num: '02', label: 'Multimodal Vision', sub: 'Gemini, NVIDIA NIM & Vision AI' },
+          { num: '03', label: 'Schema Validation', sub: 'Constrained Extraction & Verification' },
+          { num: '04', label: 'Excel Reporting', sub: 'Automated Financial Reconciliation' }
         ],
         benchmarks: [
-          { label: 'Headless Mode', val: '100% Autonomous' },
-          { label: 'Speed / Slip', val: '3.2s' },
-          { label: 'Protocol', val: 'Chrome CDP:9222' }
+          { label: 'Effort Reduced', val: '~60% Saved' },
+          { label: 'Operational Docs', val: '100+ Docs' },
+          { label: 'Accuracy', val: 'Human-in-Loop' }
         ]
       }
     },

@@ -164,29 +164,27 @@ document.addEventListener('DOMContentLoaded', () => {
       `
     },
     cablog: {
-      title: 'CabLog AI — Agentic Document Processing & Fleet Operations Pipeline',
+      title: 'CABLOG — AI Powered Cab Operations & Document Intelligence',
       content: `
         <div style="display:flex;flex-direction:column;gap:1.25rem">
-          <p>CabLog AI (IndeCabs) is an autonomous operations pipeline engineered for logistics fleet management. It continuously watches incoming vehicle duty slips and fuel receipts, executes multi-model Vision LLMs (Gemini 2.5 Flash / Vision NIM) to extract structured trip metrics, and drives headless browser automation via Chrome DevTools Protocol (CDP) to auto-fill fleet enterprise portals.</p>
+          <p>CABLOG is an AI-powered document intelligence platform that converts handwritten cab trip sheets and receipts into structured records, automating extraction, validation, calculations, and Excel reporting across 100+ operational documents.</p>
           
           <div style="background:var(--bg-secondary);padding:1.25rem;border-radius:var(--radius-md);border:1px solid var(--border-medium)">
-            <h4 style="color:var(--color-accent-blue);margin-bottom:0.5rem">Architecture Workflow:</h4>
+            <h4 style="color:var(--color-accent-blue);margin-bottom:0.5rem">Architecture & Evaluated Impact:</h4>
             <ol style="margin-left:1.5rem;display:flex;flex-direction:column;gap:0.4rem;color:var(--text-secondary);font-size:0.92rem">
-              <li><strong>Queue Ingestion:</strong> Asynchronously listens for incoming trip slip & receipt images via LocalSend and file system watchers.</li>
-              <li><strong>Vision LLM Parsing:</strong> Multi-model extraction of vehicle registration, driver duty timings, odometer readings, and toll expenses.</li>
-              <li><strong>CDP Browser Automation:</strong> Connects to Chrome via CDP:9222 to autonomously navigate, populate, and submit the IndeCabs enterprise portal.</li>
-              <li><strong>Spreadsheet Reconciliation:</strong> Compiles structured Excel trip sheets (.xlsx) with automated anomaly checks and auditing.</li>
+              <li><strong>Document Intelligence:</strong> Converts handwritten cab trip sheets and receipts into structured data, automating validation and calculations across 100+ operational documents.</li>
+              <li><strong>Multimodal Processing Pipeline:</strong> Batch image/PDF ingestion with schema-constrained extraction, human-in-the-loop verification, and multi-provider vision AI (Gemini, NVIDIA NIM, OpenRouter, local models).</li>
+              <li><strong>Client Deployment & Efficiency:</strong> Deployed with early-stage cab-business clients, reducing repetitive manual data-entry and reconciliation effort by an estimated ~60%.</li>
             </ol>
           </div>
 
           <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
-            <span class="tech-tag">Vision LLMs</span>
-            <span class="tech-tag">Gemini Flash</span>
-            <span class="tech-tag">Browser-Use</span>
-            <span class="tech-tag">CDP Automation</span>
+            <span class="tech-tag">Vision AI</span>
+            <span class="tech-tag">Gemini Vision</span>
+            <span class="tech-tag">Multimodal Pipeline</span>
             <span class="tech-tag">FastAPI</span>
+            <span class="tech-tag">Excel Engine</span>
             <span class="tech-tag">Python</span>
-            <span class="tech-tag">React</span>
           </div>
 
           <a href="https://github.com/bharathvk75/CABLOGs" target="_blank" class="shiny-btn" style="width:max-content">
@@ -454,14 +452,26 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileNav = document.getElementById('mobile-nav');
   const closeMobileNavBtn = document.getElementById('close-mobile-nav');
 
+  function openMobileNav() {
+    if (!mobileNav) return;
+    mobileNav.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMobileNav() {
+    if (!mobileNav) return;
+    mobileNav.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
   if (menuToggle && mobileNav) {
-    menuToggle.addEventListener('click', () => mobileNav.classList.add('open'));
+    menuToggle.addEventListener('click', openMobileNav);
   }
   if (closeMobileNavBtn && mobileNav) {
-    closeMobileNavBtn.addEventListener('click', () => mobileNav.classList.remove('open'));
+    closeMobileNavBtn.addEventListener('click', closeMobileNav);
   }
   document.querySelectorAll('.mobile-nav-link').forEach((l) => {
-    l.addEventListener('click', () => mobileNav?.classList.remove('open'));
+    l.addEventListener('click', closeMobileNav);
   });
 
   // ------------------------------------------------------------------------
@@ -470,7 +480,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       closeProjectModal();
-      mobileNav?.classList.remove('open');
+      closeMobileNav();
     }
   });
 });

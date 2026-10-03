@@ -131,7 +131,7 @@
 
       const dragEnabled = this.animationMode === 'drag' || this.animationMode === 'all';
       this.root.style.cursor = dragEnabled ? 'grab' : 'default';
-      this.root.style.touchAction = dragEnabled ? 'pan-x' : 'auto';
+      this.root.style.touchAction = 'pan-y';
       this.root.style.userSelect = dragEnabled ? 'none' : 'auto';
 
       this.stage = document.createElement('div');

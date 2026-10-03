@@ -189,16 +189,15 @@
     }
 
     attachEvents() {
-      // Mouse / Touchpad Wheel
+      // Mouse / Touchpad Wheel (Non-blocking: allows natural page scroll while smoothly rotating wheel)
       const onWheel = (e) => {
-        e.preventDefault();
         const delta = e.deltaMode === 1 ? e.deltaY * 24 : e.deltaY;
-        const step = Math.max(-1, Math.min(1, delta / this.rowH));
+        const step = Math.max(-0.5, Math.min(0.5, delta / (this.rowH * 2)));
         this.applyTarget(this.target + step, false);
         if (this.wheelTimer) clearTimeout(this.wheelTimer);
         this.wheelTimer = setTimeout(() => this.applyTarget(this.target, true), 140);
       };
-      this.rootEl.addEventListener('wheel', onWheel, { passive: false });
+      this.rootEl.addEventListener('wheel', onWheel, { passive: true });
 
       // Pointer Dragging
       if (this.draggable) {

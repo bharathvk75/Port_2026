@@ -586,12 +586,13 @@
 
       // Responsive window resize matching React Bits specifications
       window.addEventListener('resize', () => {
-        const isMobile = window.innerWidth < 680;
+        const isSmallMobile = window.innerWidth < 540;
+        const isMobile = window.innerWidth < 768;
         const isTablet = window.innerWidth < 1024;
-        const newCols = isMobile ? 3 : isTablet ? 4 : 5;
-        const newW = isMobile ? 150 : isTablet ? 175 : 200;
-        const newH = isMobile ? 99 : isTablet ? 115 : 132;
-        const newG = isMobile ? 12 : isTablet ? 14 : 18;
+        const newCols = isSmallMobile ? 2 : isMobile ? 3 : isTablet ? 4 : 5;
+        const newW = isSmallMobile ? 135 : isMobile ? 150 : isTablet ? 175 : 200;
+        const newH = isSmallMobile ? 89 : isMobile ? 99 : isTablet ? 115 : 132;
+        const newG = isSmallMobile ? 10 : isMobile ? 12 : isTablet ? 14 : 18;
         if (newCols !== this.columns || newW !== this.tileWidth || newH !== this.tileHeight) {
           this.columns = newCols;
           this.tileWidth = newW;
@@ -739,15 +740,16 @@
 
     const certs = typeof CERTIFICATIONS_DATA !== 'undefined' ? CERTIFICATIONS_DATA : [];
 
-    const isMobile = window.innerWidth < 680;
+    const isSmallMobile = window.innerWidth < 540;
+    const isMobile = window.innerWidth < 768;
     const isTablet = window.innerWidth < 1024;
 
     const driftWallInstance = new DriftWallEngine(mount, {
       items: certs,
-      columns: isMobile ? 3 : isTablet ? 4 : 5,
-      tileWidth: isMobile ? 150 : isTablet ? 175 : 200,
-      tileHeight: isMobile ? 99 : isTablet ? 115 : 132,
-      gap: isMobile ? 12 : isTablet ? 14 : 18,
+      columns: isSmallMobile ? 2 : isMobile ? 3 : isTablet ? 4 : 5,
+      tileWidth: isSmallMobile ? 135 : isMobile ? 150 : isTablet ? 175 : 200,
+      tileHeight: isSmallMobile ? 89 : isMobile ? 99 : isTablet ? 115 : 132,
+      gap: isSmallMobile ? 10 : isMobile ? 12 : isTablet ? 14 : 18,
       radius: 14,
       tilt: 16,
       turn: -14,

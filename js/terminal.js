@@ -28,7 +28,7 @@ Available Commands:
 
     whoami: () => `
 <strong style="color:#38bdf8">Bharath Abhinesh A</strong>
-🎓 B.Tech in Computer Science & Engineering (AI & ML) — Garden City University (CGPA: 8.6/10.0 | Graduated: July 2026)
+🎓 B.Tech in Computer Science & Engineering (AI & ML) — Garden City University (CGPA: 8.4/10.0 | Graduated: July 2026)
 📍 Bengaluru, Karnataka, India
 💼 IT Automation Intern at Induspic Engineers
 🎯 Specialization: IT Automation, AI Applications, RAG Workflows, AI-Agent Automations, REST API Integrations, OCR Pipelines, and Computer-Vision Systems.

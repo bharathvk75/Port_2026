@@ -26,8 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Close mobile menu if open
         const mobileNav = document.getElementById('mobile-nav');
-        if (mobileNav && mobileNav.classList.contains('active')) {
-          mobileNav.classList.remove('active');
+        if (mobileNav && mobileNav.classList.contains('open')) {
+          mobileNav.classList.remove('open');
+          document.body.style.overflow = '';
         }
       }
     });
