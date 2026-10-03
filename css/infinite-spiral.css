@@ -7,12 +7,16 @@
   position: relative;
   width: 100%;
   height: 100%;
-  min-height: 580px;
   overflow: hidden;
   isolation: isolate;
   border: none;
   background: transparent;
   user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective-origin: 50% 50%;
+  -webkit-perspective-origin: 50% 50%;
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
   mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
 }
@@ -20,8 +24,13 @@
 .infinite-spiral__stage {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
   transform-style: preserve-3d;
   pointer-events: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .infinite-spiral__item {
@@ -203,7 +212,8 @@
 
 @media (max-width: 640px) {
   .infinite-spiral {
-    min-height: 440px;
+    min-height: unset;
+    height: 100%;
   }
   .infinite-spiral-hud {
     flex-direction: column;
@@ -579,12 +589,29 @@
   .skills-split-layout {
     grid-template-columns: 1fr;
     gap: 2rem;
+    justify-items: center;
   }
   .skills-spiral-col {
     position: static;
+    width: 100%;
+    max-width: 620px;
+    margin: 0 auto;
+    align-items: center;
+    text-align: center;
+  }
+  .spiral-header-wrapper {
+    align-items: center;
+    text-align: center;
+    width: 100%;
   }
   .skills-spiral-stage-wrapper {
-    height: 460px;
+    height: 440px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
@@ -592,6 +619,20 @@
   .skills-split-layout {
     gap: 1.5rem;
     margin-top: 0.5rem;
+    justify-items: center;
+    width: 100%;
+  }
+  .skills-spiral-col {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    align-items: center;
+    text-align: center;
+  }
+  .spiral-header-wrapper {
+    align-items: center;
+    text-align: center;
+    width: 100%;
   }
   .spiral-category-nav {
     display: flex;
@@ -599,9 +640,11 @@
     flex-wrap: nowrap;
     -webkit-overflow-scrolling: touch;
     width: 100%;
+    max-width: 100%;
     scrollbar-width: none;
-    padding: 4px 2px 8px;
+    padding: 4px 8px 8px;
     gap: 6px;
+    justify-content: flex-start;
   }
   .spiral-category-nav::-webkit-scrollbar {
     display: none;
@@ -612,17 +655,49 @@
     flex-shrink: 0;
   }
   .skills-spiral-stage-wrapper {
-    height: 380px;
+    height: 390px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
 @media (max-width: 480px) {
+  .skills-spiral-col {
+    gap: 0.85rem;
+  }
   .skills-spiral-stage-wrapper {
-    height: 340px;
+    height: 350px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
   }
   .spiral-cat-btn {
     padding: 5px 10px;
     font-size: 0.7rem;
+  }
+  .infinite-spiral__item {
+    gap: 4px;
+    padding: 6px;
+    border-radius: 12px;
+  }
+  .infinite-spiral__icon {
+    width: 34px;
+    height: 34px;
+  }
+  .infinite-spiral__label {
+    font-size: 0.72rem;
+  }
+  .infinite-spiral__sub {
+    font-size: 0.58rem;
+  }
+  .spiral-canvas-hint {
+    font-size: 0.62rem;
+    padding: 3px 10px;
+    bottom: 8px;
   }
 }
 

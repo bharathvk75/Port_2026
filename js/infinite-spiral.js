@@ -130,14 +130,59 @@
       this.init();
     }
 
+    updateResponsiveParameters() {
+      const w = Math.max(
+        (this.bounds && this.bounds.width) || (this.root && this.root.clientWidth) || (this.container && this.container.clientWidth) || window.innerWidth,
+        1
+      );
+
+      if (w < 480) {
+        this.cardWidth = 82;
+        this.cardHeight = 82;
+        this.verticalSpacing = 42;
+        this.radius = 76;
+        this.centerScale = 1.15;
+      } else if (w < 640) {
+        this.cardWidth = 90;
+        this.cardHeight = 90;
+        this.verticalSpacing = 46;
+        this.radius = 92;
+        this.centerScale = 1.18;
+      } else if (w < 1024) {
+        this.cardWidth = 98;
+        this.cardHeight = 98;
+        this.verticalSpacing = 52;
+        this.radius = 130;
+        this.centerScale = 1.20;
+      } else {
+        this.cardWidth = 108;
+        this.cardHeight = 108;
+        this.verticalSpacing = 58;
+        this.radius = 160;
+        this.centerScale = 1.22;
+      }
+
+      if (this.root) {
+        this.root.style.setProperty('--infinite-spiral-card-width', `${this.cardWidth}px`);
+        this.root.style.setProperty('--infinite-spiral-card-height', `${this.cardHeight}px`);
+      }
+
+      if (this.cardRefs && this.cardRefs.length) {
+        this.cardRefs.forEach(card => {
+          if (!card) return;
+          card.style.width = `${this.cardWidth}px`;
+          card.style.height = `${this.cardHeight}px`;
+        });
+      }
+    }
+
     init() {
       // Build DOM structure
       this.root = document.createElement('div');
       this.root.className = 'infinite-spiral';
       this.root.style.perspective = `${this.perspective}px`;
-      this.root.style.setProperty('--infinite-spiral-card-width', `${this.cardWidth}px`);
-      this.root.style.setProperty('--infinite-spiral-card-height', `${this.cardHeight}px`);
-      this.root.style.setProperty('--infinite-spiral-card-radius', `${this.cardRadius}px`);
+      
+      this.updateResponsiveParameters();
 
       const dragEnabled = this.animationMode === 'drag' || this.animationMode === 'all';
       this.root.style.cursor = dragEnabled ? 'grab' : 'default';
@@ -156,6 +201,7 @@
       this.container.appendChild(this.root);
 
       this.bounds = this.root.getBoundingClientRect();
+      this.updateResponsiveParameters();
       this.setupObservers();
       this.attachEvents();
       this.startLoop();
@@ -223,9 +269,18 @@
       if (typeof ResizeObserver !== 'undefined') {
         this.resizeObserver = new ResizeObserver(() => {
           this.bounds = this.root.getBoundingClientRect();
+          this.updateResponsiveParameters();
         });
         this.resizeObserver.observe(this.root);
       }
+
+      this._windowResizeHandler = () => {
+        if (this.root) {
+          this.bounds = this.root.getBoundingClientRect();
+          this.updateResponsiveParameters();
+        }
+      };
+      window.addEventListener('resize', this._windowResizeHandler, { passive: true });
 
       if ('IntersectionObserver' in window) {
         this.intersectionObserver = new IntersectionObserver(([entry]) => {
@@ -327,10 +382,12 @@
 
         const count = this.items.length;
         const half = count / 2;
-        const width = Math.max(this.bounds.width || 500, 1);
-        const height = Math.max(this.bounds.height || 540, 1);
-        const fit = Math.min(1, width / (this.cardWidth * 2.7), height / (this.cardHeight * 2.35));
-        const responsiveRadius = Math.min(this.radius, Math.max(68, width * 0.35)) * fit;
+        const width = Math.max((this.bounds && this.bounds.width) || (this.root && this.root.clientWidth) || window.innerWidth, 1);
+        const height = Math.max((this.bounds && this.bounds.height) || (this.root && this.root.clientHeight) || 380, 1);
+        const isSmall = width < 640;
+        const fit = Math.min(1, width / (this.cardWidth * (isSmall ? 3.0 : 2.7)), height / (this.cardHeight * 2.35));
+        const maxRadius = isSmall ? Math.min(this.radius, width * 0.24) : Math.min(this.radius, width * 0.35);
+        const responsiveRadius = Math.max(46, maxRadius) * fit;
         const fadeStart = clamp(1 - this.edgeFade, 0, 0.98);
         const turnSize = Math.max(this.cardsPerTurn, 1);
 
@@ -372,6 +429,7 @@
     destroy() {
       if (this.rafId) cancelAnimationFrame(this.rafId);
       if (this.resizeObserver) this.resizeObserver.disconnect();
+      if (this._windowResizeHandler) window.removeEventListener('resize', this._windowResizeHandler);
       if (this.intersectionObserver) this.intersectionObserver.disconnect();
       if (this._scrollHandler) window.removeEventListener('scroll', this._scrollHandler);
       this.container.innerHTML = '';
@@ -390,10 +448,10 @@
         speed: 0.55,
         direction: 'up',
         animationMode: 'all',
-        radius: isMobile ? 120 : isTablet ? 140 : 160,
-        cardWidth: isMobile ? 96 : 108,
-        cardHeight: isMobile ? 96 : 108,
-        verticalSpacing: isMobile ? 50 : 58,
+        radius: isMobile ? 92 : isTablet ? 130 : 160,
+        cardWidth: isMobile ? 90 : 108,
+        cardHeight: isMobile ? 90 : 108,
+        verticalSpacing: isMobile ? 46 : 58,
         perspective: 900,
         cardsPerTurn: 6,
         cardRadius: 15,

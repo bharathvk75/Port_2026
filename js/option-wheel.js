@@ -64,7 +64,9 @@
       this.rootEl.setAttribute('role', 'listbox');
       this.rootEl.setAttribute('tabindex', '0');
       this.rootEl.setAttribute('aria-label', 'Technical Stack Selector Wheel');
-      this.rootEl.className = `option-wheel${this.side === 'right' ? ' option-wheel--right' : ''}`;
+      const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+      const effectiveSide = isMobile ? 'center' : this.side;
+      this.rootEl.className = `option-wheel${effectiveSide === 'right' ? ' option-wheel--right' : effectiveSide === 'center' ? ' option-wheel--center' : ''}`;
 
       this.rootEl.style.setProperty('--ow-text-color', this.textColor);
       this.rootEl.style.setProperty('--ow-active-color', this.activeColor);
@@ -140,7 +142,9 @@
 
       const els = this.itemEls;
       const n = this.items.length;
-      const mirror = this.side === 'right' ? -1 : 1;
+      const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+      const effectiveSide = isMobile ? 'center' : this.side;
+      const mirror = effectiveSide === 'right' ? -1 : effectiveSide === 'center' ? 0 : 1;
       const tiltRad = (this.tilt * Math.PI) / 180;
       const R = tiltRad > 0.0005 ? this.rowH / tiltRad : 0;
 
@@ -156,14 +160,25 @@
         let x = 0;
         let y = d * this.rowH;
         let rot = 0;
+        let rotX = 0;
         if (R > 0) {
           const ang = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, d * tiltRad));
           y = R * Math.sin(ang);
-          x = -mirror * R * (1 - Math.cos(ang)) * this.curve;
-          rot = (mirror * ang * 180) / Math.PI;
+          if (effectiveSide === 'center') {
+            x = 0;
+            rotX = (-ang * 180) / Math.PI;
+            rot = 0;
+          } else {
+            x = -mirror * R * (1 - Math.cos(ang)) * this.curve;
+            rot = (mirror * ang * 180) / Math.PI;
+          }
         }
 
-        el.style.transform = `translate(${x.toFixed(2)}px, calc(${y.toFixed(2)}px - 50%)) rotate(${rot.toFixed(3)}deg)`;
+        if (effectiveSide === 'center') {
+          el.style.transform = `translate(-50%, calc(${y.toFixed(2)}px - 50%)) perspective(600px) rotateX(${rotX.toFixed(2)}deg)`;
+        } else {
+          el.style.transform = `translate(${x.toFixed(2)}px, calc(${y.toFixed(2)}px - 50%)) rotate(${rot.toFixed(3)}deg)`;
+        }
         el.style.opacity = String(Math.max(this.minOpacity, 1 - dist * this.fade));
         el.style.filter = this.blur > 0 ? `blur(${(dist * this.blur).toFixed(2)}px)` : 'none';
         el.style.setProperty('--ow-p', Math.max(0, 1 - Math.min(dist, 1)).toFixed(4));
@@ -247,6 +262,9 @@
       window.addEventListener('resize', () => {
         this.remPx = typeof window !== 'undefined' ? parseFloat(getComputedStyle(document.documentElement).fontSize) || 16 : 16;
         this.rowH = Math.max(this.fontSize * this.spacing * this.remPx, 38);
+        const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+        const effectiveSide = isMobile ? 'center' : this.side;
+        this.rootEl.className = `option-wheel${effectiveSide === 'right' ? ' option-wheel--right' : effectiveSide === 'center' ? ' option-wheel--center' : ''}`;
         this.applyTarget(this.target, true);
       });
     }
