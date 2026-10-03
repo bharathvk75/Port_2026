@@ -11,25 +11,54 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // ------------------------------------------------------------------------
-  // 2. Individual Connected Capsule Navbar Active Link Tracking
+  // 2. Apple Liquid Glass Navbar: Gliding Lens & Dynamic Scroll Edge Effect
   // ------------------------------------------------------------------------
+  const navbar = document.getElementById('navbar');
   const navLinks = document.querySelectorAll('.nav-links .nav-link');
+  const activeGlass = document.getElementById('active-glass-indicator');
   let activeLink = navLinks[0];
 
+  function positionActiveGlass(targetEl) {
+    if (!activeGlass || !targetEl || !navbar) return;
+    const navRect = navbar.getBoundingClientRect();
+    const linkRect = targetEl.getBoundingClientRect();
+
+    const left = linkRect.left - navRect.left;
+    const top = linkRect.top - navRect.top;
+
+    activeGlass.style.left = `${left}px`;
+    activeGlass.style.top = `${top}px`;
+    activeGlass.style.width = `${linkRect.width}px`;
+    activeGlass.style.height = `${linkRect.height}px`;
+    activeGlass.style.opacity = '1';
+  }
+
   if (navLinks.length > 0) {
+    // Initial position on load
+    setTimeout(() => {
+      if (activeLink) positionActiveGlass(activeLink);
+    }, 150);
+
     navLinks.forEach((link) => {
       link.addEventListener('click', () => {
         navLinks.forEach((l) => l.classList.remove('active'));
         link.classList.add('active');
         activeLink = link;
+        positionActiveGlass(link);
       });
     });
 
     let navTicking = false;
     const sections = document.querySelectorAll('section[id]');
     
-    function updateActiveSection() {
+    function updateNavbarOnScroll() {
       const scrollY = window.scrollY;
+
+      // Apple Scroll Edge Effect: elevated contrast when content scrolls beneath
+      if (navbar) {
+        navbar.classList.toggle('nav-scrolled', scrollY > 24);
+      }
+
       for (let i = 0; i < sections.length; i++) {
         const current = sections[i];
         const sectionHeight = current.offsetHeight;
@@ -42,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinks.forEach((l) => l.classList.remove('active'));
             correspondingLink.classList.add('active');
             activeLink = correspondingLink;
+            positionActiveGlass(correspondingLink);
           }
           break;
         }
@@ -51,11 +81,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', () => {
       if (!navTicking) {
-        requestAnimationFrame(updateActiveSection);
+        requestAnimationFrame(updateNavbarOnScroll);
         navTicking = true;
       }
     }, { passive: true });
+
+    window.addEventListener('resize', () => {
+      if (activeLink) positionActiveGlass(activeLink);
+    });
   }
+
 
 
 

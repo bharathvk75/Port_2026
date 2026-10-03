@@ -34,6 +34,8 @@
 
 .logoloop__track {
   display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap !important;
   width: max-content;
   will-change: transform;
   user-select: none;
@@ -49,6 +51,9 @@
 
 .logoloop__list {
   display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap !important;
+  white-space: nowrap !important;
   align-items: center;
   margin: 0;
   padding: 0;
@@ -60,11 +65,14 @@
 }
 
 .logoloop__item {
-  flex: 0 0 auto;
+  flex: 0 0 auto !important;
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
   margin-right: var(--logoloop-gap);
-  display: flex;
+  display: inline-flex;
   align-items: center;
 }
+
 
 .logoloop--vertical .logoloop__item {
   margin-right: 0;
@@ -263,9 +271,10 @@
 .skills-centered-sliding-loop {
   width: 100%;
   max-width: 100%;
-  display: flex;
-  justify-content: center;
+  overflow: hidden;
+  position: relative;
 }
+
 
 
 @media (max-width: 640px) {
