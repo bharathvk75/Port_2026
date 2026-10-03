@@ -240,6 +240,34 @@
   background: transparent;
 }
 
+/* Centered Skills Sliding Loop Banner */
+.skills-logo-loop-wrapper {
+  margin: 3.5rem auto 0;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem 0 0.5rem;
+}
+
+.skills-logo-loop-wrapper .logo-loop-header-tag {
+  margin: 0 auto 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skills-centered-sliding-loop {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+
 @media (max-width: 640px) {
   .logoloop {
     --logoloop-gap: 20px;

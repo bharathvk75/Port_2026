@@ -23,6 +23,8 @@
   // Curated SVG Icons for Technical Skills
   const SKILL_ICONS = {
     python: `<svg viewBox="0 0 128 128"><path fill="#3776AB" d="M63.7 3.5c-30.8 0-29 13.4-29 13.4l.1 13.9h29.5v4.2H23.8s-19.3 2.2-19.3 29.1c0 26.8 16.9 25.8 16.9 25.8h10.1V75.6s-.5-17.2 16.9-17.2h28.9s16.3.3 16.3-15.8V19.3s2.3-15.8-29.9-15.8zm-16 9c3.1 0 5.6 2.5 5.6 5.6s-2.5 5.6-5.6 5.6-5.6-2.5-5.6-5.6 2.5-5.6 5.6-5.6z"/><path fill="#FFD43B" d="M64.3 124.5c30.8 0 29-13.4 29-13.4l-.1-13.9H63.7V93h40.5s19.3-2.2 19.3-29.1c0-26.8-16.9-25.8-16.9-25.8h-10.1v14.3s.5 17.2-16.9 17.2H50.7s-16.3-.3-16.3 15.8v23.3s-2.3 15.8 29.9 15.8zm16-9c-3.1 0-5.6-2.5-5.6-5.6s2.5-5.6 5.6-5.6 5.6 2.5 5.6 5.6-2.5 5.6-5.6 5.6z"/></svg>`,
+    cpp: `<svg viewBox="0 0 128 128"><path fill="#00599C" d="M117.5 54.3c-2.4-7.5-6.8-14.2-12.8-19.5-6-5.3-13.3-8.8-21.2-10.2l-3.2 14.8c5.4 1 10.4 3.4 14.6 7 4.2 3.6 7.2 8.3 8.9 13.5 1.7 5.2 1.9 10.8.6 16.1-1.3 5.3-4.1 10.1-8.1 13.8s-9 6.2-14.4 7.2c-5.4 1-11-.1-16-2.1-5.1-2-9.4-5.5-12.6-10-3.2-4.5-4.9-9.8-5-15.3 0-5.5 1.6-10.8 4.7-15.3 3.1-4.5 7.4-8 12.5-10.1l-5.8-14C51 29 45 34.2 40.7 40.5s-6.8 13.7-7.7 21.3c-.9 7.6.2 15.3 3.3 22.3 3.1 7 8 13 14.3 17.5s13.7 7.2 21.3 7.8c7.6.6 15.3-.9 22.2-4.4s12.6-8.9 16.7-15.5c4.1-6.6 6.3-14.2 6.4-22-.1-4.4-.8-8.7-2.3-12.8l2.6-.4z"/><path fill="#004482" d="M96 52h4v8h-4v4h-8v-4h-4v-8h4v-4h8v4zm20 0h4v8h-4v4h-8v-4h-4v-8h4v-4h8v4z"/></svg>`,
+    javascript: `<svg viewBox="0 0 128 128"><path fill="#F7DF1E" d="M1.408 1.408h125.184v125.184H1.408z"/><path fill="#000" d="M27.707 107.039l9.967-6.07c2.048 3.513 4.736 6.07 9.846 6.07 5.111 0 8.349-2.553 8.349-8.47v-45.7h12.518v45.821c0 13.003-7.599 18.784-19.674 18.784-10.697 0-16.772-5.594-20.986-14.435h-.02zm46.549-1.944l9.967-5.827c3.161 5.111 7.294 8.713 14.582 8.713 6.198 0 10.21-3.04 10.21-7.294 0-5.111-4.133-7.05-11.06-10.088l-3.77-1.579c-10.94-4.615-18.06-10.454-18.06-22.736 0-11.424 8.835-20.052 22.736-20.052 9.846 0 16.894 3.77 21.634 12.031l-9.359 6.07c-2.43-4.133-5.353-5.827-12.274-5.827-4.862 0-8.106 2.308-8.106 6.07 0 4.254 2.917 6.07 9.359 8.835l3.77 1.579c12.76 5.474 19.919 11.06 19.919 23.465 0 13.368-10.454 20.903-24.559 20.903-13.978 0-21.758-6.929-24.949-14.671z"/></svg>`,
     pytorch: `<svg viewBox="0 0 128 128"><path fill="#EE4C2C" d="M64 14.5a39.4 39.4 0 0 0-27.9 67.2l8.3-8.3a27.6 27.6 0 0 1 19.6-47.1c15.2 0 27.6 12.4 27.6 27.6a27.5 27.5 0 0 1-8.1 19.5l8.3 8.3A39.3 39.3 0 0 0 64 14.5zm24.2 13.9a5.9 5.9 0 1 0 0-11.8 5.9 5.9 0 0 0 0 11.8zM61.4 75.7l5.2-18.4 5.2 18.4h-10.4zm-14.8 37.8h40.8v-8.2H46.6v8.2z"/></svg>`,
     langgraph: `<svg viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><circle cx="12" cy="12" r="2"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line><line x1="8.8" y1="12" x2="10.2" y2="12"></line></svg>`,
     langchain: `<svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>`,
@@ -41,16 +43,21 @@
     react: `<svg viewBox="0 0 24 24" fill="none" stroke="#00d8ff" stroke-width="2"><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(0 12 12)"></ellipse><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"></ellipse><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"></ellipse><circle cx="12" cy="12" r="1.5" fill="#00d8ff"></circle></svg>`,
     nextjs: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm3.8 14.2l-5.6-7.4v7.4H8.4V7.8h2.1l5.4 7.2V7.8h1.8v8.4z"/></svg>`,
     tailwind: `<svg viewBox="0 0 24 24" fill="#38bdf8"><path d="M12 6c-2.4 0-3.9 1.2-4.5 3.6 1-.8 2-.9 3-.4.6.3 1 1 1.5 1.7C12.8 12.1 14 13.5 17 13.5c2.4 0 3.9-1.2 4.5-3.6-1 .8-2 .9-3 .4-.6-.3-1-1-1.5-1.7C16.2 7.4 15 6 12 6zM7 12c-2.4 0-3.9 1.2-4.5 3.6 1-.8 2-.9 3-.4.6.3 1 1 1.5 1.7C7.8 18.1 9 19.5 12 19.5c2.4 0 3.9-1.2 4.5-3.6-1 .8-2 .9-3 .4-.6-.3-1-1-1.5-1.7C11.2 13.4 10 12 7 12z"/></svg>`,
-    chromadb: `<svg viewBox="0 0 24 24" fill="none" stroke="#f43f5e" stroke-width="2"><circle cx="7" cy="7" r="4"></circle><circle cx="17" cy="7" r="4"></circle><circle cx="12" cy="17" r="4"></circle><line x1="7" y1="7" x2="12" y2="17"></line><line x1="17" y1="7" x2="12" y2="17"></line></svg>`
+    chromadb: `<svg viewBox="0 0 24 24" fill="none" stroke="#f43f5e" stroke-width="2"><circle cx="7" cy="7" r="4"></circle><circle cx="17" cy="7" r="4"></circle><circle cx="12" cy="17" r="4"></circle><line x1="7" y1="7" x2="12" y2="17"></line><line x1="17" y1="7" x2="12" y2="17"></line></svg>`,
+    git: `<svg viewBox="0 0 24 24" fill="#f05032"><path d="M2.6 10.6L10.6 2.6c.8-.8 2-.8 2.8 0l1.9 1.9-2.4 2.4c-.6-.2-1.3-.1-1.8.4-.5.5-.6 1.2-.4 1.8l-2.3 2.3c-.6-.2-1.3-.1-1.8.4-.7.7-.7 1.9 0 2.6.7.7 1.9.7 2.6 0 .5-.5.6-1.2.4-1.8l2.2-2.2v5.8c-.2.1-.4.2-.6.4-.7.7-.7 1.9 0 2.6.7.7 1.9.7 2.6 0 .7-.7.7-1.9 0-2.6-.2-.2-.4-.3-.6-.4v-6.2c.2-.1.4-.2.6-.4.5-.5.6-1.2.4-1.8l2.4-2.4 4.5 4.5c.8.8.8 2 0 2.8l-8 8c-.8.8-2 .8-2.8 0l-8-8c-.8-.8-.8-2 0-2.8z"/></svg>`,
+    nodejs: `<svg viewBox="0 0 24 24" fill="#539e43"><path d="M12 2l9 5.2v10.4L12 23 3 17.6V7.2L12 2zm0 2.3L5 8.3v7.4l7 4 7-4V8.3L12 4.3z"/></svg>`,
+    mongodb: `<svg viewBox="0 0 24 24" fill="#47a248"><path d="M12 2c-.3 0-.5.2-.6.4C10.2 5.2 6 11.2 6 15.5 6 19.1 8.7 22 12 22s6-2.9 6-6.5c0-4.3-4.2-10.3-5.4-13.1-.1-.2-.3-.4-.6-.4zm0 2.5c.9 2.1 4 8.5 4 11 0 2.2-1.8 4-4 4s-4-1.8-4-4c0-2.5 3.1-8.9 4-11z"/></svg>`
   };
 
   // Core Technical Skills in Spiral with Section Categories (Resume Aligned)
   const SKILL_ITEMS = [
-    // Frontend & Interactive UI
+    // Frontend & Interactive UI & Languages
     { id: 'react', label: 'React', sub: 'Interactive UI', icon: SKILL_ICONS.react, color: '#00d8ff', category: 'frontend' },
     { id: 'typescript', label: 'TypeScript', sub: 'Typed Web APIs', icon: SKILL_ICONS.typescript, color: '#3178c6', category: 'frontend' },
-    { id: 'tailwind', label: 'Tailwind CSS', sub: 'Responsive UI', icon: SKILL_ICONS.tailwind, color: '#38bdf8', category: 'frontend' },
+    { id: 'javascript', label: 'JavaScript', sub: 'ES6+ Logic', icon: SKILL_ICONS.javascript, color: '#f7df1e', category: 'frontend' },
+    { id: 'cpp', label: 'C++', sub: 'Core Algorithms', icon: SKILL_ICONS.cpp, color: '#00599c', category: 'frontend' },
     { id: 'nextjs', label: 'Next.js', sub: 'SSR & Edge', icon: SKILL_ICONS.nextjs, color: '#ffffff', category: 'frontend' },
+    { id: 'tailwind', label: 'Tailwind CSS', sub: 'Responsive UI', icon: SKILL_ICONS.tailwind, color: '#38bdf8', category: 'frontend' },
 
     // Agentic & AI Architecture
     { id: 'langgraph', label: 'LangGraph', sub: 'Multi-Agent Core', icon: SKILL_ICONS.langgraph, color: '#38bdf8', category: 'agentic' },
@@ -67,16 +74,19 @@
     // High-Throughput Backend & APIs
     { id: 'python', label: 'Python 3.12', sub: 'AI Core Lang', icon: SKILL_ICONS.python, color: '#3b82f6', category: 'backend' },
     { id: 'fastapi', label: 'FastAPI', sub: 'Async Microservices', icon: SKILL_ICONS.fastapi, color: '#009688', category: 'backend' },
+    { id: 'nodejs', label: 'Node.js', sub: 'Async Services', icon: SKILL_ICONS.nodejs, color: '#539e43', category: 'backend' },
 
     // Databases & Vector Stores
     { id: 'postgresql', label: 'PostgreSQL', sub: 'pgvector RAG', icon: SKILL_ICONS.postgresql, color: '#336791', category: 'database' },
     { id: 'redis', label: 'Redis', sub: 'Cache & State', icon: SKILL_ICONS.redis, color: '#dc382d', category: 'database' },
     { id: 'chromadb', label: 'ChromaDB', sub: 'Vector Embeddings', icon: SKILL_ICONS.chromadb, color: '#f43f5e', category: 'database' },
+    { id: 'mongodb', label: 'MongoDB', sub: 'Document DB', icon: SKILL_ICONS.mongodb, color: '#47a248', category: 'database' },
 
     // Cloud Infrastructure & DevOps
     { id: 'docker', label: 'Docker', sub: 'Containerization', icon: SKILL_ICONS.docker, color: '#2496ed', category: 'cloud' },
     { id: 'kubernetes', label: 'Kubernetes', sub: 'Cluster Scaling', icon: SKILL_ICONS.kubernetes, color: '#326ce5', category: 'cloud' },
-    { id: 'aws', label: 'AWS Cloud', sub: 'Infrastructure', icon: SKILL_ICONS.aws, color: '#ff9900', category: 'cloud' }
+    { id: 'aws', label: 'AWS Cloud', sub: 'Infrastructure', icon: SKILL_ICONS.aws, color: '#ff9900', category: 'cloud' },
+    { id: 'git', label: 'Git & CI/CD', sub: 'Version Control', icon: SKILL_ICONS.git, color: '#f05032', category: 'cloud' }
   ];
 
   class InfiniteSpiralEngine {
@@ -197,6 +207,7 @@
     }
 
     filterCategory(categoryKey) {
+      if (this.activeCategory === categoryKey) return;
       this.activeCategory = categoryKey;
       if (!categoryKey || categoryKey === 'all') {
         this.items = [...this.allItems];
